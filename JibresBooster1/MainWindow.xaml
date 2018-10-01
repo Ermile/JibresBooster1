@@ -23,6 +23,7 @@
             </FlowDocument>
         </RichTextBox>
         <Label x:Name="label" Content="Logs" Grid.Column="1" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="564"/>
+        <Image x:Name="image" Grid.Column="4" HorizontalAlignment="Left" Height="124" Margin="27,197,0,0" VerticalAlignment="Top" Width="124" Source="images/ermile.png"/>
 
     </Grid>
 </Window>
