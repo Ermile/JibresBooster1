@@ -13,7 +13,7 @@ using System.Windows;
 [assembly: AssemblyCompany("Ermile")]
 [assembly: AssemblyProduct("JibresBooster1")]
 [assembly: AssemblyCopyright("Copyright Ermile©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Jibres")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
