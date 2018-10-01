@@ -24,5 +24,11 @@ namespace JibresBooster1
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Console.Beep();
+            System.Diagnostics.Process.Start("https://jibres.com");
+        }
     }
 }
