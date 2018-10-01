@@ -14,7 +14,15 @@
             <ColumnDefinition Width="125*"/>
             <ColumnDefinition Width="195*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="Jibres website" Grid.Column="4" HorizontalAlignment="Left" Margin="27,358,0,0" VerticalAlignment="Top" Width="127" Height="32" Click="button_Click" AutomationProperties.Name="btnWebsite"/>
+        <Button x:Name="btnJibresWebsite" Content="Jibres website" Grid.Column="4" HorizontalAlignment="Left" Margin="27,358,0,0" VerticalAlignment="Top" Width="127" Height="32" Click="btnJibresWebsite_Click"/>
+        <RichTextBox x:Name="logText" Grid.Column="1" HorizontalAlignment="Left" Height="224" Margin="10,166,0,0" VerticalAlignment="Top" Width="564" Grid.ColumnSpan="3" Focusable="False" IsTabStop="False" AllowDrop="False">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Jibres is amazing..."/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label x:Name="label" Content="Logs" Grid.Column="1" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="564"/>
 
     </Grid>
 </Window>
