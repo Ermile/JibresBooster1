@@ -43,7 +43,7 @@ namespace JibresBooster1.PcPos
             else if (_args.ContainsKey("test"))
             {
                 Amount = "1200";
-                Console.WriteLine("use test amount " + Amount);
+                Console.WriteLine("use test amount \t" + Amount);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace JibresBooster1.PcPos
             else if (_args.ContainsKey("test"))
             {
                 SerialNo = "5000054981";
-                Console.WriteLine("use test serial " + SerialNo);
+                Console.WriteLine("use test serial \t" + SerialNo);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace JibresBooster1.PcPos
             else if (_args.ContainsKey("test"))
             {
                 AcceptorId = "062006362145616";
-                Console.WriteLine("use test acceptor " + AcceptorId);
+                Console.WriteLine("use test acceptor \t" + AcceptorId);
             }
             else
             {
@@ -94,7 +94,7 @@ namespace JibresBooster1.PcPos
             else if (_args.ContainsKey("test"))
             {
                 TerminalId = "06151815";
-                Console.WriteLine("use test terminal " + TerminalId);
+                Console.WriteLine("use test terminal \t" + TerminalId);
             }
             else
             {
@@ -111,7 +111,7 @@ namespace JibresBooster1.PcPos
             else if (_args.ContainsKey("test"))
             {
                 cmbCom = "com3";
-                Console.WriteLine("use test port " + cmbCom);
+                Console.WriteLine("use test port \t\t" + cmbCom);
             }
             else
             {
@@ -133,7 +133,7 @@ namespace JibresBooster1.PcPos
             {
                 // Initiate Service
                 myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
-                Console.WriteLine("Connected to Kiccc pos successfully.");
+                Console.WriteLine("\nConnected to Kiccc pos successfully.");
                 //Console.Beep();
                 Console.Beep(10000, 100);
             }
