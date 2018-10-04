@@ -85,6 +85,9 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Kiccc.Ing.PcPos">
+      <HintPath>static\KICCC Pos Driver\Kiccc.Ing.PcPos.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
