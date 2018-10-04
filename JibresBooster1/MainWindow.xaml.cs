@@ -41,9 +41,7 @@ namespace JibresBooster1
         static HttpListener myListener = new HttpListener();
         static void runListener()
         {
-            MainWindow mw = (MainWindow)Application.Current.MainWindow;
-            mw.logText.Document.Blocks.Clear();
-            mw.logText.Document.Blocks.Add(new Paragraph(new Run(DateTime.Now + "\tStarting server...")));
+            Console.WriteLine("Starting server...");
 
             // add prefix "http://localhost:4200/"
             myListener.Prefixes.Add("http://localhost:4200/");
@@ -51,14 +49,12 @@ namespace JibresBooster1
             myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             // start server (Run application as Administrator!)
             myListener.Start();
-            // save log
-            mw.logText.Document.Blocks.Add(new Paragraph(new Run(DateTime.Now + "\tServer started.")));
-            Thread _responseThread = new Thread(ResponseThread);
 
-          	// this.listenThread1 = new Thread(new ParameterizedThreadStart(startlistener));
-            // listenThread1.Start();
+            // save log
+            Console.WriteLine("Server started.");
 
             // start the response thread
+            Thread _responseThread = new Thread(ResponseThread);
             _responseThread.Start();
         }
 
@@ -94,21 +90,30 @@ namespace JibresBooster1
                 {
                     // Here i can read all parameters in string but how to parse each one i don't know
 
-                    string[] rawParams = myData.Split('&');
-                    foreach (string param in rawParams)
+                    if(myData == "")
                     {
-                        string[] kvPair = param.Split('=');
-                        string key = kvPair[0];
-                        string value = System.Web.HttpUtility.UrlDecode(kvPair[1]);
-                        postParams.Add(key, value);
+                        Console.WriteLine("Post is empty !!!\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\t\t\t........Post detected");
+
+                        string[] myDataParams = myData.Split('&');
+                        foreach (string param in myDataParams)
+                        {
+                            string[] mytmpStr = param.Split('=');
+                            string key = mytmpStr[0];
+                            string value = System.Web.HttpUtility.UrlDecode(mytmpStr[1]);
+                            postParams.Add(key, value);
+                        }
+
+                        if(postParams.ContainsKey("type"))
+                        {
+                            Console.WriteLine("Post type is " + postParams["type"]);
+                        }
+
                     }
                 }
-
-
-                // Console.WriteLine("Respone given to a request.");
-
-                //Usage
-                MessageBox.Show("Hello " + postParams["salam"]);
             }
         }
     }
