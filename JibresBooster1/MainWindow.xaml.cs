@@ -73,16 +73,24 @@ namespace JibresBooster1
                 // generate response and close connection
                 byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Localhost server -- port 4200</title></head>" +
                     "<body>Welcome to the <strong>Localhost server</strong> -- <em>port 4200!</em></body></html>");
-                // write bytes to the output stream
-                myResponse.OutputStream.Write(_responseArray, 0, _responseArray.Length);
-                // set the KeepAlive bool to false
-                myResponse.KeepAlive = false;
-                // set status
-                myResponse.StatusCode = 200;
-                // set status desc
-                myResponse.StatusDescription = "Okay";
-                // close the connection
-                myResponse.Close();
+                try
+                {
+                    // write bytes to the output stream
+                    myResponse.OutputStream.Write(_responseArray, 0, _responseArray.Length);
+                    // set the KeepAlive bool to false
+                    myResponse.KeepAlive = false;
+                    // set status
+                    myResponse.StatusCode = 200;
+                    // set status desc
+                    myResponse.StatusDescription = "Okay";
+                    // close the connection
+                    myResponse.Close();
+                }
+                catch
+                {
+                    Console.WriteLine("Error on set response!");
+                }
+
 
 
                 // if user post something try to do something
