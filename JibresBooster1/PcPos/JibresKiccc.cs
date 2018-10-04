@@ -25,10 +25,22 @@ namespace JibresBooster1.PcPos
 
         public void fire(Dictionary<string, string> _args)
         {
-            // check input value and fill with default values
-            fill(_args);
-            // try to connect and sale
-            sale();
+            // amount
+            if (_args.ContainsKey("reset"))
+            {
+                resetService();
+            }
+            else if (_args.ContainsKey("terminate"))
+            {
+                TerminateService();
+            }
+            else
+            {
+                // check input value and fill with default values
+                fill(_args);
+                // try to connect and sale
+                sale();
+            }
         }
 
 
@@ -163,12 +175,17 @@ namespace JibresBooster1.PcPos
         }
 
 
-        public string dget(Dictionary<string, string> _dic, string _key)
+
+        public void resetService()
         {
-            string result;
-            if (!_dic.TryGetValue(_key, out result))
-                return null;
-            return result;
+            myKiccc.ResetService();
+        }
+
+
+
+        public void TerminateService()
+        {
+            myKiccc.TerminateService();
         }
     }
 }
