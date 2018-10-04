@@ -28,18 +28,27 @@ namespace JibresBooster1.PcPos
             // amount
             if (_args.ContainsKey("reset"))
             {
-                resetService();
+                myKiccc.ResetService();
             }
             else if (_args.ContainsKey("terminate"))
             {
-                TerminateService();
+                myKiccc.TerminateService();
             }
             else
             {
+                myKiccc = new SerialIngenico();
                 // check input value and fill with default values
                 fill(_args);
-                // try to connect and sale
+                // terminate old connection
+                myKiccc.TerminateService();
+                // try to connect to device
+                connect();
+                // try to sale
                 sale();
+                // free resource
+                myKiccc.Dispose();
+
+                Console.WriteLine("Finish transaction !");
             }
         }
 
@@ -134,12 +143,8 @@ namespace JibresBooster1.PcPos
 
 
 
-
-
-        public void sale()
+        private void connect()
         {
-            myKiccc = new SerialIngenico();
-            
             // try to connect
             try
             {
@@ -155,7 +160,12 @@ namespace JibresBooster1.PcPos
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
+        }
 
+
+
+        private void sale()
+        {
             // try to sale
             try
             {
@@ -167,25 +177,8 @@ namespace JibresBooster1.PcPos
                 Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
-
-            // free resource
-            myKiccc.Dispose();
-
-            Console.WriteLine("Finish transaction !");
         }
 
 
-
-        public void resetService()
-        {
-            myKiccc.ResetService();
-        }
-
-
-
-        public void TerminateService()
-        {
-            myKiccc.TerminateService();
-        }
     }
 }
