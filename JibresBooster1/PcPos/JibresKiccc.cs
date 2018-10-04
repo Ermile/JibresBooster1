@@ -10,7 +10,7 @@ using Kiccc.Ing.PcPos.Serial;
 
 namespace JibresBooster1.PcPos
 {
-    class Kiccc
+    class JibresKiccc
     {
         public static void init()
         {

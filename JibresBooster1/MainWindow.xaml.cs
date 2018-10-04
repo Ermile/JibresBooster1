@@ -110,6 +110,11 @@ namespace JibresBooster1
                         if(postParams.ContainsKey("type"))
                         {
                             Console.WriteLine("Post type is " + postParams["type"]);
+
+                            if (postParams["type"] == "PcPosKiccc")
+                            {
+                                PcPos.JibresKiccc.init();
+                            }
                         }
 
                     }
