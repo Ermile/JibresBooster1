@@ -13,7 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
+using System.IO;
 using System.Threading;
+using System.Web.Script.Serialization;
 
 namespace JibresBooster1
 {
@@ -36,7 +38,7 @@ namespace JibresBooster1
         }
 
 
-        static HttpListener _httpListener = new HttpListener();
+        static HttpListener myListener = new HttpListener();
         static void runListener()
         {
             MainWindow mw = (MainWindow)Application.Current.MainWindow;
@@ -44,34 +46,69 @@ namespace JibresBooster1
             mw.logText.Document.Blocks.Add(new Paragraph(new Run(DateTime.Now + "\tStarting server...")));
 
             // add prefix "http://localhost:4200/"
-            _httpListener.Prefixes.Add("http://localhost:4200/");
+            myListener.Prefixes.Add("http://localhost:4200/");
+            myListener.Prefixes.Add("http://127.0.0.1:4200/");
+            myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             // start server (Run application as Administrator!)
-            _httpListener.Start();
+            myListener.Start();
+            // save log
             mw.logText.Document.Blocks.Add(new Paragraph(new Run(DateTime.Now + "\tServer started.")));
             Thread _responseThread = new Thread(ResponseThread);
+
+          	// this.listenThread1 = new Thread(new ParameterizedThreadStart(startlistener));
+            // listenThread1.Start();
+
             // start the response thread
-            _responseThread.Start(); 
+            _responseThread.Start();
         }
 
         static void ResponseThread()
         {
             while (true)
             {
-                HttpListenerContext context = _httpListener.GetContext(); // get a context
-                // Now, you'll find the request URL in context.Request.Url
-                // get the bytes to response
+                HttpListenerContext myContext   = myListener.GetContext();
+                HttpListenerRequest myRequest   = myContext.Request;
+                HttpListenerResponse myResponse = myContext.Response;
+                var myData = new StreamReader(myRequest.InputStream, myRequest.ContentEncoding).ReadToEnd();
+                //using System.Web and Add a Reference to System.Web
+                Dictionary<string, string> postParams = new Dictionary<string, string>();
+
+
+                // generate response and close connection
                 byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Localhost server -- port 4200</title></head>" +
                     "<body>Welcome to the <strong>Localhost server</strong> -- <em>port 4200!</em></body></html>");
                 // write bytes to the output stream
-                context.Response.OutputStream.Write(_responseArray, 0, _responseArray.Length);
+                myResponse.OutputStream.Write(_responseArray, 0, _responseArray.Length);
                 // set the KeepAlive bool to false
-                context.Response.KeepAlive = false;
+                myResponse.KeepAlive = false;
+                // set status
+                myResponse.StatusCode = 200;
+                // set status desc
+                myResponse.StatusDescription = "Okay";
                 // close the connection
-                context.Response.Close();
+                myResponse.Close();
 
-                // ((MainWindow)Application.Current.MainWindow).logText.Document.Blocks.Add(new Paragraph(new Run(DateTime.Now + "\tRespone given to a request." + Environment.NewLine)));
-                MessageBox.Show("Respone given to a request.");
+
+                // if user post something try to do something
+                if (myRequest.HttpMethod == "POST")
+                {
+                    // Here i can read all parameters in string but how to parse each one i don't know
+
+                    string[] rawParams = myData.Split('&');
+                    foreach (string param in rawParams)
+                    {
+                        string[] kvPair = param.Split('=');
+                        string key = kvPair[0];
+                        string value = System.Web.HttpUtility.UrlDecode(kvPair[1]);
+                        postParams.Add(key, value);
+                    }
+                }
+
+
                 // Console.WriteLine("Respone given to a request.");
+
+                //Usage
+                MessageBox.Show("Hello " + postParams["salam"]);
             }
         }
     }
