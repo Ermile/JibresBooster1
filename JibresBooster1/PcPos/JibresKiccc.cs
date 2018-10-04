@@ -14,11 +14,11 @@ namespace JibresBooster1.PcPos
     {
         private SerialIngenico myKiccc;
         // default value
-        private string SerialNo = "5000054981";
-        private string AcceptorId = "062006362145616";
-        private string TerminalId = "06151815";
-        private string cmbCom = "com3";
-        private string Amount = "1000";
+        private string SerialNo;
+        private string AcceptorId;
+        private string TerminalId;
+        private string cmbCom;
+        private string Amount;
         private int timeout = 60;
 
 
@@ -40,10 +40,15 @@ namespace JibresBooster1.PcPos
             {
                 Amount = _args["sum"];
             }
-            else
+            else if (_args.ContainsKey("test"))
             {
                 Amount = "1200";
+                Console.WriteLine("use test amount " + Amount);
+            }
+            else
+            {
                 Console.WriteLine("sum is empty !");
+                Console.Beep(1000, 200);
             }
 
 
@@ -52,10 +57,15 @@ namespace JibresBooster1.PcPos
             {
                 SerialNo = _args["serial"];
             }
-            else
+            else if (_args.ContainsKey("test"))
             {
                 SerialNo = "5000054981";
+                Console.WriteLine("use test serial " + SerialNo);
+            }
+            else
+            {
                 Console.WriteLine("serial is empty !");
+                Console.Beep(100, 100);
             }
 
 
@@ -64,10 +74,15 @@ namespace JibresBooster1.PcPos
             {
                 AcceptorId = _args["acceptor"];
             }
-            else
+            else if (_args.ContainsKey("test"))
             {
                 AcceptorId = "062006362145616";
+                Console.WriteLine("use test acceptor " + AcceptorId);
+            }
+            else
+            {
                 Console.WriteLine("acceptor is empty !");
+                Console.Beep(100, 100);
             }
 
 
@@ -76,10 +91,15 @@ namespace JibresBooster1.PcPos
             {
                 TerminalId = _args["terminal"];
             }
-            else
+            else if (_args.ContainsKey("test"))
             {
                 TerminalId = "06151815";
+                Console.WriteLine("use test terminal " + TerminalId);
+            }
+            else
+            {
                 Console.WriteLine("terminal is empty !");
+                Console.Beep(100, 100);
             }
 
             
@@ -88,10 +108,15 @@ namespace JibresBooster1.PcPos
             {
                 cmbCom = _args["port"];
             }
-            else
+            else if (_args.ContainsKey("test"))
             {
                 cmbCom = "com3";
+                Console.WriteLine("use test port " + cmbCom);
+            }
+            else
+            {
                 Console.WriteLine("port is empty !");
+                Console.Beep(100, 100);
             }
         }
 
@@ -103,6 +128,7 @@ namespace JibresBooster1.PcPos
         {
             myKiccc = new SerialIngenico();
             
+            // try to connect
             try
             {
                 // Initiate Service
@@ -118,6 +144,7 @@ namespace JibresBooster1.PcPos
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
+            // try to sale
             try
             {
                 var res = myKiccc.Sale(Amount);
@@ -128,6 +155,9 @@ namespace JibresBooster1.PcPos
                 Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
+
+            // free resource
+            myKiccc.Dispose();
 
             Console.WriteLine("Finish transaction !");
         }
