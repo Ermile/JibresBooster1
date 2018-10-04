@@ -16,17 +16,19 @@ namespace JibresBooster1.PcPos
         private string SerialNo = "5000054981";
         private string TerminalId = "06151815";
         private string AcceptorId = "062006362145616";
-        private string cmbCom = "com1";
+        private string cmbCom = "com3";
+        private string amount = "1000";
+        private int timeout = 60;
 
 
-        public void init()
+        public void sale(string _amount)
         {
             myKiccc = new SerialIngenico();
             
             try
             {
                 // Initiate Service
-                myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None);
+                myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
                 Console.WriteLine("Connected to Kiccc pos successfully.");
                 //Console.Beep();
                 Console.Beep(10000, 100);
@@ -37,12 +39,19 @@ namespace JibresBooster1.PcPos
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
-        }
 
+            try
+            {
+                var res = myKiccc.Sale(_amount);
+                Console.WriteLine(res);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+            }
 
-        public void connect()
-        {
-
+            Console.WriteLine("Finish transaction !");
         }
     }
 }

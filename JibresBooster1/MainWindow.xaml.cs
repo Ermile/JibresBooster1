@@ -113,8 +113,12 @@ namespace JibresBooster1
 
                             if (postParams["type"] == "PcPosKiccc")
                             {
-                                PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
-                                myKiccc.init();
+                                if (postParams.ContainsKey("amount"))
+                                {
+                                    PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
+                                    myKiccc.sale(postParams["amount"]);
+                                }
+
                             }
                         }
 
