@@ -155,7 +155,7 @@ namespace JibresBooster1.PcPos
                 info1 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
                 info1 = "1";
             }
-            info1 = Left(info1, 25);
+            info1 = str.Left(info1, 24);
 
             // info2
             if (_args.ContainsKey("info2"))
@@ -166,7 +166,7 @@ namespace JibresBooster1.PcPos
             {
                 info2 = "2";
             }
-            info2 = Left(info2, 25);
+            info2 = str.Left(info2, 24);
 
             // info3
             if (_args.ContainsKey("info3"))
@@ -177,7 +177,7 @@ namespace JibresBooster1.PcPos
             {
                 info3 = "3";
             }
-            info3 = Left(info3, 25);
+            info3 = str.Left(info3, 24);
 
             // info4
             if (_args.ContainsKey("info4"))
@@ -188,7 +188,7 @@ namespace JibresBooster1.PcPos
             {
                 info4 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
             }
-            info4 = Left(info4, 25);
+            info4 = str.Left(info4, 24);
         }
 
 
@@ -219,16 +219,18 @@ namespace JibresBooster1.PcPos
             // try to sale
             try
             {
-                if (info1 != "")
+                if (string.IsNullOrEmpty(info1))
                 {
-                    // var res = myKiccc.SaleWithPrintableInfo(Amount, info1, info2, info3, info4);
-                    var res = myKiccc.SaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
-
+                    var res = myKiccc.Sale(Amount);
                     Console.WriteLine(res);
                 }
                 else
                 {
-                    var res = myKiccc.Sale(Amount);
+                    Console.WriteLine("\n\n\t Info  \t" + info1);
+                    Console.WriteLine("\t Info2 \t" + info2);
+                    Console.WriteLine("\t Info3 \t" + info3);
+                    Console.WriteLine("\t Info4 \t" + info4);
+                    var res = myKiccc.SaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
                     Console.WriteLine(res);
                 }
             }
@@ -237,20 +239,6 @@ namespace JibresBooster1.PcPos
                 Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
-        }
-
-
-
-        private static string Left(this string value, int maxLength)
-        {
-            value = value.Trim();
-            if (string.IsNullOrEmpty(value))
-            {
-                return value;
-            }
-            maxLength = Math.Abs(maxLength);
-
-            return (value.Length <= maxLength ? value : value.Substring(0, maxLength));
         }
     }
 }
