@@ -127,7 +127,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PcPos\JibresKiccc.cs" />
+    <Compile Include="lib\PcPos\JibresKiccc.cs" />
     <Compile Include="lib\str.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

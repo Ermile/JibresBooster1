@@ -96,7 +96,7 @@ namespace JibresBooster1.lib
 
                             if (postParams["type"] == "PcPosKiccc")
                             {
-                                PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
+                                lib.PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
                                 myKiccc.fire(postParams);
                             }
                         }

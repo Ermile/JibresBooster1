@@ -9,7 +9,7 @@ using Kiccc.Ing.PcPos;
 using Kiccc.Ing.PcPos.Serial;
 using JibresBooster1.lib;
 
-namespace JibresBooster1.PcPos
+namespace JibresBooster1.lib.PcPos
 {
     class JibresKiccc
     {
