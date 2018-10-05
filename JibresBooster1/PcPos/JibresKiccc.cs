@@ -19,6 +19,10 @@ namespace JibresBooster1.PcPos
         private string TerminalId;
         private string cmbCom;
         private string Amount;
+        private string info1;
+        private string info2;
+        private string info3;
+        private string info4;
         private int timeout = 60;
 
 
@@ -139,6 +143,52 @@ namespace JibresBooster1.PcPos
                 Console.WriteLine("port is empty !");
                 Console.Beep(100, 100);
             }
+
+
+            // info1
+            if (_args.ContainsKey("info"))
+            {
+                info1 = _args["info"];
+            }
+            else if (_args.ContainsKey("test"))
+            {
+                info1 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
+                info1 = "1";
+            }
+            info1 = Left(info1, 25);
+
+            // info2
+            if (_args.ContainsKey("info2"))
+            {
+                info2 = _args["info2"];
+            }
+            else if (_args.ContainsKey("test"))
+            {
+                info2 = "2";
+            }
+            info2 = Left(info2, 25);
+
+            // info3
+            if (_args.ContainsKey("info3"))
+            {
+                info3 = _args["info3"];
+            }
+            else if (_args.ContainsKey("test"))
+            {
+                info3 = "3";
+            }
+            info3 = Left(info3, 25);
+
+            // info4
+            if (_args.ContainsKey("info4"))
+            {
+                info4 = _args["info4"];
+            }
+            else if (_args.ContainsKey("test"))
+            {
+                info4 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
+            }
+            info4 = Left(info4, 25);
         }
 
 
@@ -169,8 +219,18 @@ namespace JibresBooster1.PcPos
             // try to sale
             try
             {
-                var res = myKiccc.Sale(Amount);
-                Console.WriteLine(res);
+                if (info1 != "")
+                {
+                    // var res = myKiccc.SaleWithPrintableInfo(Amount, info1, info2, info3, info4);
+                    var res = myKiccc.SaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
+
+                    Console.WriteLine(res);
+                }
+                else
+                {
+                    var res = myKiccc.Sale(Amount);
+                    Console.WriteLine(res);
+                }
             }
             catch (Exception ex)
             {
@@ -180,5 +240,17 @@ namespace JibresBooster1.PcPos
         }
 
 
+
+        private static string Left(this string value, int maxLength)
+        {
+            value = value.Trim();
+            if (string.IsNullOrEmpty(value))
+            {
+                return value;
+            }
+            maxLength = Math.Abs(maxLength);
+
+            return (value.Length <= maxLength ? value : value.Substring(0, maxLength));
+        }
     }
 }
