@@ -41,7 +41,16 @@ namespace JibresBooster1.lib.PcPos
             }
             else
             {
+                // create new instance
                 myKiccc = new SerialIngenico();
+                
+                // define received function to get async result
+                myKiccc.ResponseReceived += (s, ev) =>
+                {
+                    Console.WriteLine(111);
+                    Console.WriteLine(ev.Response);
+                };
+
                 // check input value and fill with default values
                 fill(_args);
                 // terminate old connection
@@ -50,7 +59,7 @@ namespace JibresBooster1.lib.PcPos
                 if(connect())
                 {
                     // try to sale
-                    if(sale())
+                    if (saleAsync())
                     {
                         // send to server
                         Console.WriteLine("Successfully finish transaction !");
@@ -61,9 +70,9 @@ namespace JibresBooster1.lib.PcPos
                     }
 
                     // free resource
-                    myKiccc.Dispose();
+                    // myKiccc.Dispose();
                     // terminate connection
-                    myKiccc.TerminateService();
+                    // myKiccc.TerminateService();
                 }
 
                 
@@ -154,6 +163,7 @@ namespace JibresBooster1.lib.PcPos
             }
             else
             {
+                //cmbCom.DataSource = SerialPort.GetPortNames();
                 Console.WriteLine("port is empty !");
                 Console.Beep(100, 100);
             }
@@ -264,5 +274,39 @@ namespace JibresBooster1.lib.PcPos
             }
             return false;
         }
+
+
+        private Boolean saleAsync()
+        {
+            // try to sale
+            try
+            {
+                if (string.IsNullOrEmpty(info1))
+                {
+                    var res = myKiccc.BeginSale(Amount);
+                    Console.WriteLine("Async sale result " + res);
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("\n\n\t Info1 \t" + info1);
+                    Console.WriteLine("\t Info2 \t" + info2);
+                    Console.WriteLine("\t Info3 \t" + info3);
+                    Console.WriteLine("\t Info4 \t" + info4);
+                    var res = myKiccc.BeginSaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
+                    Console.WriteLine("Async sale result with info " + res);
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+            }
+            return false;
+        }
+
     }
 }

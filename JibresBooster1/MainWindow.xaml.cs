@@ -25,8 +25,16 @@ namespace JibresBooster1
 
         public MainWindow()
         {
-            InitializeComponent();
-            lib.listener.runListener();
+            try
+            {
+                InitializeComponent();
+                lib.listener.runListener();
+            }
+            catch
+            {
+                Console.WriteLine("Error on running program!");
+            }
+
         }
 
         private void btnJibresWebsite_Click(object sender, RoutedEventArgs e)
