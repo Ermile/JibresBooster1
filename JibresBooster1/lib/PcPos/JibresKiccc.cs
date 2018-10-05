@@ -47,11 +47,15 @@ namespace JibresBooster1.lib.PcPos
                 // terminate old connection
                 myKiccc.TerminateService();
                 // try to connect to device
-                connect();
-                // try to sale
-                sale();
-                // free resource
-                myKiccc.Dispose();
+                if(connect())
+                {
+                    // try to sale
+                    sale();
+                    // free resource
+                    myKiccc.Dispose();
+                    // terminate connection
+                    myKiccc.TerminateService();
+                }
 
                 Console.WriteLine("Finish transaction !");
             }
@@ -194,7 +198,7 @@ namespace JibresBooster1.lib.PcPos
 
 
 
-        private void connect()
+        private Boolean connect()
         {
             // try to connect
             try
@@ -204,6 +208,7 @@ namespace JibresBooster1.lib.PcPos
                 Console.WriteLine("\nConnected to Kiccc pos successfully.");
                 //Console.Beep();
                 Console.Beep(10000, 100);
+                return true;
             }
             catch (Exception ex)
             {
@@ -211,6 +216,8 @@ namespace JibresBooster1.lib.PcPos
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
+
+            return false;
         }
 
 
