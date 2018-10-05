@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace JibresBooster1.PcPos
+namespace JibresBooster1.lib
 {
     public static class str
     {

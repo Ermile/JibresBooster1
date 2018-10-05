@@ -7,6 +7,7 @@ using System.IO.Ports;
 using System.Text.RegularExpressions;
 using Kiccc.Ing.PcPos;
 using Kiccc.Ing.PcPos.Serial;
+using JibresBooster1.lib;
 
 namespace JibresBooster1.PcPos
 {
