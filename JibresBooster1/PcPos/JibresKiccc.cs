@@ -146,11 +146,11 @@ namespace JibresBooster1.PcPos
 
 
             // info1
-            if (_args.ContainsKey("info"))
+            if (_args.ContainsKey("info1"))
             {
-                info1 = _args["info"];
+                info1 = _args["info1"];
             }
-            else if (_args.ContainsKey("test"))
+            else if (_args.ContainsKey("info"))
             {
                 info1 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
                 info1 = "1";
@@ -162,7 +162,7 @@ namespace JibresBooster1.PcPos
             {
                 info2 = _args["info2"];
             }
-            else if (_args.ContainsKey("test"))
+            else if (_args.ContainsKey("info"))
             {
                 info2 = "2";
             }
@@ -173,7 +173,7 @@ namespace JibresBooster1.PcPos
             {
                 info3 = _args["info3"];
             }
-            else if (_args.ContainsKey("test"))
+            else if (_args.ContainsKey("info"))
             {
                 info3 = "3";
             }
@@ -184,7 +184,7 @@ namespace JibresBooster1.PcPos
             {
                 info4 = _args["info4"];
             }
-            else if (_args.ContainsKey("test"))
+            else if (_args.ContainsKey("info"))
             {
                 info4 = "ارمایل ارائه دهنده راهکارهای مدرن نرم افزاری";
             }
@@ -226,7 +226,7 @@ namespace JibresBooster1.PcPos
                 }
                 else
                 {
-                    Console.WriteLine("\n\n\t Info  \t" + info1);
+                    Console.WriteLine("\n\n\t Info1 \t" + info1);
                     Console.WriteLine("\t Info2 \t" + info2);
                     Console.WriteLine("\t Info3 \t" + info3);
                     Console.WriteLine("\t Info4 \t" + info4);
