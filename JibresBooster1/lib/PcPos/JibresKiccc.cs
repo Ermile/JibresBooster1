@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using Kiccc.Ing.PcPos;
 using Kiccc.Ing.PcPos.Serial;
 using JibresBooster1.lib;
+using System.Threading;
 
 namespace JibresBooster1.lib.PcPos
 {
@@ -222,6 +223,7 @@ namespace JibresBooster1.lib.PcPos
             // try to connect
             try
             {
+                reset();
                 // Initiate Service
                 myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
                 Console.WriteLine("\nConnected to Kiccc pos successfully.");
@@ -239,6 +241,25 @@ namespace JibresBooster1.lib.PcPos
             return false;
         }
 
+
+        private Boolean reset()
+        {
+            try
+            {
+                // reset old connection before create new one
+                myKiccc.ResetService();
+                Thread.Sleep(5000);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Error on reset Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                System.Media.SystemSounds.Exclamation.Play();
+            }
+
+            return false;
+        }
 
 
         private Boolean sale()
