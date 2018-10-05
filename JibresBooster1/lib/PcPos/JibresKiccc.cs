@@ -223,7 +223,9 @@ namespace JibresBooster1.lib.PcPos
                 if (string.IsNullOrEmpty(info1))
                 {
                     var res = myKiccc.Sale(Amount);
+                    var xml = lib.reader.xml(res);
                     Console.WriteLine(res);
+                    Console.WriteLine(lib.str.fromDic(xml));
                 }
                 else
                 {
