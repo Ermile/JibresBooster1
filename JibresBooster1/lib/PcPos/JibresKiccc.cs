@@ -50,14 +50,23 @@ namespace JibresBooster1.lib.PcPos
                 if(connect())
                 {
                     // try to sale
-                    sale();
+                    if(sale())
+                    {
+                        // send to server
+                        Console.WriteLine("Successfully finish transaction !");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error on transaction !");
+                    }
+
                     // free resource
                     myKiccc.Dispose();
                     // terminate connection
                     myKiccc.TerminateService();
                 }
 
-                Console.WriteLine("Finish transaction !");
+                
             }
         }
 
@@ -222,7 +231,7 @@ namespace JibresBooster1.lib.PcPos
 
 
 
-        private void sale()
+        private Boolean sale()
         {
             // try to sale
             try
@@ -233,6 +242,8 @@ namespace JibresBooster1.lib.PcPos
                     var xml = lib.reader.xml(res);
                     Console.WriteLine(res);
                     Console.WriteLine(lib.str.fromDic(xml));
+
+                    return true;
                 }
                 else
                 {
@@ -242,6 +253,8 @@ namespace JibresBooster1.lib.PcPos
                     Console.WriteLine("\t Info4 \t" + info4);
                     var res = myKiccc.SaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
                     Console.WriteLine(res);
+
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -249,6 +262,7 @@ namespace JibresBooster1.lib.PcPos
                 Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
+            return false;
         }
     }
 }
