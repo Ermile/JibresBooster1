@@ -91,6 +91,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
@@ -121,6 +122,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="lib\listener.cs" />
+    <Compile Include="lib\port.cs" />
     <Compile Include="lib\reader.cs" />
     <Compile Include="lib\save.cs" />
     <Compile Include="MainWindow.xaml.cs">

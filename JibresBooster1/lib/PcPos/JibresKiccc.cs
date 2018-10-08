@@ -40,6 +40,10 @@ namespace JibresBooster1.lib.PcPos
             {
                 myKiccc.TerminateService();
             }
+            else if (_args.ContainsKey("twice"))
+            {
+
+            }
             else
             {
                 // create new instance

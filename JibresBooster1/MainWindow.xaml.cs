@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Web.Script.Serialization;
+using System.IO.Ports;
+using System.Management;
+
 
 namespace JibresBooster1
 {
@@ -34,6 +37,34 @@ namespace JibresBooster1
             {
                 Console.WriteLine("Error on running program!");
             }
+
+
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("The following serial ports were found:");
+
+            // Display each port name to the console.
+            foreach (string port in ports)
+            {
+                Console.WriteLine(port);
+            }
+
+
+            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
+            {
+                var portnames = SerialPort.GetPortNames();
+                var ports2 = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+
+                var portList = portnames.Select(n => n + " - " + ports2.FirstOrDefault(s => s.Contains(n))).ToList();
+
+                foreach (string s in portList)
+                {
+                    Console.WriteLine(s);
+                }
+            }
+
+
+
 
         }
 
