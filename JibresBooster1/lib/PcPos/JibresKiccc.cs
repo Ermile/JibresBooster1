@@ -38,7 +38,7 @@ namespace JibresBooster1.lib.PcPos
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
-                log.warn("Cancel old request");
+                log.warn("Please cancel old request before send new one!");
                 //return;
             }
 
@@ -59,7 +59,7 @@ namespace JibresBooster1.lib.PcPos
                 INIT = true;
             }
 
-                
+            state();    
 
 
 
@@ -247,7 +247,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                Console.WriteLine(string.Format("Exception on connect to pos : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
@@ -355,7 +355,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                Console.WriteLine(string.Format("Exception on send sale: {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
             return false;
@@ -390,7 +390,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                Console.WriteLine(string.Format("Exception on send async sale : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
             return false;
