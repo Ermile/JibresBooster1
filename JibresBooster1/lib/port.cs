@@ -4,7 +4,6 @@ using System.IO.Ports;
 using System.Linq;
 using System.Management;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace JibresBooster1.lib
 {
@@ -12,30 +11,36 @@ namespace JibresBooster1.lib
     {
         public static Dictionary<string, string> list()
         {
-            Dictionary<string, string> portList = new Dictionary<string, string>();
+            Dictionary<string, string> portsList = new Dictionary<string, string>();
 
-
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
+            try
             {
-                var portnames = SerialPort.GetPortNames();
-                var ports2 = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'");
 
-                var portList2   = portnames.Select(n => n + " - " + ports2.FirstOrDefault(s => s.Contains(n))).ToList();
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    string portFullName = queryObj["Caption"].ToString();
+                    string portDesc = queryObj["Description"].ToString();
 
-                Console.WriteLine(portnames);
-                Console.WriteLine(ports2);
-                Console.WriteLine(portList2);
+                    int startIndex = portFullName.LastIndexOf("(") + 1;
+                    int endIndex = portFullName.Length - startIndex - 1;
 
-                //foreach (string s in portList2)
-                //{ 
-                //    portList.Add(node.Name, node.InnerText);
-                //    Console.WriteLine(s);
-                //}
+                    if (startIndex > 1 & endIndex > 1)
+                    {
+                        string portName = portFullName.Substring(startIndex, endIndex);
+                        portsList.Add(portName, portDesc);
+
+                        Console.WriteLine(portName);
+                        Console.WriteLine(portDesc);
+                    }
+                }
+            }
+            catch (ManagementException e)
+            {
+                Console.WriteLine("Error on get port detail. " + e.Message);
             }
 
-            
-
-            return portList;
+            return portsList;
         }
     }
 }
