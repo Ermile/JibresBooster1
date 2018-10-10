@@ -161,16 +161,10 @@ namespace JibresBooster1.lib.PcPos
             {
                 cmbCom = _args["port"];
             }
-            else if (_args.ContainsKey("test"))
-            {
-                cmbCom = "com3";
-                Console.WriteLine("use test port \t\t" + cmbCom);
-            }
             else
             {
-                //cmbCom.DataSource = SerialPort.GetPortNames();
-                Console.WriteLine("port is empty !");
-                Console.Beep(100, 100);
+                cmbCom = lib.port.kiccc();
+                Console.WriteLine("Detected port\t\t" + cmbCom);
             }
 
 

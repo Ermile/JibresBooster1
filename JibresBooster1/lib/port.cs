@@ -29,9 +29,7 @@ namespace JibresBooster1.lib
                     {
                         string portName = portFullName.Substring(startIndex, endIndex);
                         portsList.Add(portName, portDesc);
-
-                        Console.WriteLine(portName);
-                        Console.WriteLine(portDesc);
+                        //Console.WriteLine(portName + ": " + portDesc);
                     }
                 }
             }
@@ -42,5 +40,22 @@ namespace JibresBooster1.lib
 
             return portsList;
         }
+
+
+        public static string kiccc()
+        {
+            string detectedPort = null;
+            foreach (KeyValuePair<string, string> myPort in list())
+            {
+                if (myPort.Value == "PI USB to Serial")
+                {
+                    detectedPort = myPort.Key;
+                }
+            }
+
+            return detectedPort;
+        }
+
+
     }
 }
