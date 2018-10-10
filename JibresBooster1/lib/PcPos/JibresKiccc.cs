@@ -39,20 +39,28 @@ namespace JibresBooster1.lib.PcPos
             if (BUSY)
             {
                 log.warn("Cancel old request");
-                return;
+                //return;
             }
 
-
-            // create new instance
-            myKiccc = new SerialIngenico();
-                
-            // define received function to get async result
-            myKiccc.ResponseReceived += (s, ev) =>
+            if(!INIT)
             {
-                Console.WriteLine(111);
-                Console.WriteLine(ev.Response);
-                BUSY = false;
-            };
+                // create new instance
+                myKiccc = new SerialIngenico();
+                
+                // define received function to get async result
+                myKiccc.ResponseReceived += (s, ev) =>
+                {
+                    Console.WriteLine(111);
+                    Console.WriteLine(ev.Response);
+                    BUSY = false;
+                };
+
+                // set init to true for next times
+                INIT = true;
+            }
+
+                
+
 
 
             if (_args.ContainsKey("reset"))
@@ -75,8 +83,6 @@ namespace JibresBooster1.lib.PcPos
             {
                 // check input value and fill with default values
                 fill(_args);
-                // terminate old connection
-                myKiccc.TerminateService();
                 // try to connect to device
                 if (connect())
                 {
@@ -231,6 +237,7 @@ namespace JibresBooster1.lib.PcPos
             // try to connect
             try
             {
+                terminate();
                 // Initiate Service
                 myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
                 Console.WriteLine("\nConnected to Kiccc pos successfully.");
@@ -281,7 +288,7 @@ namespace JibresBooster1.lib.PcPos
                 // reset old connection before create new one
                 myKiccc.ResetService();
                 
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
                 return true;
             }
             catch (Exception ex)
@@ -306,7 +313,7 @@ namespace JibresBooster1.lib.PcPos
 
                 // reset old connection before create new one
                 myKiccc.TerminateService();
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 return true;
             }
             catch (Exception ex)
