@@ -46,7 +46,7 @@ namespace JibresBooster1
             // Display each port name to the console.
             foreach (string port in ports)
             {
-                Console.WriteLine(port);
+                Console.WriteLine("Port... "+ port);
             }
 
 
@@ -64,6 +64,44 @@ namespace JibresBooster1
             }
 
 
+            Console.WriteLine("----------------");
+            try
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'");
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    Console.WriteLine(queryObj["Availability"]);
+                    Console.WriteLine(queryObj["Caption"]);
+                    Console.WriteLine(queryObj["Description"]);
+                    Console.WriteLine(queryObj["DeviceID"]);
+                    Console.WriteLine(queryObj["InstallDate"]);
+                    Console.WriteLine(queryObj["LastErrorCode"]);
+                    Console.WriteLine("1");
+                    Console.WriteLine(queryObj["Name"]);
+                    Console.WriteLine(queryObj["Status"]);
+                    Console.WriteLine(queryObj["SystemName"]);
+
+                    Console.WriteLine("2");
+                    Console.WriteLine(queryObj["CreationClassName"]);
+                    Console.WriteLine(queryObj["PNPDeviceID"]);
+                    //Console.WriteLine(queryObj["ProtocolSupported"]);
+                    //Console.WriteLine(queryObj["ProviderType"]);
+                    //Console.WriteLine(queryObj["SystemCreationClassName"]);
+                    Console.WriteLine("3");
+                    //Console.WriteLine(queryObj["ProviderType"]);
+                    //Console.WriteLine(queryObj["TimeOfLastReset"]);
+                    //Console.WriteLine(queryObj["Binary"]);
+
+
+                    Console.WriteLine("*******");
+                }
+
+            }
+            catch (ManagementException e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
 
         }
