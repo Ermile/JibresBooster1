@@ -39,68 +39,43 @@ namespace JibresBooster1
             }
 
 
-            string[] ports = SerialPort.GetPortNames();
+            //var portsList = SerialPort.GetPortNames();
+            //var portsObj = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'");
+            //var portsDetail = portsObj.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
 
-            Console.WriteLine("The following serial ports were found:");
-
-            // Display each port name to the console.
-            foreach (string port in ports)
-            {
-                Console.WriteLine("Port... "+ port);
-            }
-
-
-            using (var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'"))
-            {
-                var portnames = SerialPort.GetPortNames();
-                var ports2 = searcher.Get().Cast<ManagementBaseObject>().ToList().Select(p => p["Caption"].ToString());
-
-                var portList = portnames.Select(n => n + " - " + ports2.FirstOrDefault(s => s.Contains(n))).ToList();
-
-                foreach (string s in portList)
-                {
-                    Console.WriteLine(s);
-                }
-            }
+            //// Display each port name to the console.
+            //foreach (string portName in portsList)
+            //{
+            //    Console.WriteLine("Port... "+ portName);
+            //    var portNames = portsDetail.FirstOrDefault(s => s.Contains(portName));
+            //    Console.WriteLine(portName);
+            //}
 
 
-            Console.WriteLine("----------------");
+            Dictionary<string, string> portsList = new Dictionary<string, string>();
+
             try
             {
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity WHERE Caption like '%(COM%'");
 
                 foreach (ManagementObject queryObj in searcher.Get())
                 {
-                    Console.WriteLine(queryObj["Availability"]);
-                    Console.WriteLine(queryObj["Caption"]);
-                    Console.WriteLine(queryObj["Description"]);
-                    Console.WriteLine(queryObj["DeviceID"]);
-                    Console.WriteLine(queryObj["InstallDate"]);
-                    Console.WriteLine(queryObj["LastErrorCode"]);
-                    Console.WriteLine("1");
-                    Console.WriteLine(queryObj["Name"]);
-                    Console.WriteLine(queryObj["Status"]);
-                    Console.WriteLine(queryObj["SystemName"]);
+                    string portFullName = queryObj["Caption"].ToString();
+                    string portDesc = queryObj["Description"].ToString();
+                    
+                    int startIndex = portFullName.LastIndexOf("(") + 1;
+                    int endIndex = portFullName.Length - startIndex - 1;
 
-                    Console.WriteLine("2");
-                    Console.WriteLine(queryObj["CreationClassName"]);
-                    Console.WriteLine(queryObj["PNPDeviceID"]);
-                    //Console.WriteLine(queryObj["ProtocolSupported"]);
-                    //Console.WriteLine(queryObj["ProviderType"]);
-                    //Console.WriteLine(queryObj["SystemCreationClassName"]);
-                    Console.WriteLine("3");
-                    //Console.WriteLine(queryObj["ProviderType"]);
-                    //Console.WriteLine(queryObj["TimeOfLastReset"]);
-                    //Console.WriteLine(queryObj["Binary"]);
-
-
-                    Console.WriteLine("*******");
+                    if (startIndex > 1)
+                    {
+                        string portName = portFullName.Substring(startIndex, endIndex);
+                        portsList.Add(portName, portDesc);
+                    }
                 }
-
             }
             catch (ManagementException e)
             {
-                MessageBox.Show(e.Message);
+                Console.WriteLine("Error on get port detail. " + e.Message);
             }
 
 
