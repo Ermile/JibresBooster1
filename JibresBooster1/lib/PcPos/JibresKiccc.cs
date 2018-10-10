@@ -233,7 +233,6 @@ namespace JibresBooster1.lib.PcPos
             // try to connect
             try
             {
-                reset();
                 // Initiate Service
                 myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
                 Console.WriteLine("\nConnected to Kiccc pos successfully.");
