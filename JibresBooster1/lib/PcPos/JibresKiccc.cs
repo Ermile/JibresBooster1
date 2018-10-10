@@ -15,6 +15,9 @@ namespace JibresBooster1.lib.PcPos
     class JibresKiccc
     {
         private SerialIngenico myKiccc;
+        private static Boolean INIT;
+        private static Boolean BUSY;
+
         // default value
         private string SerialNo;
         private string AcceptorId;
@@ -31,6 +34,14 @@ namespace JibresBooster1.lib.PcPos
 
         public void fire(Dictionary<string, string> _args)
         {
+            log.danger("BUSY MODE1 " + BUSY);
+            // if in BUSY mode do nothing and say cancel old request
+            if (BUSY)
+            {
+                log.warn("Cancel old request");
+                return;
+            }
+
             // amount
             if (_args.ContainsKey("reset"))
             {
@@ -54,6 +65,7 @@ namespace JibresBooster1.lib.PcPos
                 {
                     Console.WriteLine(111);
                     Console.WriteLine(ev.Response);
+                    BUSY = false;
                 };
 
                 // check input value and fill with default values
@@ -297,7 +309,9 @@ namespace JibresBooster1.lib.PcPos
 
         private Boolean saleAsync()
         {
+            BUSY = true;
             // try to sale
+            log.danger("BUSY MODE3 " + BUSY);
             try
             {
                 if (string.IsNullOrEmpty(info1))
