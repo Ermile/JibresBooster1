@@ -33,9 +33,9 @@ namespace JibresBooster1
                 InitializeComponent();
                 lib.listener.runListener();
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Error on running program!");
+                Console.WriteLine("Error on running program! " + e.Message);
             }
         }
 
