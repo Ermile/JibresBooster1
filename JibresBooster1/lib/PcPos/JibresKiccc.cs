@@ -237,13 +237,27 @@ namespace JibresBooster1.lib.PcPos
             // try to connect
             try
             {
-                terminate();
-                // Initiate Service
-                myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
-                Console.WriteLine("\nConnected to Kiccc pos successfully.");
-                //Console.Beep();
-                Console.Beep(10000, 100);
-                return true;
+                if(string.IsNullOrEmpty(cmbCom))
+                {
+                    log.danger("PcPos is not detected!!");
+                    return false;
+                }
+                if(port.exist(cmbCom))
+                {
+                    terminate();
+                    // Initiate Service
+                    myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
+                    Console.WriteLine("\nConnected to Kiccc pos successfully.");
+                    //Console.Beep();
+                    Console.Beep(10000, 100);
+                    return true;
+                }
+                else
+                {
+                    log.danger("This port is not active!");
+                    return false;
+                }
+
             }
             catch (Exception ex)
             {

@@ -86,5 +86,21 @@ namespace JibresBooster1.lib
             
             return detectedPort;
         }
+
+
+        public static Boolean exist(string _port)
+        {
+            string[] existPorts = SerialPort.GetPortNames();
+            Boolean exist = false;
+            foreach (string myPort in existPorts)
+            {
+                if (myPort == _port)
+                {
+                    exist = true;
+                }
+            }
+
+            return exist;
+        }
     }
 }
