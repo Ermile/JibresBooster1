@@ -4,11 +4,13 @@ using System.IO.Ports;
 using System.Linq;
 using System.Management;
 using System.Text;
+using JibresBooster1.lib;
 
 namespace JibresBooster1.lib
 {
     class port
     {
+        //https://msdn.microsoft.com/en-us/library/aa394413(v=vs.85).aspx
         public static Dictionary<string, string> list()
         {
             Dictionary<string, string> portsList = new Dictionary<string, string>();
@@ -42,6 +44,34 @@ namespace JibresBooster1.lib
         }
 
 
+        private static string HasOpenPort(string _port)
+        {
+            var portState = "123";
+
+            
+            if (_port != string.Empty & !string.IsNullOrEmpty(_port))
+            {
+                using (SerialPort serialPort = new SerialPort(_port))
+                {
+                    foreach (var itm in SerialPort.GetPortNames())
+                    {
+                        if (itm.Contains(serialPort.PortName))
+                        {
+                            serialPort.Close();
+                            if (serialPort.IsOpen) { portState = "Open"; }
+                            else { portState = "Close"; }
+                        }
+                    }
+                }
+            }
+
+            else { System.Windows.Forms.MessageBox.Show("Error: No Port Specified."); }
+
+            return portState;
+        }
+
+
+
         public static string kiccc()
         {
             string detectedPort = null;
@@ -52,10 +82,9 @@ namespace JibresBooster1.lib
                     detectedPort = myPort.Key;
                 }
             }
-
+            log.info("Kiccc Port " + detectedPort);
+            
             return detectedPort;
         }
-
-
     }
 }

@@ -32,7 +32,6 @@ namespace JibresBooster1
             {
                 InitializeComponent();
                 lib.listener.runListener();
-                lib.port.list();
             }
             catch
             {

@@ -96,11 +96,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 Amount = "1200";
-                Console.WriteLine("use test amount \t" + Amount);
+                log.init("use test amount \t" + Amount);
             }
             else
             {
-                Console.WriteLine("sum is empty !");
+                log.init("sum is empty !");
                 Console.Beep(1000, 200);
             }
 
@@ -113,11 +113,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 SerialNo = "5000054981";
-                Console.WriteLine("use test serial \t" + SerialNo);
+                log.init("use test serial \t" + SerialNo);
             }
             else
             {
-                Console.WriteLine("serial is empty !");
+                log.init("serial is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -130,11 +130,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 AcceptorId = "062006362145616";
-                Console.WriteLine("use test acceptor \t" + AcceptorId);
+                log.init("use test acceptor \t" + AcceptorId);
             }
             else
             {
-                Console.WriteLine("acceptor is empty !");
+                log.init("acceptor is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -147,11 +147,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 TerminalId = "06151815";
-                Console.WriteLine("use test terminal \t" + TerminalId);
+                log.init("use test terminal \t" + TerminalId);
             }
             else
             {
-                Console.WriteLine("terminal is empty !");
+                log.init("terminal is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -164,7 +164,7 @@ namespace JibresBooster1.lib.PcPos
             else
             {
                 cmbCom = lib.port.kiccc();
-                Console.WriteLine("Detected port\t\t" + cmbCom);
+                log.init("Detected port\t\t" + cmbCom);
             }
 
 
