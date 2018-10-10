@@ -14,7 +14,7 @@ namespace JibresBooster1.lib.PcPos
 {
     class JibresKiccc
     {
-        private SerialIngenico myKiccc;
+        private static SerialIngenico myKiccc;
         private static Boolean INIT;
         private static Boolean BUSY;
 
@@ -42,58 +42,56 @@ namespace JibresBooster1.lib.PcPos
                 return;
             }
 
-            // amount
+
+            // create new instance
+            myKiccc = new SerialIngenico();
+                
+            // define received function to get async result
+            myKiccc.ResponseReceived += (s, ev) =>
+            {
+                Console.WriteLine(111);
+                Console.WriteLine(ev.Response);
+                BUSY = false;
+            };
+
+
             if (_args.ContainsKey("reset"))
             {
-                myKiccc.ResetService();
+                reset();
             }
             else if (_args.ContainsKey("terminate"))
             {
-                myKiccc.TerminateService();
+                terminate();
             }
             else if (_args.ContainsKey("twice"))
             {
 
             }
+            else if (_args.ContainsKey("state"))
+            {
+                state();
+            }
             else
             {
-                // create new instance
-                myKiccc = new SerialIngenico();
-                
-                // define received function to get async result
-                myKiccc.ResponseReceived += (s, ev) =>
-                {
-                    Console.WriteLine(111);
-                    Console.WriteLine(ev.Response);
-                    BUSY = false;
-                };
-
                 // check input value and fill with default values
                 fill(_args);
                 // terminate old connection
                 myKiccc.TerminateService();
                 // try to connect to device
-                if(connect())
+                if (connect())
                 {
                     // try to sale
                     if (saleAsync())
                     {
                         // send to server
-                        Console.WriteLine("Successfully finish transaction !");
+                        Console.WriteLine("Successfully Send transaction !");
                     }
                     else
                     {
                         Console.WriteLine("Error on transaction !");
                     }
-
-                    // free resource
-                    // myKiccc.Dispose();
-                    // terminate connection
-                    // myKiccc.TerminateService();
                 }
-
-                
-            }
+            }                
         }
 
 
@@ -251,18 +249,69 @@ namespace JibresBooster1.lib.PcPos
         }
 
 
-        private Boolean reset()
+        private string state()
         {
             try
             {
                 // reset old connection before create new one
+                var myState = myKiccc.State.ToString();
+                log.info(myState);
+                return myState;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Error on get state Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                System.Media.SystemSounds.Exclamation.Play();
+            }
+
+            return "Unknown";
+        }
+
+
+        private Boolean reset()
+        {
+            try
+            {
+                if(state() == "InitializeRequired")
+                {
+                    return false;
+                }
+
+                // reset old connection before create new one
                 myKiccc.ResetService();
+                
                 Thread.Sleep(5000);
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("Error on reset Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                System.Media.SystemSounds.Exclamation.Play();
+            }
+
+            return false;
+        }
+
+
+        private Boolean terminate()
+        {
+            try
+            {
+                if (state() == "InitializeRequired")
+                {
+                    return false;
+                }
+
+                // reset old connection before create new one
+                myKiccc.TerminateService();
+                Thread.Sleep(1000);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Error on terminate Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }

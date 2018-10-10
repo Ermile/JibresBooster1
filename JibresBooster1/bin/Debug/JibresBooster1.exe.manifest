@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="67520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="68032">
       <assemblyIdentity name="JibresBooster1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nM9/wOQ+XL0PZ8CjYLW8qLq5SIOcW8lC+kSxNkTbNxY=</dsig:DigestValue>
+        <dsig:DigestValue>j8Fcu2NAnVHQ1C5eeoEloRAdny61s1xMM/RxGuPR2GQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
