@@ -26,6 +26,7 @@ namespace JibresBooster1.lib
 
             // save log
             log.save("Server started.");
+            Console.WriteLine("Server started.");
 
             // start the response thread
             Thread _responseThread = new Thread(ResponseThread);

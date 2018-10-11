@@ -37,7 +37,8 @@ namespace JibresBooster1.lib.PcPos
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
-                log.save("Please cancel old request before send new one! " + BUSY);
+                log.save("Please cancel old request before send new one! BUSY " + BUSY);
+                Console.WriteLine("Please cancel old request before send new one! BUSY " + BUSY);
                 return;
             }
 
@@ -56,10 +57,12 @@ namespace JibresBooster1.lib.PcPos
 
                     BUSY = false;
                     log.save("BUSY " + BUSY);
+                    Console.WriteLine("Kiccc get respons. BUSY " + BUSY);
                 };
 
                 // set init to true for next times
                 INIT = true;
+                Console.WriteLine("Kiccc init");
             }
             // get current state
             state();
@@ -93,6 +96,7 @@ namespace JibresBooster1.lib.PcPos
                     {
                         // send to server
                         log.save("\t\t\t\t\t... Waiting response ...");
+                        Console.WriteLine("Kiccc waiting...");
                     }
                     else
                     {
@@ -267,6 +271,7 @@ namespace JibresBooster1.lib.PcPos
             catch (Exception ex)
             {
                 log.save("Failed to connect pos: " + ex.Message);
+                Console.WriteLine("Failed to connect pos: " + ex.Message);
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
