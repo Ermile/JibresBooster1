@@ -28,17 +28,17 @@ namespace JibresBooster1.lib.PcPos
         private string info2;
         private string info3;
         private string info4;
-        private int timeout = 60;
+        private int timeout = 300;
 
 
 
         public void fire(Dictionary<string, string> _args)
         {
-            log.danger("BUSY MODE1 " + BUSY);
+            log.save("BUSY MODE1 " + BUSY);
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
-                log.warn("Please cancel old request before send new one!");
+                log.save("Please cancel old request before send new one!");
                 //return;
             }
 
@@ -50,8 +50,7 @@ namespace JibresBooster1.lib.PcPos
                 // define received function to get async result
                 myKiccc.ResponseReceived += (s, ev) =>
                 {
-                    Console.WriteLine(111);
-                    Console.WriteLine(ev.Response);
+                    log.save(ev.Response.ToString());
                     BUSY = false;
                 };
 
@@ -90,11 +89,11 @@ namespace JibresBooster1.lib.PcPos
                     if (saleAsync())
                     {
                         // send to server
-                        Console.WriteLine("Successfully Send transaction !");
+                        log.save("Successfully Send transaction !");
                     }
                     else
                     {
-                        Console.WriteLine("Error on transaction !");
+                        log.save("Error on transaction !");
                     }
                 }
             }                
@@ -112,11 +111,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 Amount = "1200";
-                log.init("use test amount \t" + Amount);
+                log.save("use test amount \t" + Amount);
             }
             else
             {
-                log.init("sum is empty !");
+                log.save("sum is empty !");
                 Console.Beep(1000, 200);
             }
 
@@ -129,11 +128,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 SerialNo = "5000054981";
-                log.init("use test serial \t" + SerialNo);
+                log.save("use test serial \t" + SerialNo);
             }
             else
             {
-                log.init("serial is empty !");
+                log.save("serial is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -146,11 +145,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 AcceptorId = "062006362145616";
-                log.init("use test acceptor \t" + AcceptorId);
+                log.save("use test acceptor \t" + AcceptorId);
             }
             else
             {
-                log.init("acceptor is empty !");
+                log.save("acceptor is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -163,11 +162,11 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 TerminalId = "06151815";
-                log.init("use test terminal \t" + TerminalId);
+                log.save("use test terminal \t" + TerminalId);
             }
             else
             {
-                log.init("terminal is empty !");
+                log.save("terminal is empty !");
                 Console.Beep(100, 100);
             }
 
@@ -180,7 +179,7 @@ namespace JibresBooster1.lib.PcPos
             else
             {
                 cmbCom = lib.port.kiccc();
-                log.init("Detected port\t\t" + cmbCom);
+                log.save("Detected port\t\t" + cmbCom);
             }
 
 
@@ -239,7 +238,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(string.IsNullOrEmpty(cmbCom))
                 {
-                    log.danger("PcPos is not detected!!");
+                    log.save("PcPos is not detected!!");
                     return false;
                 }
                 if(port.exist(cmbCom))
@@ -247,21 +246,20 @@ namespace JibresBooster1.lib.PcPos
                     terminate();
                     // Initiate Service
                     myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
-                    Console.WriteLine("\nConnected to Kiccc pos successfully.");
-                    //Console.Beep();
+                    log.save("Connected to Kiccc pos successfully.");
                     Console.Beep(10000, 100);
                     return true;
                 }
                 else
                 {
-                    log.danger("This port is not active!");
+                    log.save("This port is not active!");
                     return false;
                 }
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception on connect to pos : {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Exception on connect to pos : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
@@ -276,12 +274,12 @@ namespace JibresBooster1.lib.PcPos
             {
                 // reset old connection before create new one
                 var myState = myKiccc.State.ToString();
-                log.info(myState);
+                log.save(myState);
                 return myState;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Error on get state Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Error on get state Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
@@ -307,7 +305,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Error on reset Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Error on reset Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
@@ -332,7 +330,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Error on terminate Exception : {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Error on terminate Exception : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
@@ -350,26 +348,26 @@ namespace JibresBooster1.lib.PcPos
                 {
                     var res = myKiccc.Sale(Amount);
                     var xml = lib.reader.xml(res);
-                    Console.WriteLine(res);
-                    Console.WriteLine(lib.str.fromDic(xml));
+                    log.save(res);
+                    log.save(lib.str.fromDic(xml));
 
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine("\n\n\t Info1 \t" + info1);
-                    Console.WriteLine("\t Info2 \t" + info2);
-                    Console.WriteLine("\t Info3 \t" + info3);
-                    Console.WriteLine("\t Info4 \t" + info4);
+                    log.save("\n\n\t Info1 \t" + info1);
+                    log.save("\t Info2 \t" + info2);
+                    log.save("\t Info3 \t" + info3);
+                    log.save("\t Info4 \t" + info4);
                     var res = myKiccc.SaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
-                    Console.WriteLine(res);
+                    log.save(res);
 
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception on send sale: {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Exception on send sale: {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
             return false;
@@ -380,32 +378,32 @@ namespace JibresBooster1.lib.PcPos
         {
             BUSY = true;
             // try to sale
-            log.danger("BUSY MODE3 " + BUSY);
+            log.save("BUSY MODE3 " + BUSY);
             try
             {
                 if (string.IsNullOrEmpty(info1))
                 {
                     var res = myKiccc.BeginSale(Amount);
-                    Console.WriteLine("Async sale result " + res);
+                    log.save("Async sale result " + res);
                     
 
                     return true;
                 }
                 else
                 {
-                    Console.WriteLine("\n\n\t Info1 \t" + info1);
-                    Console.WriteLine("\t Info2 \t" + info2);
-                    Console.WriteLine("\t Info3 \t" + info3);
-                    Console.WriteLine("\t Info4 \t" + info4);
+                    log.save("\n\n\t Info1 \t" + info1);
+                    log.save("\t Info2 \t" + info2);
+                    log.save("\t Info3 \t" + info3);
+                    log.save("\t Info4 \t" + info4);
                     var res = myKiccc.BeginSaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
-                    Console.WriteLine("Async sale result with info " + res);
+                    log.save("Async sale result with info " + res);
 
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Exception on send async sale : {0}\r\nInner Exception : {1}", ex.Message,
+                log.save(string.Format("Exception on send async sale : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
             return false;
