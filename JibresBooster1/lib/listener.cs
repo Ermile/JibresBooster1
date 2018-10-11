@@ -66,43 +66,60 @@ namespace JibresBooster1.lib
                     Console.WriteLine("Error on set response!");
                 }
 
-
-
-                // if user post something try to do something
-                if (myRequest.HttpMethod == "POST")
+                if (myRequest.HttpMethod == "GET")
                 {
-                    // Here i can read all parameters in string but how to parse each one i don't know
+                    Console.WriteLine("\t\t\t\t\t\t\t\tGet detected");
 
-                    if (myData == "")
+                    var getParams = myRequest.Url.Query.ToString();
+                    if(getParams.Length > 0)
                     {
-                        Console.WriteLine("Post is empty !!!\n");
+                        getParams = getParams.Substring(1);
                     }
-                    else
-                    {
-                        Console.WriteLine("\t\t\t........Post detected");
+                    Console.WriteLine(getParams);
 
-                        string[] myDataParams = myData.Split('&');
-                        foreach (string param in myDataParams)
-                        {
-                            string[] mytmpStr = param.Split('=');
-                            string key = mytmpStr[0];
-                            string value = System.Web.HttpUtility.UrlDecode(mytmpStr[1]);
-                            postParams.Add(key, value);
-                        }
+                    myData = getParams;
 
-                        if (postParams.ContainsKey("type"))
-                        {
-                            Console.WriteLine("Post type is " + postParams["type"]);
-
-                            if (postParams["type"] == "PcPosKiccc")
-                            {
-                                lib.PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
-                                myKiccc.fire(postParams);
-                            }
-                        }
-
-                    }
+                    //Console.WriteLine(myData);
                 }
+                else if (myRequest.HttpMethod == "POST")
+                {
+                    // if user post something try to do something
+
+                }
+
+
+
+                // Here i can read all parameters in string but how to parse each one i don't know
+                if (myData == "")
+                {
+                    Console.WriteLine("Without data !!!\n");
+                }
+                else
+                {
+                    Console.WriteLine("\t\t\t\t\t\t\t\tPost detected");
+
+                    string[] myDataParams = myData.Split('&');
+                    foreach (string param in myDataParams)
+                    {
+                        string[] mytmpStr = param.Split('=');
+                        string key = mytmpStr[0];
+                        string value = System.Web.HttpUtility.UrlDecode(mytmpStr[1]);
+                        postParams.Add(key, value);
+                    }
+
+                    if (postParams.ContainsKey("type"))
+                    {
+                        Console.WriteLine("Post type is " + postParams["type"]);
+
+                        if (postParams["type"] == "PcPosKiccc")
+                        {
+                            lib.PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
+                            myKiccc.fire(postParams);
+                        }
+                    }
+
+                }
+               
             }
         }
 
