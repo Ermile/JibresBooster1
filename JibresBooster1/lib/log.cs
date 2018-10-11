@@ -87,7 +87,6 @@ namespace JibresBooster1.lib
                     Console.WriteLine(ex.Message);
                 }
 
-
                 var fileName = "log" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".txt";
                 logPath = Path.Combine(jibresLogLoc, fileName);
             }

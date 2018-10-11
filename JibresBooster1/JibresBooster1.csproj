@@ -121,6 +121,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="lib\file.cs" />
     <Compile Include="lib\listener.cs" />
     <Compile Include="lib\log.cs" />
     <Compile Include="lib\manage.cs" />
