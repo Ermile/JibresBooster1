@@ -21,8 +21,7 @@ namespace JibresBooster1.lib
             Dictionary<string, string> xmlParser = new Dictionary<string, string>();
             // try to load it
             myDoc.LoadXml(_str);
-
-            
+                        
 
             foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
             {
@@ -31,5 +30,14 @@ namespace JibresBooster1.lib
 
             return xmlParser;
         }
+
+
+        public static string xmlReadable(string _str)
+        {
+            var xmlDic = xml(_str);
+            var prettyResult = lib.str.fromDic(xmlDic, "\n\t");
+            return prettyResult;
+        }
+
     }
 }

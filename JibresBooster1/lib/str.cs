@@ -27,7 +27,7 @@ namespace JibresBooster1.lib
 
         public static string fromDic(Dictionary<string, string> _dic, string _seperator = "\n")
         {
-            string result = "\n" + string.Join(_seperator, _dic.Select(x => x.Key + "\t=\t" + x.Value).ToArray()) + "\n";
+            string result = _seperator + string.Join(_seperator, _dic.Select(x => x.Key.PadRight(20) + x.Value.PadLeft(20)).ToArray());
             //String result = _dic.Select(x => x.Key + "=" + x.Value).Aggregate((s1, s2) => s1 + ";" + s2);
 
             return result;

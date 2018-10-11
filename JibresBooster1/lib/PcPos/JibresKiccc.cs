@@ -49,7 +49,11 @@ namespace JibresBooster1.lib.PcPos
                 // define received function to get async result
                 myKiccc.ResponseReceived += (s, ev) =>
                 {
-                    log.save(ev.Response.ToString());
+                    // get response and send it to server to save
+                    //ev.Response.ToString()
+                    
+                    log.save("Pos response is" + reader.xmlReadable(ev.Response.ToString()));
+
                     BUSY = false;
                     log.save("BUSY " + BUSY);
                 };
