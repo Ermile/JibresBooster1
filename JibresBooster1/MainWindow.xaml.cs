@@ -16,6 +16,7 @@ using System.Threading;
 using System.Web.Script.Serialization;
 using System.IO.Ports;
 using System.Management;
+using JibresBooster1.lib;
 
 
 namespace JibresBooster1
@@ -31,11 +32,12 @@ namespace JibresBooster1
             try
             {
                 InitializeComponent();
+                log.save("Application started.");
                 lib.listener.runListener();
             }
             catch(Exception e)
             {
-                Console.WriteLine("Error on running program! " + e.Message);
+                log.save("Error on running program! " + e.Message);
             }
         }
 
