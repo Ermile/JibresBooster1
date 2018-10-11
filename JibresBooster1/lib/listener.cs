@@ -17,9 +17,9 @@ namespace JibresBooster1.lib
         {
             log.save("Starting server...");
 
-            // add prefix "http://localhost:9759/"
-            myListener.Prefixes.Add("http://localhost:9759/");
-            myListener.Prefixes.Add("http://127.0.0.1:9759/");
+            // add prefix "http://localhost:9759/jibres"
+            myListener.Prefixes.Add("http://localhost:9759/jibres/");
+            myListener.Prefixes.Add("http://127.0.0.1:9759/jibres/");
             myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             // start server (Run application as Administrator!)
             myListener.Start();
