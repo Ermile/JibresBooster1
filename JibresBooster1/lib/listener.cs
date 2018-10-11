@@ -16,6 +16,7 @@ namespace JibresBooster1.lib
         public static void runListener()
         {
             Console.WriteLine("Starting server...");
+            log.save("Starting server...");
 
             // add prefix "http://localhost:9759/"
             myListener.Prefixes.Add("http://localhost:9759/");
