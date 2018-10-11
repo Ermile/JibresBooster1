@@ -15,7 +15,6 @@ namespace JibresBooster1.lib
         static HttpListener myListener = new HttpListener();
         public static void runListener()
         {
-            Console.WriteLine("Starting server...");
             log.save("Starting server...");
 
             // add prefix "http://localhost:9759/"
@@ -26,7 +25,7 @@ namespace JibresBooster1.lib
             myListener.Start();
 
             // save log
-            Console.WriteLine("Server started.");
+            log.save("Server started.");
 
             // start the response thread
             Thread _responseThread = new Thread(ResponseThread);
@@ -64,28 +63,25 @@ namespace JibresBooster1.lib
                 }
                 catch
                 {
-                    Console.WriteLine("Error on set response!");
+                    log.save("Error on generate response!");
                 }
 
                 if (myRequest.HttpMethod == "GET")
                 {
-                    Console.WriteLine("\t\t\t\t\t\t\t\tGet detected");
+                    log.save(string.Concat(Enumerable.Repeat("-", 50)) + " Get detected");
 
                     var getParams = myRequest.Url.Query.ToString();
                     if(getParams.Length > 0)
                     {
                         getParams = getParams.Substring(1);
                     }
-                    Console.WriteLine(getParams);
 
                     myData = getParams;
-
-                    //Console.WriteLine(myData);
                 }
                 else if (myRequest.HttpMethod == "POST")
                 {
                     // if user post something try to do something
-
+                    log.save(string.Concat(Enumerable.Repeat("-", 50)) + " Post detected");
                 }
 
 
@@ -93,11 +89,12 @@ namespace JibresBooster1.lib
                 // Here i can read all parameters in string but how to parse each one i don't know
                 if (myData == "")
                 {
-                    Console.WriteLine("Without data !!!\n");
+                    log.save("Request without data !!!");
                 }
                 else
                 {
-                    Console.WriteLine("\t\t\t\t\t\t\t\tPost detected");
+                    log.save(myData.ToString());
+                    Console.WriteLine(myData.ToString());
 
                     string[] myDataParams = myData.Split('&');
                     foreach (string param in myDataParams)
@@ -110,7 +107,7 @@ namespace JibresBooster1.lib
 
                     if (postParams.ContainsKey("type"))
                     {
-                        Console.WriteLine("Post type is " + postParams["type"]);
+                        log.save("Request type is " + postParams["type"]);
 
                         if (postParams["type"] == "PcPosKiccc")
                         {
