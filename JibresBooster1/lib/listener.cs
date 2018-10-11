@@ -17,9 +17,9 @@ namespace JibresBooster1.lib
         {
             Console.WriteLine("Starting server...");
 
-            // add prefix "http://localhost:4200/"
-            myListener.Prefixes.Add("http://localhost:4200/");
-            myListener.Prefixes.Add("http://127.0.0.1:4200/");
+            // add prefix "http://localhost:9759/"
+            myListener.Prefixes.Add("http://localhost:9759/");
+            myListener.Prefixes.Add("http://127.0.0.1:9759/");
             myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             // start server (Run application as Administrator!)
             myListener.Start();
@@ -46,8 +46,8 @@ namespace JibresBooster1.lib
 
 
                 // generate response and close connection
-                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Localhost server -- port 4200</title></head>" +
-                    "<body>Welcome to the <strong>Localhost server</strong> -- <em>port 4200!</em></body></html>");
+                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Localhost server -- port 9759</title></head>" +
+                    "<body>Welcome to the <strong>Localhost server</strong> -- <em>port 9759!</em></body></html>");
                 try
                 {
                     // write bytes to the output stream
