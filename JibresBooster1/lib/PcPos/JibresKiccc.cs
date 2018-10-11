@@ -38,7 +38,7 @@ namespace JibresBooster1.lib.PcPos
             if (BUSY)
             {
                 log.save("Please cancel old request before send new one! " + BUSY);
-                //return;
+                return;
             }
 
             if(!INIT)
@@ -266,7 +266,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                log.save(string.Format("Error on connect to pos : {0}\t Inner Exception : {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                log.save("Failed to connect pos: " + ex.Message);
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
