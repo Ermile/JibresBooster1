@@ -46,8 +46,8 @@ namespace JibresBooster1.lib
 
 
                 // generate response and close connection
-                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Localhost server -- port 9759</title></head>" +
-                    "<body>Welcome to the <strong>Localhost server</strong> -- <em>port 9759!</em></body></html>");
+                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Jibres local server - p9759</title></head>" +
+                    "<body><h1>Jibres</h1>Welcome to the <strong>Localhost server</strong> -- <em>port 9759!</em></body></html>");
                 try
                 {
                     // write bytes to the output stream
