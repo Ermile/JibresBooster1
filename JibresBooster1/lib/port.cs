@@ -31,43 +31,17 @@ namespace JibresBooster1.lib
                     {
                         string portName = portFullName.Substring(startIndex, endIndex);
                         portsList.Add(portName, portDesc);
-                        //Console.WriteLine(portName + ": " + portDesc);
+
+                        log.save(" - " + portName + " - " + portDesc);
                     }
                 }
             }
             catch (ManagementException e)
             {
-                Console.WriteLine("Error on get port detail. " + e.Message);
+                log.save("Error on get port detail. " + e.Message);
             }
 
             return portsList;
-        }
-
-
-        private static string HasOpenPort(string _port)
-        {
-            var portState = "123";
-
-            
-            if (_port != string.Empty & !string.IsNullOrEmpty(_port))
-            {
-                using (SerialPort serialPort = new SerialPort(_port))
-                {
-                    foreach (var itm in SerialPort.GetPortNames())
-                    {
-                        if (itm.Contains(serialPort.PortName))
-                        {
-                            serialPort.Close();
-                            if (serialPort.IsOpen) { portState = "Open"; }
-                            else { portState = "Close"; }
-                        }
-                    }
-                }
-            }
-
-            else { System.Windows.Forms.MessageBox.Show("Error: No Port Specified."); }
-
-            return portState;
         }
 
 
@@ -82,7 +56,7 @@ namespace JibresBooster1.lib
                     detectedPort = myPort.Key;
                 }
             }
-            log.info("Kiccc Port " + detectedPort);
+            log.save("Kiccc Port " + detectedPort);
             
             return detectedPort;
         }
