@@ -387,6 +387,7 @@ namespace JibresBooster1.lib.PcPos
                 {
                     var res = myKiccc.BeginSale(Amount);
                     Console.WriteLine("Async sale result " + res);
+                    
 
                     return true;
                 }
