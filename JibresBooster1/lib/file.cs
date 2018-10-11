@@ -11,13 +11,18 @@ namespace JibresBooster1.lib
     {
         public static void save(string _loc, string _data)
         {
-
-            using (StreamWriter myFile = File.AppendText(_loc))
+            try
             {
-                myFile.WriteLine(_data);
+                using (StreamWriter myFile = File.AppendText(_loc))
+                {
+                    myFile.WriteLine(_data);
+                }
+            }
+            catch (Exception ex)
+            {
+                // error on create folder
+                Console.WriteLine(ex.Message);
             }
         }
-
-
     }
 }
