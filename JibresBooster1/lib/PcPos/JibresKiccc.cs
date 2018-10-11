@@ -34,11 +34,10 @@ namespace JibresBooster1.lib.PcPos
 
         public void fire(Dictionary<string, string> _args)
         {
-            log.save("BUSY MODE1 " + BUSY);
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
-                log.save("Please cancel old request before send new one!");
+                log.save("Please cancel old request before send new one! " + BUSY);
                 //return;
             }
 
@@ -52,14 +51,14 @@ namespace JibresBooster1.lib.PcPos
                 {
                     log.save(ev.Response.ToString());
                     BUSY = false;
+                    log.save("BUSY " + BUSY);
                 };
 
                 // set init to true for next times
                 INIT = true;
             }
-
-            state();    
-
+            // get current state
+            state();
 
 
             if (_args.ContainsKey("reset"))
@@ -89,11 +88,11 @@ namespace JibresBooster1.lib.PcPos
                     if (saleAsync())
                     {
                         // send to server
-                        log.save("Successfully Send transaction !");
+                        log.save("\t\t\t\t\t... Waiting response ...");
                     }
                     else
                     {
-                        log.save("Error on transaction !");
+                        log.save("Error on send sale transaction!");
                     }
                 }
             }                
@@ -103,6 +102,11 @@ namespace JibresBooster1.lib.PcPos
 
         private void fill(Dictionary<string, string> _args)
         {
+            if (_args.ContainsKey("test"))
+            {
+                log.save("TEST MODE");
+            }
+
             // amount
             if (_args.ContainsKey("sum"))
             {
@@ -111,7 +115,7 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 Amount = "1200";
-                log.save("use test amount \t" + Amount);
+                log.save("\t test amount \t" + Amount);
             }
             else
             {
@@ -128,7 +132,7 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 SerialNo = "5000054981";
-                log.save("use test serial \t" + SerialNo);
+                log.save("\t test serial \t" + SerialNo);
             }
             else
             {
@@ -145,7 +149,7 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 AcceptorId = "062006362145616";
-                log.save("use test acceptor \t" + AcceptorId);
+                log.save("\t test acceptor \t" + AcceptorId);
             }
             else
             {
@@ -162,7 +166,7 @@ namespace JibresBooster1.lib.PcPos
             else if (_args.ContainsKey("test"))
             {
                 TerminalId = "06151815";
-                log.save("use test terminal \t" + TerminalId);
+                log.save("\t test terminal \t" + TerminalId);
             }
             else
             {
@@ -179,7 +183,6 @@ namespace JibresBooster1.lib.PcPos
             else
             {
                 cmbCom = lib.port.kiccc();
-                log.save("Detected port\t\t" + cmbCom);
             }
 
 
@@ -238,7 +241,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(string.IsNullOrEmpty(cmbCom))
                 {
-                    log.save("PcPos is not detected!!");
+                    log.save("*** PcPos is not detected ***");
                     return false;
                 }
                 if(port.exist(cmbCom))
@@ -246,21 +249,20 @@ namespace JibresBooster1.lib.PcPos
                     terminate();
                     // Initiate Service
                     myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
-                    log.save("Connected to Kiccc pos successfully.");
+                    log.save("Connected to Kiccc pos successfully:)");
                     Console.Beep(10000, 100);
                     return true;
                 }
                 else
                 {
-                    log.save("This port is not active!");
+                    log.save("This port is not active :|");
                     return false;
                 }
 
             }
             catch (Exception ex)
             {
-                log.save(string.Format("Exception on connect to pos : {0}\r\nInner Exception : {1}", ex.Message,
-                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                log.save(string.Format("Error on connect to pos : {0}\t Inner Exception : {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
@@ -274,13 +276,12 @@ namespace JibresBooster1.lib.PcPos
             {
                 // reset old connection before create new one
                 var myState = myKiccc.State.ToString();
-                log.save(myState);
+                log.save("State = " + myState);
                 return myState;
             }
             catch (Exception ex)
             {
-                log.save(string.Format("Error on get state Exception : {0}\r\nInner Exception : {1}", ex.Message,
-                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                log.save(string.Format("Error on get state Exception : {0}\t Inner Exception : {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
@@ -305,8 +306,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                log.save(string.Format("Error on reset Exception : {0}\r\nInner Exception : {1}", ex.Message,
-                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                log.save(string.Format("Error on reset connection : {0}\t Inner Exception : {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
@@ -330,8 +330,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                log.save(string.Format("Error on terminate Exception : {0}\r\nInner Exception : {1}", ex.Message,
-                    ex.InnerException != null ? ex.InnerException.Message : string.Empty));
+                log.save(string.Format("Error on terminate Exception : {0}\t Inner Exception : {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : string.Empty));
                 System.Media.SystemSounds.Exclamation.Play();
             }
 
@@ -378,7 +377,7 @@ namespace JibresBooster1.lib.PcPos
         {
             BUSY = true;
             // try to sale
-            log.save("BUSY MODE3 " + BUSY);
+            log.save("BUSY " + BUSY);
             try
             {
                 if (string.IsNullOrEmpty(info1))

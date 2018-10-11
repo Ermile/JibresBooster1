@@ -56,7 +56,7 @@ namespace JibresBooster1.lib
                     detectedPort = myPort.Key;
                 }
             }
-            log.save("Kiccc Port " + detectedPort);
+            log.save("Kiccc Port\t\t\t" + detectedPort);
             
             return detectedPort;
         }
