@@ -48,6 +48,7 @@ namespace JibresBooster1.lib
         public static void save(string _data)
         {
             logPathDetector();
+            _data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\t\t" + _data;
             file.save(logPath, _data);
         }
 
