@@ -47,13 +47,6 @@ namespace JibresBooster1
             System.Diagnostics.Process.Start("https://jibres.com");
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            var kicccWindow = new Test.Kiccc();
-            kicccWindow.Show();
-            //this.Close();
-        }
-
         private void btnIranKishTest_Click(object sender, RoutedEventArgs e)
         {
             var kicccWindow = new Forms.Generator.Kiccc();
