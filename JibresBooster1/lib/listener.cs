@@ -12,13 +12,14 @@ namespace JibresBooster1.lib
     class listener
     {
 
+        public static readonly string JibresLocalServer = "http://localhost:9759/jibres/";
         static HttpListener myListener = new HttpListener();
         public static void runListener()
         {
             log.save("Starting server...");
 
-            // add prefix "http://localhost:9759/jibres"
-            myListener.Prefixes.Add("http://localhost:9759/jibres/");
+            // add prefix
+            myListener.Prefixes.Add(JibresLocalServer);
             myListener.Prefixes.Add("http://127.0.0.1:9759/jibres/");
             myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             // start server (Run application as Administrator!)
