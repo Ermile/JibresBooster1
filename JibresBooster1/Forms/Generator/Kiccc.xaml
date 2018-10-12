@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JibresBooster1.Forms.Generator"
         mc:Ignorable="d"
-        Title="تست کارتخوان ایران کیش" Height="240" Width="650" ResizeMode="NoResize" Icon="/JibresBooster1;component/images/favicon.ico" FlowDirection="RightToLeft" Initialized="Window_Initialized" KeyUp="Window_KeyUp">
+        Title="تست کارتخوان ایران کیش" Height="300" Width="650" ResizeMode="NoResize" Icon="/JibresBooster1;component/images/favicon.ico" FlowDirection="RightToLeft" Initialized="Window_Initialized" KeyUp="Window_KeyUp">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="232"/>
@@ -24,14 +24,14 @@
         <TextBox x:Name="txtInfo1" HorizontalAlignment="Left" Height="23" Margin="77,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FlowDirection="RightToLeft" Grid.Column="2" MaxLines="1" MaxLength="25"/>
         <TextBox x:Name="txtSum" HorizontalAlignment="Left" Height="23" Margin="10,61,0,0" TextWrapping="Wrap" Text="1200" VerticalAlignment="Top" Width="120" FlowDirection="LeftToRight" Grid.Column="1" FontWeight="Bold" MaxLines="1" TextAlignment="Center"/>
         <Label x:Name="lblSum" Content="مبلغ" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Height="26" Width="120" RenderTransformOrigin="0.625,1.192" Grid.Column="1"/>
-        <Button x:Name="button" Content="ارسال" Grid.Column="1" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="120" Height="51"/>
+        <Button x:Name="btnSend" Content="ارسال" Grid.Column="1" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="120" Height="51" Click="btnSend_Click"/>
         <Label x:Name="lblInfo2" Content="ردیف ۲" HorizontalAlignment="Left" Margin="17,57,0,0" VerticalAlignment="Top" Height="26" Width="55" RenderTransformOrigin="0.625,1.192" Grid.Column="2"/>
         <TextBox x:Name="txtInfo2" HorizontalAlignment="Left" Height="23" Margin="77,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FlowDirection="RightToLeft" Grid.Column="2" MaxLines="1" MaxLength="25"/>
         <Label x:Name="lblInfo3" Content="ردیف ۳" HorizontalAlignment="Left" Margin="17,85,0,0" VerticalAlignment="Top" Height="26" Width="55" RenderTransformOrigin="0.625,1.192" Grid.Column="2"/>
         <TextBox x:Name="txtInfo3" HorizontalAlignment="Left" Height="23" Margin="77,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FlowDirection="RightToLeft" Grid.Column="2" MaxLines="1" MaxLength="25"/>
         <Label x:Name="lblInfo4" Content="ردیف ۴" HorizontalAlignment="Left" Margin="17,113,0,0" VerticalAlignment="Top" Height="26" Width="55" RenderTransformOrigin="0.625,1.192" Grid.Column="2"/>
         <TextBox x:Name="txtInfo4" HorizontalAlignment="Left" Height="23" Margin="77,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FlowDirection="RightToLeft" Grid.Column="2" MaxLines="1" MaxLength="25"/>
-        <TextBox x:Name="txtLink" HorizontalAlignment="Left" Height="23" Margin="15,170,0,0" TextWrapping="Wrap" Text="Link" VerticalAlignment="Top" Width="599" Grid.ColumnSpan="3" IsReadOnly="True" FlowDirection="LeftToRight" BorderThickness="0">
+        <TextBox x:Name="txtLink" HorizontalAlignment="Left" Height="75" Margin="15,170,0,0" TextWrapping="Wrap" Text="Link" VerticalAlignment="Top" Width="599" Grid.ColumnSpan="3" IsReadOnly="True" FlowDirection="LeftToRight" BorderThickness="0">
             <TextBox.Effect>
                 <DropShadowEffect ShadowDepth="2"/>
             </TextBox.Effect>
