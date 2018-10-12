@@ -53,6 +53,12 @@ namespace JibresBooster1
             kicccWindow.Show();
             //this.Close();
         }
+
+        private void btnIranKishTest_Click(object sender, RoutedEventArgs e)
+        {
+            var kicccWindow = new Test.TestKiccc();
+            kicccWindow.Show();
+        }
     }
 
 }
