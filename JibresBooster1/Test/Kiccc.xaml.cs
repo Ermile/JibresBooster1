@@ -23,5 +23,27 @@ namespace JibresBooster1.Test
         {
             InitializeComponent();
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            // get active port for kiccc
+            var myPort = lib.port.kiccc();
+            if(!string.IsNullOrEmpty(myPort))
+            {
+                txtPort.Text = myPort;
+                txtPort.ToolTip = "خودکار شناسایی شده";
+            }
+
+        }
+
+        private void btnInit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
