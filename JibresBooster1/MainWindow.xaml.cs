@@ -56,7 +56,7 @@ namespace JibresBooster1
 
         private void btnIranKishTest_Click(object sender, RoutedEventArgs e)
         {
-            var kicccWindow = new Test.TestKiccc();
+            var kicccWindow = new Forms.Generator.Kiccc();
             kicccWindow.Show();
         }
     }
