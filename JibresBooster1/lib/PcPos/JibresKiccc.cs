@@ -28,7 +28,7 @@ namespace JibresBooster1.lib.PcPos
         private string info2;
         private string info3;
         private string info4;
-        private int timeout = 300;
+        private int timeout = 600000;
 
 
 
@@ -57,7 +57,7 @@ namespace JibresBooster1.lib.PcPos
 
                     BUSY = false;
                     log.save("BUSY " + BUSY);
-                    Console.WriteLine("Kiccc get respons. BUSY " + BUSY);
+                    Console.WriteLine("Kiccc get response. BUSY " + BUSY);
                 };
 
                 // set init to true for next times
@@ -394,7 +394,6 @@ namespace JibresBooster1.lib.PcPos
                     var res = myKiccc.BeginSale(Amount);
                     log.save("Async sale result " + res);
                     
-
                     return true;
                 }
                 else
