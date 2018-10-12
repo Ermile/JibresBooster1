@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Kiccc" Height="450" Width="800">
     <Grid>
-        
+        <GroupBox x:Name="groupBox" Header="تنظیمات کارتخوان ایران کیش" HorizontalAlignment="Left" Height="183" Margin="499,10,0,0" VerticalAlignment="Top" Width="283" FlowDirection="RightToLeft"/>
+        <TextBox x:Name="txtSerial" HorizontalAlignment="Left" Height="24" Margin="514,54,0,341" TextWrapping="Wrap" Text="5000054981" VerticalAlignment="Center" Width="180" ToolTip="اعداد بعد از صفر را وارد کنید"/>
+        <Label x:Name="label" Content="سریال" HorizontalAlignment="Left" Margin="723,53,0,340" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtTerminal" HorizontalAlignment="Left" Height="24" Margin="514,85,0,310" TextWrapping="Wrap" Text="06151815" VerticalAlignment="Center" Width="180"/>
+        <Label x:Name="label_Copy" Content="ترمینال" HorizontalAlignment="Left" Margin="719,84,0,309" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtAcceptor" HorizontalAlignment="Left" Height="24" Margin="514,116,0,279" TextWrapping="Wrap" Text="062006362145616" VerticalAlignment="Center" Width="180"/>
+        <Label x:Name="label_Copy1" Content="پذیرنده" HorizontalAlignment="Left" Margin="719,115,0,278" VerticalAlignment="Center"/>
+
     </Grid>
 </Window>
