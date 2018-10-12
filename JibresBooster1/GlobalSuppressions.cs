@@ -16,4 +16,5 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:JibresBooster1.lib.PcPos.JibresKiccc.terminate~System.Boolean")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:JibresBooster1.lib.PcPos.JibresKiccc.sale~System.Boolean")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:JibresBooster1.lib.PcPos.JibresKiccc.saleAsync~System.Boolean")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:JibresBooster1.lib.PcPos.JibresKiccc.saveOnJibres")]
 

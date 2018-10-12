@@ -48,16 +48,25 @@ namespace JibresBooster1.lib.PcPos
                 myKiccc = new SerialIngenico();
                 
                 // define received function to get async result
-                myKiccc.ResponseReceived += (s, ev) =>
+                myKiccc.ResponseReceived += async (s, ev) =>
                 {
+                    var paymentResult = ev.Response.ToString();
+                    Dictionary<string, string> paymentResultArray = reader.xml(paymentResult);
+                    string paymentResultString = lib.str.fromDic(paymentResultArray, "\n\t");
                     // get response and send it to server to save
-                    //ev.Response.ToString()
-                    
-                    log.save("Pos response is" + reader.xmlReadable(ev.Response.ToString()));
+
+                    log.save("Pos response is" + paymentResultString);
 
                     BUSY = false;
                     log.save("BUSY " + BUSY);
                     Console.WriteLine("Kiccc get response. BUSY " + BUSY);
+
+                    // prepare to save on Jibres
+                    paymentResultArray.Add("Booster_type", "Kiccc");
+                    paymentResultArray.Add("Booster_resultXML", paymentResult);
+                    paymentResultArray.Add("Booster_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    paymentResultArray.Add("Booster_timezone", DateTime.Now.ToString("zzz"));
+                    await save.post(paymentResultArray);
                 };
 
                 // set init to true for next times
