@@ -23,5 +23,29 @@ namespace JibresBooster1.Forms.Generator
         {
             InitializeComponent();
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            // get active port for kiccc
+            var myPort = lib.port.kiccc();
+            if (!string.IsNullOrEmpty(myPort))
+            {
+                txtPort.Text = myPort;
+                txtPort.ToolTip = "خودکار شناسایی شده";
+            }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            // show sale box
+
+            string str = "";
+            str += "?serial=" + txtSerial.Text;
+            str += "&terminal=" + txtTerminal.Text;
+            str += "&acceptor=" + txtAcceptor.Text;
+            str += "&port=" + txtPort.Text;
+
+
+        }
     }
 }
