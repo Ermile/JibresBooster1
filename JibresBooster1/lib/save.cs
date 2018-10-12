@@ -9,16 +9,16 @@ namespace JibresBooster1.lib
 {
     class save
     {
+        public static readonly string JibresHook = "https://jibres.com/hook/booster1/";
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<bool> post(Dictionary<string, string> _vals)
         {            
             try
             {
-                var serverURL = "https://jibres.com/hook/booster1/";
                 var content = new FormUrlEncodedContent(_vals);
 
-                var response = await client.PostAsync(serverURL, content);
+                var response = await client.PostAsync(JibresHook, content);
 
                 var responseString = await response.Content.ReadAsStringAsync();
 
@@ -36,9 +36,7 @@ namespace JibresBooster1.lib
         {
             try
             {
-                var serverURL = "https://jibres.com/hook/booster1/";
-
-                var responseString = await client.GetStringAsync(serverURL);
+                var responseString = await client.GetStringAsync(JibresHook);
 
                 return true;
             }
