@@ -28,7 +28,7 @@ namespace JibresBooster1.lib.PcPos
         private string info2;
         private string info3;
         private string info4;
-        private int timeout = 600000;
+        private readonly int timeout = 600000;
 
 
 
