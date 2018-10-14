@@ -129,6 +129,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="lib\faxModem.cs" />
     <Compile Include="lib\file.cs" />
     <Compile Include="lib\listener.cs" />
     <Compile Include="lib\log.cs" />
@@ -190,6 +191,5 @@
   <ItemGroup>
     <Resource Include="images\ermile.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
