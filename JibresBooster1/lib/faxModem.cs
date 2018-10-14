@@ -18,12 +18,71 @@ namespace JibresBooster1.lib
 
         public static void fire()
         {
-            SetModem();
+            //callTest();
+            Call();
 
-            ReadModem();
+            //SetModem();
 
-            log.save("Read data" + sReadData);
+            //ReadModem();
+
+            //log.save("Read data" + sReadData);
         }
+
+
+
+        public static void callTest()
+        {
+            var myPort = lib.port.faxModem();
+            SerialPort SP = new SerialPort(myPort);
+            SP.BaudRate = 9600;
+            SP.Parity = Parity.None;
+            SP.DataBits = 8;
+            SP.StopBits = StopBits.One;
+            SP.RtsEnable = true;
+            SP.DtrEnable = true;
+            SP.Encoding = System.Text.Encoding.Unicode;
+            SP.ReceivedBytesThreshold = 1;
+            SP.NewLine = Environment.NewLine;
+            SP.Open();
+
+            string cmd = "AT";
+            SP.WriteLine(cmd + "\r");
+            SP.Write(cmd + "\r");
+            Thread.Sleep(500);
+            string ss = SP.ReadExisting();
+            if (ss.EndsWith("\r\nOK\r\n"))
+            {
+                log.save("Modem is connected");
+            }
+            log.save("status " + ss.ToString());
+
+
+            SP.Write("ATDT 09357269759" + Environment.NewLine);
+
+            SP.Close();
+        }
+
+
+        private static void Call()
+        {
+            var myPort = lib.port.faxModem();
+            SerialPort celu = new SerialPort();
+            celu.PortName = myPort; // You have check what port your phone is using here, and replace it
+            celu.Open();
+            string cmd = "ATD";  // Here you put your AT command
+            string phoneNumber = "09357269759"; // Here you put the phone number, for me it worked just with the phone number, not adding any other area code or something like that
+            celu.WriteLine(cmd + phoneNumber + ";\r");
+            Thread.Sleep(500);
+            string ss = celu.ReadExisting();
+            if (ss.EndsWith("\r\nOK\r\n"))
+            {
+                log.save("Modem is connected \r Calling : " + phoneNumber);
+            }
+            log.save("Call status " + ss);
+            celu.Close();
+        }
+
+
 
 
 
