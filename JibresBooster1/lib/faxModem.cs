@@ -3,55 +3,67 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JibresBooster1.lib
 {
     class faxModem
     {
-        public SerialPort port = new SerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
-        public String sReadData = "";
-        public String sNumberRead = "";
-        public String sData = "AT#CID=1";
+        public static SerialPort port;
+        public static String sReadData = "";
+        public static String sNumberRead = "";
+        public static String sData = "AT#CID=1";
 
 
-        private void fire(object sender, EventArgs e)
+        public static void fire()
         {
             SetModem();
 
             ReadModem();
 
-            log.save(sReadData);
+            log.save("Read data" + sReadData);
         }
 
-        public void SetModem1()
+
+
+        public static void SetModem()
         {
+            var myPort = lib.port.faxModem();
+            port = new SerialPort(myPort, 115200, Parity.None, 8, StopBits.One);
+            port.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+
+            
 
             if (port.IsOpen == false)
             {
                 port.Open();
+                log.save("Open port of fax modem");
             }
 
             port.WriteLine(sData + System.Environment.NewLine);
-            port.BaudRate = 9600;
+            port.BaudRate = 115200;
             port.DtrEnable = true;
             port.RtsEnable = true;
 
+            port.DataReceived += port_DataReceived;
         }
 
-        public string ReadModem()
-        {
 
+
+        public static string ReadModem()
+        {
             try
             {
                 sReadData = port.ReadExisting().ToString();
+                log.save("Read modem" + sReadData);
 
                 return (sReadData);
             }
             catch (Exception ex)
             {
                 String errorMessage;
-                errorMessage = "Error in Reading: ";
+                errorMessage = "Error in Reading ";
                 errorMessage = String.Concat(errorMessage, ex.Message);
                 errorMessage = String.Concat(errorMessage, " Line: ");
                 errorMessage = String.Concat(errorMessage, ex.Source);
@@ -67,28 +79,35 @@ namespace JibresBooster1.lib
             //Close();
         }
 
+        static string dataReceived = string.Empty;
+        private delegate void SetTextDeleg(string text);
 
-        public void SetModem()
+        static void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
-            if (port.IsOpen == false)
+            try
             {
-                port.Open();
+                Thread.Sleep(500);
+                string x = port.ReadLine(); // will read to the first carriage return
+                si_DataReceived(x);
+                log.save("d2" + x);
             }
-
-            port.WriteLine(sData + System.Environment.NewLine);
-            port.BaudRate = 9600;
-            port.DtrEnable = true;
-            port.RtsEnable = true;
-
-            port.DataReceived += port_DataReceived;
-
+            catch
+            { }
         }
 
-        void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void si_DataReceived(string data)
+        {
+            dataReceived = data.Trim();
+            log.save("Trim " + dataReceived);
+            // Do whatever with the data that is coming in.
+        }
+
+
+
+        static void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //For e.g. display your incoming data in RichTextBox
-            log.save(port.ReadLine());
+            log.save("Data Received " + port.ReadLine());
 
             //OR
             ReadModem();

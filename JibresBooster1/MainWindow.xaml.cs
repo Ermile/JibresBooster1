@@ -52,6 +52,11 @@ namespace JibresBooster1
             var kicccWindow = new Forms.Generator.Kiccc();
             kicccWindow.Show();
         }
+
+        private void btnFaxModem_Click(object sender, RoutedEventArgs e)
+        {
+            lib.faxModem.fire();
+        }
     }
 
 }

@@ -25,6 +25,7 @@
         <Label x:Name="label" Content="Logs" Grid.Column="1" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="564"/>
         <Image x:Name="image" Grid.Column="4" HorizontalAlignment="Left" Height="124" Margin="27,197,0,0" VerticalAlignment="Top" Width="124" Source="images/ermile.png"/>
         <Button x:Name="btnIranKishTest" Content="ایران کیش" Grid.Column="1" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="75" Click="btnIranKishTest_Click"/>
+        <Button x:Name="btnFaxModem" Content="تست مودم" Grid.Column="1" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.533,0.5" Click="btnFaxModem_Click"/>
 
     </Grid>
 </Window>
