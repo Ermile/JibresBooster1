@@ -62,6 +62,22 @@ namespace JibresBooster1.lib
         }
 
 
+        public static string faxModem()
+        {
+            string detectedPort = null;
+            foreach (KeyValuePair<string, string> myPort in list())
+            {
+                if (myPort.Value == "Communications Port")
+                {
+                    detectedPort = myPort.Key;
+                }
+            }
+            log.save("Fax Modem Port\t\t\t" + detectedPort);
+
+            return detectedPort;
+        }
+
+
         public static Boolean exist(string _port)
         {
             string[] existPorts = SerialPort.GetPortNames();
