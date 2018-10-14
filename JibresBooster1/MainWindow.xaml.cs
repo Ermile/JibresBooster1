@@ -41,24 +41,18 @@ namespace JibresBooster1
             }
         }
 
-        private void btnJibresWebsite_Click(object sender, RoutedEventArgs e)
-        {
-            Console.Beep();
-            System.Diagnostics.Process.Start("https://jibres.com");
-        }
-
-        private void btnIranKishTest_Click(object sender, RoutedEventArgs e)
+        private void BtnIranKishTest_Click(object sender, RoutedEventArgs e)
         {
             var kicccWindow = new Forms.Generator.Kiccc();
             kicccWindow.Show();
         }
 
-        private void btnFaxModem_Click(object sender, RoutedEventArgs e)
+        private void BtnFaxModem_Click(object sender, RoutedEventArgs e)
         {
             lib.faxModem.fire();
         }
 
-        private void imgLogo_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ImgLogo_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Console.Beep();
             System.Diagnostics.Process.Start("https://jibres.com");
