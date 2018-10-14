@@ -10,8 +10,6 @@
         <SolidColorBrush Color="White" Opacity="0"/>
     </Window.Background>
     <Grid RenderTransformOrigin="0.484,0.506" Margin="0,100,0,0" Background="#fff">
-
-        <Button x:Name="btnJibresWebsite" Content="Jibres website" HorizontalAlignment="Left" Margin="100,118,0,0" VerticalAlignment="Top" Width="127" Height="32" Click="btnJibresWebsite_Click"/>
         <RichTextBox x:Name="logText" HorizontalAlignment="Left" Height="155" Margin="10,166,0,0" VerticalAlignment="Top" Width="564" Focusable="False" IsTabStop="False" AllowDrop="False">
             <FlowDocument>
                 <Paragraph>
@@ -21,7 +19,7 @@
         </RichTextBox>
         <Button x:Name="btnIranKishTest" Content="ایران کیش" HorizontalAlignment="Left" Margin="125,45,0,0" VerticalAlignment="Top" Width="75" Click="btnIranKishTest_Click"/>
         <Button x:Name="btnFaxModem" Content="تست مودم" HorizontalAlignment="Left" Margin="125,78,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.533,0.5" Click="btnFaxModem_Click"/>
-        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="174" Margin="316,-90,0,0" VerticalAlignment="Top" Width="174" Source="images/jibres.png" Cursor="AppStarting"/>
+        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="174" Margin="316,-90,0,0" VerticalAlignment="Top" Width="174" Source="images/jibres.png" Cursor="Cross" MouseDown="imgLogo_MouseDown"/>
 
     </Grid>
 </Window>
