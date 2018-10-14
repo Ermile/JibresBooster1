@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JibresBooster1"
         mc:Ignorable="d"
-        Title="Jibres Booster 1" Height="450" Width="800" ResizeMode="NoResize" Icon="images/favicon.ico" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
+        Title="جیبرس" Height="450" Width="800" ResizeMode="NoResize" Icon="images/favicon.ico" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0"/>
     </Window.Background>
