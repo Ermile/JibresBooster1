@@ -57,6 +57,12 @@ namespace JibresBooster1
         {
             lib.faxModem.fire();
         }
+
+        private void imgLogo_Click()
+        {
+            Console.Beep();
+            System.Diagnostics.Process.Start("https://jibres.com");
+        }
     }
 
 }

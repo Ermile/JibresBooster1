@@ -6,27 +6,22 @@
         xmlns:local="clr-namespace:JibresBooster1"
         mc:Ignorable="d"
         Title="Jibres Booster 1" Height="450" Width="800" ResizeMode="NoResize" Icon="images/favicon.ico" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None">
-    <Grid RenderTransformOrigin="0.484,0.506">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="396*"/>
-            <ColumnDefinition Width="63*"/>
-            <ColumnDefinition Width="125*"/>
-            <ColumnDefinition Width="195*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="btnJibresWebsite" Content="Jibres website" Grid.Column="4" HorizontalAlignment="Left" Margin="27,358,0,0" VerticalAlignment="Top" Width="127" Height="32" Click="btnJibresWebsite_Click"/>
-        <RichTextBox x:Name="logText" Grid.Column="1" HorizontalAlignment="Left" Height="224" Margin="10,166,0,0" VerticalAlignment="Top" Width="564" Grid.ColumnSpan="3" Focusable="False" IsTabStop="False" AllowDrop="False">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0"/>
+    </Window.Background>
+    <Grid RenderTransformOrigin="0.484,0.506" Margin="0,100,0,0" Background="#fff">
+
+        <Button x:Name="btnJibresWebsite" Content="Jibres website" HorizontalAlignment="Left" Margin="100,118,0,0" VerticalAlignment="Top" Width="127" Height="32" Click="btnJibresWebsite_Click"/>
+        <RichTextBox x:Name="logText" HorizontalAlignment="Left" Height="155" Margin="10,166,0,0" VerticalAlignment="Top" Width="564" Focusable="False" IsTabStop="False" AllowDrop="False">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Jibres is amazing..."/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label x:Name="label" Content="Logs" Grid.Column="1" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="564"/>
-        <Image x:Name="image" Grid.Column="4" HorizontalAlignment="Left" Height="124" Margin="27,197,0,0" VerticalAlignment="Top" Width="124" Source="images/ermile.png"/>
-        <Button x:Name="btnIranKishTest" Content="ایران کیش" Grid.Column="1" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="75" Click="btnIranKishTest_Click"/>
-        <Button x:Name="btnFaxModem" Content="تست مودم" Grid.Column="1" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.533,0.5" Click="btnFaxModem_Click"/>
-        <Image x:Name="image1" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Height="174" Margin="290,-44,0,0" VerticalAlignment="Top" Width="174" Source="images/jibres.png"/>
+        <Button x:Name="btnIranKishTest" Content="ایران کیش" HorizontalAlignment="Left" Margin="125,45,0,0" VerticalAlignment="Top" Width="75" Click="btnIranKishTest_Click"/>
+        <Button x:Name="btnFaxModem" Content="تست مودم" HorizontalAlignment="Left" Margin="125,78,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.533,0.5" Click="btnFaxModem_Click"/>
+        <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="174" Margin="316,-90,0,0" VerticalAlignment="Top" Width="174" Source="images/jibres.png" Cursor="AppStarting"/>
 
     </Grid>
 </Window>
