@@ -24,8 +24,13 @@ namespace JibresBooster1.lib.PcPos
             fill(_args);
 
 
-            initLan(IP);
-            myAsanpardakht.saleAsync(AMOUNT, INVOICE);
+            if(initLan(IP))
+            {
+                if(myAsanpardakht.saleAsync(AMOUNT, INVOICE))
+                {
+
+                }
+            }
         }
 
 
@@ -41,23 +46,46 @@ namespace JibresBooster1.lib.PcPos
         }
 
 
-        public void saleAsync(string _sum, string _invoice)
+        public Boolean saleAsync(string _sum, string _invoice)
         {
+            if (string.IsNullOrEmpty(_sum))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(_invoice))
+            {
+                return false;
+            }
+
             pcPos.DoASyncPayment(_sum, string.Empty, _invoice, DateTime.Now, this);
+            log.save("Request sended to pcpos. Amount " + _sum + " - Invoice " + _invoice);
+            return true;
         }
 
 
-        private static void initLan(string _ip, int _port = 17000)
+        private static Boolean initLan(string _ip, int _port = 17000)
         {
+            if(string.IsNullOrEmpty(_ip))
+            {
+                return false;
+            }
             pcPos.InitLAN(_ip, _port);
             log.save("init asanpardatkh on lan with ip address " + _ip);
+
+            return true;
         }
 
 
-        private static void initSerial(string _com)
+        private static Boolean initSerial(string _com)
         {
+            if (string.IsNullOrEmpty(_com))
+            {
+                return false;
+            }
             pcPos.InitSerial(_com, 115200);
             log.save("init asanpardatkh on com " + _com);
+
+            return true;
         }
 
 
@@ -122,12 +150,6 @@ namespace JibresBooster1.lib.PcPos
                     //COMPORT = lib.port.asanpardakht();
                 }
             }
-
-
-
-
-
-
         }
 
     }

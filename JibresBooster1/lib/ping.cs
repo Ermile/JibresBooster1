@@ -34,5 +34,5 @@ namespace JibresBooster1.lib
 
                 return pingable;
             }
-}
+    }
 }
