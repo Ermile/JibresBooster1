@@ -116,6 +116,11 @@ namespace JibresBooster1.lib
                             lib.PcPos.JibresKiccc myKiccc = new PcPos.JibresKiccc();
                             myKiccc.fire(postParams);
                         }
+                        else if (postParams["type"] == "PcPosAsanpardakht")
+                        {
+                            var myAsanPardakht = new PcPos.Asnapardakht();
+                            myAsanPardakht.fire(postParams);
+                        }
                     }
 
                 }
