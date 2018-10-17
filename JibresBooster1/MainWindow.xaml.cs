@@ -59,6 +59,11 @@ namespace JibresBooster1
             Console.Beep();
             System.Diagnostics.Process.Start("https://jibres.com");
         }
+
+        private void btnAsanPardakht_Click(object sender, RoutedEventArgs e)
+        {
+            lib.PcPos.Asnapardakht.fire();
+        }
     }
 
 }

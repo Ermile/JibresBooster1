@@ -17,6 +17,7 @@
         </Button>
         <Button x:Name="btnFaxModem" Content="تست مودم" HorizontalAlignment="Left" Margin="645,128,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.533,0.5" Click="BtnFaxModem_Click" Height="32" BorderBrush="{x:Null}"/>
         <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="174" Margin="316,-90,0,0" VerticalAlignment="Top" Width="174" Source="images/jibres.png" Cursor="Cross" MouseDown="ImgLogo_MouseDown"/>
+        <Button x:Name="btnAsanPardakht" Content="آسان پرداخت" HorizontalAlignment="Left" Margin="645,175,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="btnAsanPardakht_Click"/>
 
     </Grid>
 </Window>
