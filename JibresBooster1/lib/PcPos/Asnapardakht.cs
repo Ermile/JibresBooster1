@@ -12,22 +12,25 @@ namespace JibresBooster1.lib.PcPos
     {
         private static PCPos pcPos = new PCPos();
 
-        public static void fire()
+        public static void fire(string _ip, string _sum, string _invoice)
         {
             var myAsanpardakht = new Asnapardakht();
-            initLan("3.3.3.34");
-            myAsanpardakht.saleAsync("2000", "11");
+            initLan(_ip);
+            myAsanpardakht.saleAsync(_sum, _invoice);
         }
+
 
         public void OnFinish(string _message)
         {
             log.save("Asanpardatkh finished. " + _message);
         }
 
+
         public void OnTransactionDone(TransactionResult _result)
         {
             log.save("Asanpardatkh Done. " + _result.ToString());
         }
+
 
         public void saleAsync(string _sum, string _invoice)
         {
