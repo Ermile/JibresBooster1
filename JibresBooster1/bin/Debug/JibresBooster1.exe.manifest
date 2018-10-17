@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="375232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="376256">
       <assemblyIdentity name="JibresBooster1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/gqyv5X7XQE0Jcc8hNrP9DCzGGmkVGrbAd6f1oNBRpI=</dsig:DigestValue>
+        <dsig:DigestValue>JXrzs40KfTdxRYTqW3f4cTiZjjsBgAFoXj84Fj88B0Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,6 +63,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>oTJJJM3LJqvL3hjDouN8Fuf+BdG5+DaUdXXxDqvG+rk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PosInterface.dll" size="29696">
+      <assemblyIdentity name="PosInterface" version="1.0.0.3" publicKeyToken="D2917649975483B3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DX8gG6KKQ2Kejqb5u+JH5v5e7mRPBBCD9kLu3DLSwE0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

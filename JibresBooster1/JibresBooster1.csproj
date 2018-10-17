@@ -88,6 +88,9 @@
     <Reference Include="Kiccc.Ing.PcPos">
       <HintPath>static\KICCC Pos Driver\Kiccc.Ing.PcPos.dll</HintPath>
     </Reference>
+    <Reference Include="PosInterface">
+      <HintPath>static\Asanpardakht Pos Driver\PosInterface.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -134,6 +137,7 @@
     <Compile Include="lib\listener.cs" />
     <Compile Include="lib\log.cs" />
     <Compile Include="lib\manage.cs" />
+    <Compile Include="lib\PcPos\Asnapardakht.cs" />
     <Compile Include="lib\port.cs" />
     <Compile Include="lib\reader.cs" />
     <Compile Include="lib\save.cs" />
