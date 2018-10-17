@@ -10,24 +10,23 @@ namespace JibresBooster1.lib.PcPos
     //class Asnapardakht
     public partial class Asnapardakht : ITransactionDoneHandler
     {
-        private PCPos pcPos = new PCPos();
+        private static PCPos pcPos = new PCPos();
 
         public static void fire()
         {
-            
-
+            var myAsanpardakht = new Asnapardakht();
+            initLan("3.3.3.34");
+            myAsanpardakht.saleAsync("2000", "11");
         }
 
         public void OnFinish(string _message)
         {
             log.save("Asanpardatkh finished. " + _message);
-            throw new NotImplementedException();
         }
 
         public void OnTransactionDone(TransactionResult _result)
         {
             log.save("Asanpardatkh Done. " + _result.ToString());
-            throw new NotImplementedException();
         }
 
         public void saleAsync(string _sum, string _invoice)
@@ -36,14 +35,14 @@ namespace JibresBooster1.lib.PcPos
         }
 
 
-        private void initLan(string _ip, int _port = 17000)
+        private static void initLan(string _ip, int _port = 17000)
         {
             pcPos.InitLAN(_ip, _port);
             log.save("init asanpardatkh on lan with ip address " + _ip);
         }
 
 
-        private void initSerial(string _com)
+        private static void initSerial(string _com)
         {
             pcPos.InitSerial(_com, 115200);
             log.save("init asanpardatkh on com " + _com);
