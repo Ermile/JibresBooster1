@@ -16,7 +16,7 @@ namespace JibresBooster1.lib.PcPos
         private static string AMOUNT;
         private static string INVOICE;
 
-        public static void fire(Dictionary<string, string> _args)
+        public void fire(Dictionary<string, string> _args)
         {
             var myAsanpardakht = new Asnapardakht();
 

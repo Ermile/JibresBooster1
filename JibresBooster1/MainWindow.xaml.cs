@@ -62,7 +62,7 @@ namespace JibresBooster1
 
         private void btnAsanPardakht_Click(object sender, RoutedEventArgs e)
         {
-            lib.PcPos.Asnapardakht.fire();
+            //lib.PcPos.Asnapardakht.fire();
         }
     }
 
