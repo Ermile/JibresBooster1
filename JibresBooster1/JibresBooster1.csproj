@@ -194,7 +194,6 @@
   <ItemGroup>
     <SplashScreen Include="images\jibres.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\bg\bg-wood.jpg" />
   </ItemGroup>

@@ -39,6 +39,8 @@ namespace JibresBooster1
             {
                 log.save("Error on running program! " + e.Message);
             }
+
+            
         }
 
         private void BtnIranKishTest_Click(object sender, RoutedEventArgs e)

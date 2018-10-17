@@ -1,0 +1,62 @@
+namespace TestApp
+{
+    
+    public partial class FormTestStarter : Form, ITransactionDoneHandler
+    {
+
+        private PCPos pcPos = new PCPos();
+
+        public FormTestStarter()
+        {
+            InitializeComponent();
+        }
+
+        private void btnDoSyncPayment_Click(object sender, EventArgs e)
+        {
+            this.lsbResult.Invoke(new Action(() =>
+            {
+                //this.lsbResult.Items.Add(pcPos.DoSyncPayment(this.txtPaymentAmount.Text, this.tbxTashim.Text, this.txtInvoiceNumber.Text, DateTime.Now));
+            }));
+        }
+
+        private void btbDoAsyncPayment_Click(object sender, EventArgs e)
+        {
+            pcPos.DoASyncPayment(this.txtPaymentAmount.Text, this.tbxTashim.Text, this.txtInvoiceNumber.Text, DateTime.Now, this);
+        }
+
+        private void btnDoAsyncBillPayment_Click(object sender, EventArgs e)
+        {
+            pcPos.DoASyncBillPayment(this.tbxPaymentIDs.Text, this.txbBillIDs.Text, DateTime.Now, this);
+        }
+
+        
+        private void btnInit_Click(object sender, EventArgs e)
+        {
+            if (this.cmbConnectionType.SelectedIndex == 0)
+            {
+                pcPos.InitLAN(this.txtIp.Text, int.Parse(this.txtPort.Text));
+            }
+            else
+                pcPos.InitSerial(this.txtSerialPortName.Text, int.Parse(this.txtBaudRate.Text));
+
+        }
+
+
+        public void OnTransactionDone(TransactionResult result)
+        {
+            this.lsbResult.Invoke(new Action(() =>
+                {
+                    this.lsbResult.Items.Add(result);
+                }));
+        }
+
+        public void OnFinish(string message)
+        {
+            this.lsbResult.Invoke(new Action(() =>
+            {
+                this.lsbResult.Items.Add("Finish Received: " + message);
+            }));
+        }
+		
+	}
+}
