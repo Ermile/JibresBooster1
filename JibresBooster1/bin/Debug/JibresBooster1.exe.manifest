@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rqrFyB1QecnaJ7cfS8UxfZ82usuC5u1AR7ac9f73Jm0=</dsig:DigestValue>
+        <dsig:DigestValue>bf0Kx6VkYh1hmBl8m/Lq/WHzx1EknNjtSRtB6FaeiUw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiccc.Ing.PcPos.dll" size="151552">
-      <assemblyIdentity name="Kiccc.Ing.PcPos" version="1.0.0.21" publicKeyToken="0058D13218353987" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Kiccc.Ing.PcPos.dll" size="192000">
+      <assemblyIdentity name="Kiccc.Ing.PcPos" version="1.0.0.26" publicKeyToken="4E047320A7FA3B6D" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oTJJJM3LJqvL3hjDouN8Fuf+BdG5+DaUdXXxDqvG+rk=</dsig:DigestValue>
+        <dsig:DigestValue>Vc8ECWatWpuv8dEfAtZHABShF5oMlh9Bi6FGHpj43o0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
