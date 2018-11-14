@@ -44,9 +44,11 @@ namespace JibresBooster1.lib.PcPos
 
             if(!INIT)
             {
+                BUSY = false;
+
                 // create new instance
                 myKiccc = new SerialIngenico();
-                
+
                 // define received function to get async result
                 myKiccc.ResponseReceived += async (s, ev) =>
                 {
@@ -338,12 +340,14 @@ namespace JibresBooster1.lib.PcPos
             {
                 if (state() == "InitializeRequired")
                 {
+                    BUSY = false;
                     return false;
                 }
 
                 // reset old connection before create new one
                 myKiccc.TerminateService();
                 Thread.Sleep(500);
+                BUSY = false;
                 return true;
             }
             catch (Exception ex)
