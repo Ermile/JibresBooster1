@@ -315,6 +315,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(state() == "InitializeRequired")
                 {
+                    BUSY = false;
                     return false;
                 }
 
@@ -402,6 +403,8 @@ namespace JibresBooster1.lib.PcPos
             log.save("BUSY " + BUSY);
             try
             {
+                Task<int> runTask = autoCancelOpr();
+
                 if (string.IsNullOrEmpty(info1))
                 {
                     var res = myKiccc.BeginSale(Amount);
@@ -423,10 +426,23 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
+                BUSY = false;
                 log.save(string.Format("Exception on send async sale : {0}\r\nInner Exception : {1}", ex.Message,
                     ex.InnerException != null ? ex.InnerException.Message : string.Empty));
             }
             return false;
+        }
+
+
+        public async Task<int> autoCancelOpr()
+        {
+            await Task.Delay(30000);
+            if(BUSY)
+            {
+                log.save("Hey, What are you doing! Auto Cancel Operation.");
+                reset();
+            }
+            return 1;
         }
 
     }
