@@ -16,23 +16,31 @@ namespace JibresBooster1.lib
         static HttpListener myListener = new HttpListener();
         public static void runListener()
         {
-            log.save("Starting server...");
+            try
+            {
+                log.save("Starting server...");
 
-            // add prefix
-            myListener.Prefixes.Add(JibresLocalServer);
-            myListener.Prefixes.Add("http://127.0.0.1:9759/jibres/");
-            myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-            // start server (Run application as Administrator!)
-            myListener.Start();
+                // add prefix
+                myListener.Prefixes.Add(JibresLocalServer);
+                myListener.Prefixes.Add("http://127.0.0.1:9759/jibres/");
+                myListener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
+                // start server (Run application as Administrator!)
+                myListener.Start();
 
-            // save log
-            log.save("Server started.");
-            Console.WriteLine("Server started.");
-            notif.info("سلام", "جیبرس بوستر آماده به‌کار است");
+                // save log
+                log.save("Server started.");
+                Console.WriteLine("Server started.");
+                notif.info("سلام", "جیبرس بوستر آماده به‌کار است");
 
-            // start the response thread
-            Thread _responseThread = new Thread(ResponseThread);
-            _responseThread.Start();
+                // start the response thread
+                Thread _responseThread = new Thread(ResponseThread);
+                _responseThread.Start();
+            }
+            catch (Exception e)
+            {
+                notif.error("خطا در راه‌اندازی", "امکان راه‌اندازی سرور داخلی وجود ندارد");
+                log.save("Error on running program! " + e.Message);
+            }
         }
 
 
