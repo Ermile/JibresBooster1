@@ -24,6 +24,7 @@ namespace JibresBooster1.lib.PcPos
         private string TerminalId;
         private string cmbCom;
         private string Amount;
+        private string lastRequestId;
         private string info1;
         private string info2;
         private string info3;
@@ -409,7 +410,7 @@ namespace JibresBooster1.lib.PcPos
             log.save("BUSY " + BUSY);
             try
             {
-                Task<int> runTask = autoCancelOpr();
+                Task<int> runTask = autoCancelOpr(Amount);
 
                 if (string.IsNullOrEmpty(info1))
                 {
@@ -440,14 +441,21 @@ namespace JibresBooster1.lib.PcPos
         }
 
 
-        public async Task<int> autoCancelOpr()
+        public async Task<int> autoCancelOpr(string _amount)
         {
+            var rnd = new Random(DateTime.Now.Millisecond);
+            string thisRequestId = _amount + "-" + rnd.Next(100000, 999999).ToString();
+            lastRequestId = thisRequestId;
+
             await Task.Delay(30000);
             if(BUSY)
             {
-                notif.warn("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
-                log.save("Hey, What are you doing! Auto Cancel Operation.");
-                reset();
+                if(lastRequestId == thisRequestId)
+                {
+                    notif.warn("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
+                    log.save("Hey, What are you doing! Auto Cancel Operation.");
+                    reset();
+                }
             }
             return 1;
         }
