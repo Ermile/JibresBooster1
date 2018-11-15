@@ -318,9 +318,9 @@ namespace JibresBooster1.lib.PcPos
         {
             try
             {
-                if(state() == "InitializeRequired")
+                BUSY = false;
+                if (state() == "InitializeRequired")
                 {
-                    BUSY = false;
                     return false;
                 }
 
