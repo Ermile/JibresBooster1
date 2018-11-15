@@ -106,6 +106,7 @@ namespace JibresBooster1
         }
         private void forceCloseApp()
         {
+            notif.say("خداحافظ", "جیبرس بوستر بسته شد");
             // Shutdown the application.
             System.Windows.Application.Current.Shutdown();
             // OR You can Also go for below logic
