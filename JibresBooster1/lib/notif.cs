@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JibresBooster1.translation;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -87,5 +88,18 @@ namespace JibresBooster1.lib
 
             return result;
         }
+
+
+
+        public static void appStart()
+        {
+            say(T.get("Hi"), T.get("MsgAppStart"));
+        }
+
+        public static void appErrorServer()
+        {
+            error(T.get("ErrorInit"), T.get("MsgAppErrorServer"));
+        }
+
     }
 }

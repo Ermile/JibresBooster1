@@ -70,6 +70,15 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to خداحافظ.
+        /// </summary>
+        internal static string Bye {
+            get {
+                return ResourceManager.GetString("Bye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ارمایل.
         /// </summary>
         internal static string Ermile {
@@ -79,11 +88,38 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to خطا.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا در راه‌اندازی.
+        /// </summary>
+        internal static string ErrorInit {
+            get {
+                return ResourceManager.GetString("ErrorInit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خروج.
         /// </summary>
         internal static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سلام.
+        /// </summary>
+        internal static string Hi {
+            get {
+                return ResourceManager.GetString("Hi", resourceCulture);
             }
         }
         
@@ -124,11 +160,11 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خطا.
+        ///   Looks up a localized string similar to امکان راه‌اندازی سرور داخلی وجود ندارد.
         /// </summary>
-        internal static string MsgAppErrorTitle {
+        internal static string MsgAppErrorServer {
             get {
-                return ResourceManager.GetString("MsgAppErrorTitle", resourceCulture);
+                return ResourceManager.GetString("MsgAppErrorServer", resourceCulture);
             }
         }
         
@@ -142,29 +178,11 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to خداحافظ.
-        /// </summary>
-        internal static string MsgAppExitTitle {
-            get {
-                return ResourceManager.GetString("MsgAppExitTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to جیبرس بوستر آماده به‌کار است.
         /// </summary>
         internal static string MsgAppStart {
             get {
                 return ResourceManager.GetString("MsgAppStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to سلام.
-        /// </summary>
-        internal static string MsgAppStartTitle {
-            get {
-                return ResourceManager.GetString("MsgAppStartTitle", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace JibresBooster1.translation {
         internal static string Request {
             get {
                 return ResourceManager.GetString("Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to توجه.
+        /// </summary>
+        internal static string Warn {
+            get {
+                return ResourceManager.GetString("Warn", resourceCulture);
             }
         }
         

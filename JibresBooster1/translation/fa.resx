@@ -120,11 +120,23 @@
   <data name="About" xml:space="preserve">
     <value>درباره</value>
   </data>
+  <data name="Bye" xml:space="preserve">
+    <value>خداحافظ</value>
+  </data>
   <data name="Ermile" xml:space="preserve">
     <value>ارمایل</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>خطا</value>
+  </data>
+  <data name="ErrorInit" xml:space="preserve">
+    <value>خطا در راه‌اندازی</value>
+  </data>
   <data name="Exit" xml:space="preserve">
     <value>خروج</value>
+  </data>
+  <data name="Hi" xml:space="preserve">
+    <value>سلام</value>
   </data>
   <data name="Jibres" xml:space="preserve">
     <value>جیبرس</value>
@@ -138,26 +150,23 @@
   <data name="MsgAppError" xml:space="preserve">
     <value>خطا در اجرای جیبرس بوستر</value>
   </data>
-  <data name="MsgAppErrorTitle" xml:space="preserve">
-    <value>خطا</value>
+  <data name="MsgAppErrorServer" xml:space="preserve">
+    <value>امکان راه‌اندازی سرور داخلی وجود ندارد</value>
   </data>
   <data name="MsgAppExit" xml:space="preserve">
     <value>جیبرس بوستر بسته شد</value>
   </data>
-  <data name="MsgAppExitTitle" xml:space="preserve">
-    <value>خداحافظ</value>
-  </data>
   <data name="MsgAppStart" xml:space="preserve">
     <value>جیبرس بوستر آماده به‌کار است</value>
-  </data>
-  <data name="MsgAppStartTitle" xml:space="preserve">
-    <value>سلام</value>
   </data>
   <data name="OpenWindow" xml:space="preserve">
     <value>باز کردن برنامه</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>درخواست</value>
+  </data>
+  <data name="Warn" xml:space="preserve">
+    <value>توجه</value>
   </data>
   <data name="Website" xml:space="preserve">
     <value>وب‌سایت</value>

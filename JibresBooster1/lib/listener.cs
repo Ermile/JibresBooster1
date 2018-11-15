@@ -30,8 +30,7 @@ namespace JibresBooster1.lib
 
                 // save log
                 log.save("Server started.");
-                Console.WriteLine("Server started.");
-                notif.say(T.get("MsgAppStartTitle"), T.get("MsgAppStart"));
+                notif.appStart();
 
                 // start the response thread
                 Thread _responseThread = new Thread(ResponseThread);
@@ -39,7 +38,7 @@ namespace JibresBooster1.lib
             }
             catch (Exception e)
             {
-                notif.error("خطا در راه‌اندازی", "امکان راه‌اندازی سرور داخلی وجود ندارد");
+                notif.appErrorServer();
                 log.save("Error on running program! " + e.Message);
             }
         }
