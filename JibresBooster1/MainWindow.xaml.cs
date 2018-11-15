@@ -109,10 +109,10 @@ namespace JibresBooster1
 
         private void openAboutBox(object Sender, EventArgs e)
         {
-            Form oldAboutFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
-            if (oldAboutFrm != null)
+            Form oldFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
+            if (oldFrm != null)
             {
-                oldAboutFrm.Close();
+                oldFrm.Close();
             }
 
             var myAboutBox1 = new Forms.AboutBox1();
@@ -143,6 +143,12 @@ namespace JibresBooster1
 
         private void BtnIranKishTest_Click(object sender, RoutedEventArgs e)
         {
+            //Form oldFrm = System.Windows.Forms.Application.OpenForms["Kiccc"];
+            //if (oldFrm != null)
+            //{
+            //    oldFrm.Close();
+            //}
+
             var kicccWindow = new Forms.Generator.Kiccc();
             kicccWindow.Show();
         }
