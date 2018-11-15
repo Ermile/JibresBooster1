@@ -109,15 +109,13 @@ namespace JibresBooster1
 
         private void openAboutBox(object Sender, EventArgs e)
         {
-            //Form oldAboutFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
-
-            //if (oldAboutFrm != null)
-            //{
-            //    oldAboutFrm.Close();
-            //}
+            Form oldAboutFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
+            if (oldAboutFrm != null)
+            {
+                oldAboutFrm.Close();
+            }
 
             var myAboutBox1 = new Forms.AboutBox1();
-            
             if (myAboutBox1.Visible)
             {
                 myAboutBox1.Activate();
