@@ -58,6 +58,7 @@ namespace JibresBooster1.lib.PcPos
                     // get response and send it to server to save
 
                     log.save("Pos response is" + paymentResultString);
+                    notif.info("دریافت پاسخ", "پاسخ از کارت‌خوان دریافت شد");
 
                     BUSY = false;
                     log.save("BUSY " + BUSY);
@@ -260,6 +261,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(string.IsNullOrEmpty(cmbCom))
                 {
+                    notif.error("خطا در اتصال", "کارت‌خوان پی‌سی‌پوز شناسایی نشد!");
                     log.save("*** PcPos is not detected ***");
                     return false;
                 }
@@ -268,12 +270,14 @@ namespace JibresBooster1.lib.PcPos
                     terminate();
                     // Initiate Service
                     myKiccc.InitiateService(SerialNo, AcceptorId, TerminalId, cmbCom, 115200, 8, SerialPortStopBit.One, SerialPortParity.None, timeout);
+                    // notif.info("اتصال موفق", "اتصال به کارتخوان ایران‌کیش با موفقیت انجام شد:)");
                     log.save("Connected to Kiccc pos successfully:)");
                     Console.Beep(10000, 100);
                     return true;
                 }
                 else
                 {
+                    notif.error("خطا در اتصال", "پورت " + cmbCom + " فعال نیست");
                     log.save("This port is not active :|");
                     return false;
                 }
@@ -281,6 +285,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
+                notif.error("خطا در اتصال", "مشکلی در اتصال رخ داده است");
                 log.save("Failed to connect pos: " + ex.Message);
                 Console.WriteLine("Failed to connect pos: " + ex.Message);
                 System.Media.SystemSounds.Exclamation.Play();
@@ -409,7 +414,7 @@ namespace JibresBooster1.lib.PcPos
                 {
                     var res = myKiccc.BeginSale(Amount);
                     log.save("Async sale result " + res);
-                    
+                    notif.info("ارسال درخواست", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید");
                     return true;
                 }
                 else
@@ -420,7 +425,7 @@ namespace JibresBooster1.lib.PcPos
                     log.save("\t Info4 \t" + info4);
                     var res = myKiccc.BeginSaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
                     log.save("Async sale result with info " + res);
-
+                    notif.info("ارسال درخواست به کارت‌خوان", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید");
                     return true;
                 }
             }
@@ -439,6 +444,7 @@ namespace JibresBooster1.lib.PcPos
             await Task.Delay(30000);
             if(BUSY)
             {
+                notif.info("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
                 log.save("Hey, What are you doing! Auto Cancel Operation.");
                 reset();
             }
