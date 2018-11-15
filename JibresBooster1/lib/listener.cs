@@ -28,6 +28,7 @@ namespace JibresBooster1.lib
             // save log
             log.save("Server started.");
             Console.WriteLine("Server started.");
+            notif.info("سلام", "جیبرس بوستر آماده به‌کار است");
 
             // start the response thread
             Thread _responseThread = new Thread(ResponseThread);

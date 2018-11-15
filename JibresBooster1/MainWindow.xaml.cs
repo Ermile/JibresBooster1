@@ -36,12 +36,10 @@ namespace JibresBooster1
             try
             {
                 InitializeComponent();
-                log.save("Application started.");
-                listener.runListener();
 
+                // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
                 myMenu = new System.Windows.Forms.ContextMenu();
                 System.Windows.Forms.MenuItem menuItem1 = new System.Windows.Forms.MenuItem();
-                
 
                 // Initialize contextMenu1
                 myMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { menuItem1 });
@@ -69,7 +67,10 @@ namespace JibresBooster1
 
                 notif.init(myNotifObj);
                 // say ready message
-                notif.info("سلام", "جیبرس بوستر آماده به‌کار است");
+
+
+                log.save("Application started.");
+                listener.runListener();
             }
             catch (Exception e)
             {
