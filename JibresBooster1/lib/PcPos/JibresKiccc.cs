@@ -261,7 +261,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(string.IsNullOrEmpty(cmbCom))
                 {
-                    notif.error("خطا در اتصال", "کارت‌خوان پی‌سی‌پوز شناسایی نشد!");
+                    notif.error("خطا در اتصال", "کارت‌خوان پی‌سی‌پوز ایران کیش شناسایی نشد!");
                     log.save("*** PcPos is not detected ***");
                     return false;
                 }
@@ -414,7 +414,7 @@ namespace JibresBooster1.lib.PcPos
                 {
                     var res = myKiccc.BeginSale(Amount);
                     log.save("Async sale result " + res);
-                    notif.info("ارسال درخواست", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید");
+                    notif.info("ارسال درخواست", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان");
                     return true;
                 }
                 else
@@ -425,7 +425,7 @@ namespace JibresBooster1.lib.PcPos
                     log.save("\t Info4 \t" + info4);
                     var res = myKiccc.BeginSaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
                     log.save("Async sale result with info " + res);
-                    notif.info("ارسال درخواست به کارت‌خوان", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید");
+                    notif.info("ارسال درخواست به کارت‌خوان", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان");
                     return true;
                 }
             }
@@ -444,7 +444,7 @@ namespace JibresBooster1.lib.PcPos
             await Task.Delay(30000);
             if(BUSY)
             {
-                notif.info("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
+                notif.warn("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
                 log.save("Hey, What are you doing! Auto Cancel Operation.");
                 reset();
             }
