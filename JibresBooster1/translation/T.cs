@@ -19,7 +19,6 @@ namespace JibresBooster1.translation
             currnetLang = "fa";
             ResourceManager myTranslation;
             myTranslation = new ResourceManager("JibresBooster1.translation." + currnetLang, Assembly.GetExecutingAssembly());
-
             string translatedTxt = myTranslation.GetString(_str);
 
             return translatedTxt;
