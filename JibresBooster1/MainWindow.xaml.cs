@@ -23,21 +23,28 @@ namespace JibresBooster1
                 InitializeComponent();
 
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
-                myMenu = new System.Windows.Forms.ContextMenu();
-                System.Windows.Forms.MenuItem menuItem1 = new System.Windows.Forms.MenuItem();
+                myMenu = new ContextMenu();
 
-                // Initialize contextMenu1
-                myMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { menuItem1 });
-                menuItem1.Index = 0;
-                menuItem1.Text = "E&xit";
-                menuItem1.Click += new EventHandler(myMenuClose);
+                // Initialize itemJibres
+                MenuItem itemJibres = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { itemJibres });
+                itemJibres.Index = 0;
+                itemJibres.Text = "Web&site";
+                itemJibres.Click += new EventHandler(openJibresWebsite);
 
-                // Initialize menuItem2
-                System.Windows.Forms.MenuItem menuItem2 = new System.Windows.Forms.MenuItem();
-                myMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { menuItem2 });
-                menuItem2.Index = 0;
-                menuItem2.Text = "Web&site";
-                menuItem2.Click += new EventHandler(openJibresWebsite);
+                // Initialize itemAbout
+                MenuItem itemAbout = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { itemAbout });
+                itemAbout.Index = 0;
+                itemAbout.Text = "A&bout";
+                itemAbout.Click += new EventHandler(openAboutBox);
+
+                // Initialize itemExit
+                MenuItem itemExit = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { itemExit });
+                itemExit.Index = 0;
+                itemExit.Text = "E&xit";
+                itemExit.Click += new EventHandler(myMenuClose);
 
                 // Create the NotifyIcon.
                 myNotifObj = new NotifyIcon();
@@ -99,6 +106,28 @@ namespace JibresBooster1
             Console.Beep();
             System.Diagnostics.Process.Start("https://jibres.com");
         }
+
+        private void openAboutBox(object Sender, EventArgs e)
+        {
+            //Form oldAboutFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
+
+            //if (oldAboutFrm != null)
+            //{
+            //    oldAboutFrm.Close();
+            //}
+
+            var myAboutBox1 = new Forms.AboutBox1();
+            
+            if (myAboutBox1.Visible)
+            {
+                myAboutBox1.Activate();
+            }
+            else
+            {
+                myAboutBox1.Show();
+            }
+        }
+
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {

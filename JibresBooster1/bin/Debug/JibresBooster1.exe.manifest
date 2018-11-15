@@ -4,7 +4,7 @@
   <description asmv2:iconFile="images\favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="JibresBooster1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="JibresBooster1" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="JibresBooster1.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="381376">
-      <assemblyIdentity name="JibresBooster1" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JibresBooster1.exe" size="436672">
+      <assemblyIdentity name="JibresBooster1" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6GD0N5t2eKjEW8LwZqf9g/mL0cBzwLDTMiF1xOXTaDc=</dsig:DigestValue>
+        <dsig:DigestValue>n10wSNgA1poOpfQO9uwn+P0a71GWg+ThUwUqwMwimms=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
