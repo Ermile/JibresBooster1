@@ -1,25 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Threading;
-using System.Web.Script.Serialization;
-using System.IO.Ports;
-using System.Management;
-using JibresBooster1.lib;
-using System.Reflection;
 using System.Windows.Forms;
-
+using System.Reflection;
+using JibresBooster1.lib;
 
 namespace JibresBooster1
 {
@@ -79,19 +64,26 @@ namespace JibresBooster1
         }
 
 
-        private void myMenuDblClick(object Sender, EventArgs e)
+        private void myMenuDblClick(object Sender, EventArgs _e)
         {
-            if (WindowState == WindowState.Minimized)
+            try
             {
-                WindowState = WindowState.Normal;
+                if (WindowState == WindowState.Minimized)
+                {
+                    WindowState = WindowState.Normal;
+                }
+                if (IsVisible)
+                {
+                    Activate();
+                }
+                else
+                {
+                    Show();
+                }
             }
-            if (IsVisible)
+            catch (Exception e)
             {
-                Activate();
-            }
-            else
-            {
-                Show();
+                log.save("Error on reopen program! " + e.Message);
             }
         }
 
@@ -107,6 +99,13 @@ namespace JibresBooster1
             System.Diagnostics.Process.Start("https://jibres.com");
         }
 
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            // Shutdown the application.
+            System.Windows.Application.Current.Shutdown();
+            // OR You can Also go for below logic
+            // Environment.Exit(0);
+        }
 
 
         private void BtnIranKishTest_Click(object sender, RoutedEventArgs e)
