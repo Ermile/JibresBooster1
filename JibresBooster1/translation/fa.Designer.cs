@@ -115,6 +115,15 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to خروج از جیبرس بوستر.
+        /// </summary>
+        internal static string ExitApp {
+            get {
+                return ResourceManager.GetString("ExitApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to سلام.
         /// </summary>
         internal static string Hi {
@@ -187,11 +196,11 @@ namespace JibresBooster1.translation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to باز کردن برنامه.
+        ///   Looks up a localized string similar to باز کردن جیبرس بوستر.
         /// </summary>
-        internal static string OpenWindow {
+        internal static string OpenApp {
             get {
-                return ResourceManager.GetString("OpenWindow", resourceCulture);
+                return ResourceManager.GetString("OpenApp", resourceCulture);
             }
         }
         

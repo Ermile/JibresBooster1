@@ -135,6 +135,9 @@
   <data name="Exit" xml:space="preserve">
     <value>خروج</value>
   </data>
+  <data name="ExitApp" xml:space="preserve">
+    <value>خروج از جیبرس بوستر</value>
+  </data>
   <data name="Hi" xml:space="preserve">
     <value>سلام</value>
   </data>
@@ -159,8 +162,8 @@
   <data name="MsgAppStart" xml:space="preserve">
     <value>جیبرس بوستر آماده به‌کار است</value>
   </data>
-  <data name="OpenWindow" xml:space="preserve">
-    <value>باز کردن برنامه</value>
+  <data name="OpenApp" xml:space="preserve">
+    <value>باز کردن جیبرس بوستر</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>درخواست</value>

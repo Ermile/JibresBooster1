@@ -96,6 +96,11 @@ namespace JibresBooster1.lib
             say(T.get("Hi"), T.get("MsgAppStart"));
         }
 
+        public static void appExit()
+        {
+            say(T.get("Bye"), T.get("MsgAppExit"));
+        }
+
         public static void appErrorServer()
         {
             error(T.get("ErrorInit"), T.get("MsgAppErrorServer"));

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Forms;
 using System.Reflection;
 using JibresBooster1.lib;
+using JibresBooster1.translation;
 
 namespace JibresBooster1
 {
@@ -29,7 +30,7 @@ namespace JibresBooster1
                 MenuItem itemOpenWindow = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemOpenWindow });
                 itemOpenWindow.Index = 0;
-                itemOpenWindow.Text = "Open &Window";
+                itemOpenWindow.Text = T.get("OpenApp");
                 itemOpenWindow.Click += new EventHandler(openMainWindow);
 
                 // seperator
@@ -42,14 +43,14 @@ namespace JibresBooster1
                 MenuItem itemJibres = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemJibres });
                 itemJibres.Index = 2;
-                itemJibres.Text = "Web&site";
+                itemJibres.Text = T.get("Website");
                 itemJibres.Click += new EventHandler(openJibresWebsite);
 
                 // Initialize itemAbout
                 MenuItem itemAbout = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemAbout });
                 itemAbout.Index = 3;
-                itemAbout.Text = "A&bout";
+                itemAbout.Text = T.get("About");
                 itemAbout.Click += new EventHandler(openAboutBox);
 
                 // seperator
@@ -62,7 +63,7 @@ namespace JibresBooster1
                 MenuItem itemExit = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemExit });
                 itemExit.Index = 5;
-                itemExit.Text = "E&xit Jibres Booster";
+                itemExit.Text = T.get("ExitApp");
                 itemExit.Click += new EventHandler(myMenuClose);
 
 
@@ -157,7 +158,7 @@ namespace JibresBooster1
 
         private void forceCloseApp()
         {
-            notif.say("خداحافظ", "جیبرس بوستر بسته شد");
+            notif.appExit();
             // Shutdown the application.
             System.Windows.Application.Current.Shutdown();
             // OR You can Also go for below logic
