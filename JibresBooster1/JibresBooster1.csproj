@@ -137,12 +137,12 @@
     <Compile Include="lib\listener.cs" />
     <Compile Include="lib\log.cs" />
     <Compile Include="lib\manage.cs" />
+    <Compile Include="lib\notif.cs" />
     <Compile Include="lib\PcPos\Asnapardakht.cs" />
     <Compile Include="lib\ping.cs" />
     <Compile Include="lib\port.cs" />
     <Compile Include="lib\reader.cs" />
     <Compile Include="lib\save.cs" />
-    <Compile Include="lib\tryMenu.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

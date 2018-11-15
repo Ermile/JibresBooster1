@@ -28,7 +28,7 @@ namespace JibresBooster1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private NotifyIcon notif;
+        private NotifyIcon myNotifObj;
         private System.Windows.Forms.ContextMenu myMenu;
 
         public MainWindow()
@@ -57,18 +57,19 @@ namespace JibresBooster1
                 menuItem2.Click += new EventHandler(openJibresWebsite);
 
                 // Create the NotifyIcon.
-                notif = new NotifyIcon();
-                notif.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                notif.Text = Title;
-                notif.Visible = true;
+                myNotifObj = new NotifyIcon();
+                myNotifObj.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+                myNotifObj.Text = Title;
+                myNotifObj.Visible = true;
                 // Handle the DoubleClick event to activate the form.
-                notif.DoubleClick += new EventHandler(myMenuDblClick);
+                myNotifObj.DoubleClick += new EventHandler(myMenuDblClick);
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
-                notif.ContextMenu = myMenu;
+                myNotifObj.ContextMenu = myMenu;
 
-
-                notif.ShowBalloonTip(1000, "سلام", "جیبرس بوستر آماده به‌کار است", ToolTipIcon.Info);
+                notif.init(myNotifObj);
+                // say ready message
+                notif.info("سلام", "جیبرس بوستر آماده به‌کار است");
             }
             catch (Exception e)
             {
