@@ -90,6 +90,7 @@ namespace JibresBooster1
         private void myMenuClose(object Sender, EventArgs e)
         {
             // Close the form, which closes the application.
+            forceCloseApp();
             Close();
         }
 
@@ -101,10 +102,14 @@ namespace JibresBooster1
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
+            forceCloseApp();
+        }
+        private void forceCloseApp()
+        {
             // Shutdown the application.
             System.Windows.Application.Current.Shutdown();
             // OR You can Also go for below logic
-            // Environment.Exit(0);
+            Environment.Exit(0);
         }
 
 
