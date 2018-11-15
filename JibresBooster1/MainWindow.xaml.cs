@@ -52,7 +52,7 @@ namespace JibresBooster1
                 myNotifObj.Text = Title;
                 myNotifObj.Visible = true;
                 // Handle the DoubleClick event to activate the form.
-                myNotifObj.DoubleClick += new EventHandler(myMenuDblClick);
+                myNotifObj.DoubleClick += new EventHandler(openMainWindow);
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
                 myNotifObj.ContextMenu = myMenu;
@@ -70,15 +70,22 @@ namespace JibresBooster1
             }
         }
 
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
 
-        private void myMenuDblClick(object Sender, EventArgs _e)
+        private void openMainWindow(object Sender, EventArgs _e)
         {
             try
             {
                 if (WindowState == WindowState.Minimized)
                 {
                     WindowState = WindowState.Normal;
+                    return;
                 }
+
                 if (IsVisible)
                 {
                     Activate();
@@ -93,6 +100,7 @@ namespace JibresBooster1
                 log.save("Error on reopen program! " + e.Message);
             }
         }
+
 
         private void myMenuClose(object Sender, EventArgs e)
         {
@@ -127,10 +135,6 @@ namespace JibresBooster1
         }
 
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-        {
-            forceCloseApp();
-        }
         private void forceCloseApp()
         {
             notif.say("خداحافظ", "جیبرس بوستر بسته شد");
