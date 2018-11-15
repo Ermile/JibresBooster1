@@ -125,6 +125,12 @@
     <Compile Include="Forms\Generator\Kiccc.xaml.cs">
       <DependentUpon>Kiccc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="translation\fa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fa.resx</DependentUpon>
+    </Compile>
+    <Compile Include="translation\T.cs" />
     <Page Include="Forms\Generator\Kiccc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +182,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="translation\fa.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fa.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="JibresBooster1_1_TemporaryKey.pfx" />
     <None Include="JibresBooster1_TemporaryKey.pfx" />

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JibresBooster1.trans {
+namespace JibresBooster1.translation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace JibresBooster1.trans {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JibresBooster1.trans.fa", typeof(fa).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JibresBooster1.translation.fa", typeof(fa).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -162,9 +162,9 @@ namespace JibresBooster1.trans {
         /// <summary>
         ///   Looks up a localized string similar to سلام.
         /// </summary>
-        internal static string MsgAppStartTittle {
+        internal static string MsgAppStartTitle {
             get {
-                return ResourceManager.GetString("MsgAppStartTittle", resourceCulture);
+                return ResourceManager.GetString("MsgAppStartTitle", resourceCulture);
             }
         }
         

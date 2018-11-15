@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Net;
 using System.IO;
+using JibresBooster1.translation;
 
 namespace JibresBooster1.lib
 {
@@ -30,7 +31,7 @@ namespace JibresBooster1.lib
                 // save log
                 log.save("Server started.");
                 Console.WriteLine("Server started.");
-                notif.say("سلام", "جیبرس بوستر آماده به‌کار است");
+                notif.say(T.get("MsgAppStartTitle"), T.get("MsgAppStart"));
 
                 // start the response thread
                 Thread _responseThread = new Thread(ResponseThread);

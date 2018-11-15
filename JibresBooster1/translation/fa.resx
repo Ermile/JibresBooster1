@@ -150,7 +150,7 @@
   <data name="MsgAppStart" xml:space="preserve">
     <value>جیبرس بوستر آماده به‌کار است</value>
   </data>
-  <data name="MsgAppStartTittle" xml:space="preserve">
+  <data name="MsgAppStartTitle" xml:space="preserve">
     <value>سلام</value>
   </data>
   <data name="OpenWindow" xml:space="preserve">
