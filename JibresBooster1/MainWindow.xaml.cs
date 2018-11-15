@@ -25,26 +25,46 @@ namespace JibresBooster1
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
                 myMenu = new ContextMenu();
 
+                // Initialize itemOpenWindow
+                MenuItem itemOpenWindow = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { itemOpenWindow });
+                itemOpenWindow.Index = 0;
+                itemOpenWindow.Text = "Open &Window";
+                itemOpenWindow.Click += new EventHandler(openMainWindow);
+
+                // seperator
+                MenuItem seperator = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { seperator });
+                seperator.Index = 1;
+                seperator.Text = "-";
+
                 // Initialize itemJibres
                 MenuItem itemJibres = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemJibres });
-                itemJibres.Index = 0;
+                itemJibres.Index = 2;
                 itemJibres.Text = "Web&site";
                 itemJibres.Click += new EventHandler(openJibresWebsite);
 
                 // Initialize itemAbout
                 MenuItem itemAbout = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemAbout });
-                itemAbout.Index = 0;
+                itemAbout.Index = 3;
                 itemAbout.Text = "A&bout";
                 itemAbout.Click += new EventHandler(openAboutBox);
+
+                // seperator
+                MenuItem seperatorExit = new MenuItem();
+                myMenu.MenuItems.AddRange(new MenuItem[] { seperatorExit });
+                seperatorExit.Index = 4;
+                seperatorExit.Text = "-";
 
                 // Initialize itemExit
                 MenuItem itemExit = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemExit });
-                itemExit.Index = 0;
-                itemExit.Text = "E&xit";
+                itemExit.Index = 5;
+                itemExit.Text = "E&xit Jibres Booster";
                 itemExit.Click += new EventHandler(myMenuClose);
+
 
                 // Create the NotifyIcon.
                 myNotifObj = new NotifyIcon();
