@@ -37,6 +37,7 @@ namespace JibresBooster1.lib.PcPos
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
+                notif.warn("درخواست همزمان", "لطفا ابتدا تراکنش موجود را لغو کنید سپس دستور جدید بفرستید!");
                 log.save("Please cancel old request before send new one! BUSY " + BUSY);
                 Console.WriteLine("Please cancel old request before send new one! BUSY " + BUSY);
                 return;
