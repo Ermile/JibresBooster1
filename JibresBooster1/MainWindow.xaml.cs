@@ -17,6 +17,8 @@ using System.Web.Script.Serialization;
 using System.IO.Ports;
 using System.Management;
 using JibresBooster1.lib;
+using System.Reflection;
+using System.Windows.Forms;
 
 
 namespace JibresBooster1
@@ -26,6 +28,8 @@ namespace JibresBooster1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private NotifyIcon notif;
+        private System.Windows.Forms.ContextMenu myMenu;
 
         public MainWindow()
         {
@@ -33,15 +37,75 @@ namespace JibresBooster1
             {
                 InitializeComponent();
                 log.save("Application started.");
-                lib.listener.runListener();
+                listener.runListener();
+
+                myMenu = new System.Windows.Forms.ContextMenu();
+                System.Windows.Forms.MenuItem menuItem1 = new System.Windows.Forms.MenuItem();
+                
+
+                // Initialize contextMenu1
+                myMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { menuItem1 });
+                menuItem1.Index = 0;
+                menuItem1.Text = "E&xit";
+                menuItem1.Click += new EventHandler(myMenuClose);
+
+                // Initialize menuItem2
+                System.Windows.Forms.MenuItem menuItem2 = new System.Windows.Forms.MenuItem();
+                myMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] { menuItem2 });
+                menuItem2.Index = 0;
+                menuItem2.Text = "Web&site";
+                menuItem2.Click += new EventHandler(openJibresWebsite);
+
+                // Create the NotifyIcon.
+                notif = new NotifyIcon();
+                notif.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+                notif.Text = Title;
+                notif.Visible = true;
+                // Handle the DoubleClick event to activate the form.
+                notif.DoubleClick += new EventHandler(myMenuDblClick);
+                // The ContextMenu property sets the menu that will
+                // appear when the systray icon is right clicked.
+                notif.ContextMenu = myMenu;
+
+
+                notif.ShowBalloonTip(1000, "سلام", "جیبرس بوستر آماده به‌کار است", ToolTipIcon.Info);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log.save("Error on running program! " + e.Message);
             }
-
-            
         }
+
+
+        private void myMenuDblClick(object Sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            if (IsVisible)
+            {
+                Activate();
+            }
+            else
+            {
+                Show();
+            }
+        }
+
+        private void myMenuClose(object Sender, EventArgs e)
+        {
+            // Close the form, which closes the application.
+            Close();
+        }
+
+        private void openJibresWebsite(object Sender, EventArgs e)
+        {
+            Console.Beep();
+            System.Diagnostics.Process.Start("https://jibres.com");
+        }
+
+
 
         private void BtnIranKishTest_Click(object sender, RoutedEventArgs e)
         {

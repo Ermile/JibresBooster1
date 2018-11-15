@@ -142,6 +142,7 @@
     <Compile Include="lib\port.cs" />
     <Compile Include="lib\reader.cs" />
     <Compile Include="lib\save.cs" />
+    <Compile Include="lib\tryMenu.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
