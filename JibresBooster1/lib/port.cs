@@ -57,7 +57,7 @@ namespace JibresBooster1.lib
                 }
             }
             log.save("Kiccc Port\t\t\t" + detectedPort);
-            
+
             return detectedPort;
         }
 

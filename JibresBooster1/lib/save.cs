@@ -13,7 +13,7 @@ namespace JibresBooster1.lib
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<bool> post(Dictionary<string, string> _vals)
-        {            
+        {
             try
             {
                 var content = new FormUrlEncodedContent(_vals);
@@ -27,7 +27,7 @@ namespace JibresBooster1.lib
             catch
             {
                 return false;
-            }            
+            }
         }
 
 

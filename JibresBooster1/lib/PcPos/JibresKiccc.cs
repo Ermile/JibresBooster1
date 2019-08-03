@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,7 +117,7 @@ namespace JibresBooster1.lib.PcPos
                         log.save("Error on send sale transaction!");
                     }
                 }
-            }                
+            }
         }
 
 
@@ -196,7 +196,7 @@ namespace JibresBooster1.lib.PcPos
                 Console.Beep(100, 100);
             }
 
-            
+
             // cmbCom
             if (_args.ContainsKey("port"))
             {
@@ -328,7 +328,7 @@ namespace JibresBooster1.lib.PcPos
 
                 // reset old connection before create new one
                 myKiccc.ResetService();
-                
+
                 Thread.Sleep(1000);
                 return true;
             }

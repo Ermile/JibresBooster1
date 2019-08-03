@@ -92,7 +92,7 @@ namespace JibresBooster1.lib
             port = new SerialPort(myPort, 115200, Parity.None, 8, StopBits.One);
             port.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
-            
+
 
             if (port.IsOpen == false)
             {

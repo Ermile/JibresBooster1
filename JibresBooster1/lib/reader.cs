@@ -21,7 +21,7 @@ namespace JibresBooster1.lib
             Dictionary<string, string> xmlParser = new Dictionary<string, string>();
             // try to load it
             myDoc.LoadXml(_str);
-                        
+
 
             foreach (XmlNode node in myDoc.DocumentElement.ChildNodes)
             {
