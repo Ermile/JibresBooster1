@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kte72bXT5AI4cuJwYCVHoT5x47EQjHYKLOwvsD2f76A=</dsig:DigestValue>
+        <dsig:DigestValue>2wiiHj86EAqHeZ6MUDuvmC1O9qw8X7u67TesZnMVDlU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -87,13 +87,13 @@
       <dsig:DigestValue>VB1OahKjZo1VnVvyJdYGcTCG1fv7ayiz+fagUfVaV9U=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="JibresBooster1.exe.config" size="189">
+  <file name="JibresBooster1.exe.config" size="183">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rl5/qDc7Jz+tB+BIbOv9iMGPlRe6YJwrjmU09dnlPcs=</dsig:DigestValue>
+      <dsig:DigestValue>fqCFSMI71/18dcpyCsWg6MqUy1HQbNRev19BLku919c=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

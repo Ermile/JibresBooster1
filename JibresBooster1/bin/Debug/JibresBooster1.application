@@ -4,7 +4,7 @@
   <description asmv2:publisher="Ermile" co.v1:suiteName="JIbres" asmv2:product="JibresBooster" asmv2:supportUrl="https://jibres.com/support/" co.v1:errorReportUrl="https://jibres.com/support/" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="6456">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XdnxO35GrY7R/2TbrOjeA4sxz4sWH44vNfL7AWeAlZE=</dsig:DigestValue>
+        <dsig:DigestValue>ne3wKp20D6JjJFMBWmHvYs1epSWZaFwAB75AWk71/3k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
