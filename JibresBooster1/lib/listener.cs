@@ -57,14 +57,22 @@ namespace JibresBooster1.lib
 
 
                 // generate response and close connection
-                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Jibres local server - p9759</title></head>" +
-                    "<body><h1>Jibres</h1>Welcome to the <strong>Localhost server</strong> -- <em>port 9759!</em></body></html>");
+                var jsonResult = "{\"okay\":true, \"status\":200}";
+                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Jibres local server - p9759</title></head>" + "<body>" + jsonResult + "</body></html>");
                 try
                 {
                     // write bytes to the output stream
                     myResponse.OutputStream.Write(_responseArray, 0, _responseArray.Length);
                     // set the KeepAlive bool to false
                     myResponse.KeepAlive = false;
+                    // allow cross origin
+                    myResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+                    // allow post and get request
+                    myResponse.Headers.Add("Access-Control-Allow-Methods", "POST, GET");
+                    // disable cache in header
+                    myResponse.AddHeader("Cache-Control", "no-cache");
+                    // set header as json
+                    myResponse.ContentType = "application/json";
                     // set status
                     myResponse.StatusCode = 200;
                     // set status desc
