@@ -38,7 +38,7 @@ namespace JibresBooster1.lib.PcPos
             // if in BUSY mode do nothing and say cancel old request
             if (BUSY)
             {
-                notif.warn("درخواست همزمان", "لطفا ابتدا تراکنش موجود را لغو کنید سپس دستور جدید بفرستید!");
+                notif.warn("درخواست همزمان", "لطفا ابتدا تراکنش موجود را لغو کنید سپس دستور جدید بفرستید!", true);
                 log.save("Please cancel old request before send new one! BUSY " + BUSY);
                 Console.WriteLine("Please cancel old request before send new one! BUSY " + BUSY);
                 return;
@@ -60,7 +60,7 @@ namespace JibresBooster1.lib.PcPos
                     // get response and send it to server to save
 
                     log.save("Pos response is" + paymentResultString);
-                    notif.info("دریافت پاسخ", "پاسخ از کارت‌خوان دریافت شد");
+                    notif.info("دریافت پاسخ", "پاسخ از کارت‌خوان دریافت شد", true);
 
                     BUSY = false;
                     log.save("BUSY " + BUSY);
@@ -263,7 +263,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(string.IsNullOrEmpty(cmbCom))
                 {
-                    notif.error("خطا در اتصال", "کارت‌خوان پی‌سی‌پوز ایران کیش شناسایی نشد!");
+                    notif.error("خطا در اتصال", "کارت‌خوان پی‌سی‌پوز ایران کیش شناسایی نشد!", true);
                     log.save("*** PcPos is not detected ***");
                     return false;
                 }
@@ -279,7 +279,7 @@ namespace JibresBooster1.lib.PcPos
                 }
                 else
                 {
-                    notif.error("خطا در اتصال", "پورت " + cmbCom + " فعال نیست");
+                    notif.error("خطا در اتصال", "پورت " + cmbCom + " فعال نیست", true);
                     log.save("This port is not active :|");
                     return false;
                 }
@@ -287,7 +287,7 @@ namespace JibresBooster1.lib.PcPos
             }
             catch (Exception ex)
             {
-                notif.error("خطا در اتصال", "مشکلی در اتصال رخ داده است");
+                notif.error("خطا در اتصال", "مشکلی در اتصال رخ داده است", true);
                 log.save("Failed to connect pos: " + ex.Message);
                 Console.WriteLine("Failed to connect pos: " + ex.Message);
                 System.Media.SystemSounds.Exclamation.Play();
@@ -416,7 +416,7 @@ namespace JibresBooster1.lib.PcPos
                 {
                     var res = myKiccc.BeginSale(Amount);
                     log.save("Async sale result " + res);
-                    notif.info("ارسال درخواست", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان");
+                    notif.info("ارسال درخواست", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان", true);
                     return true;
                 }
                 else
@@ -427,7 +427,7 @@ namespace JibresBooster1.lib.PcPos
                     log.save("\t Info4 \t" + info4);
                     var res = myKiccc.BeginSaleWithExtraParamAndPrintableInfo(Amount, "1", info1, info2, info3, info4);
                     log.save("Async sale result with info " + res);
-                    notif.info("ارسال درخواست به کارت‌خوان", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان");
+                    notif.info("ارسال درخواست به کارت‌خوان", "لطفا روی کارت‌خوان ایران کیش کارت را بکشید" + "\n" + "مبلغ " + Amount + " تومان", true);
                     return true;
                 }
             }
@@ -452,7 +452,7 @@ namespace JibresBooster1.lib.PcPos
             {
                 if(lastRequestId == thisRequestId)
                 {
-                    notif.warn("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد");
+                    notif.warn("انصراف خودکار", "عملیات به‌صورت خودکار پس از ۳۰ ثانیه قطع شد", true);
                     log.save("Hey, What are you doing! Auto Cancel Operation.");
                     reset();
                 }
