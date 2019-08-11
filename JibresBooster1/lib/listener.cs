@@ -58,7 +58,7 @@ namespace JibresBooster1.lib
 
                 // generate response and close connection
                 var jsonResult = "{\"okay\":true, \"status\":200}";
-                byte[] _responseArray = Encoding.UTF8.GetBytes("<html><head><title>Jibres local server - p9759</title></head>" + "<body>" + jsonResult + "</body></html>");
+                byte[] _responseArray = Encoding.UTF8.GetBytes(jsonResult);
                 try
                 {
                     // write bytes to the output stream
