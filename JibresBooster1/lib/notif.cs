@@ -19,7 +19,7 @@ namespace JibresBooster1.lib
         }
 
 
-        public static void info(string _title, string _desc)
+        public static void info(string _title, string _desc, bool _hidden = false)
         {
             if (_title == null)
             {
@@ -29,10 +29,17 @@ namespace JibresBooster1.lib
             {
                 _desc = getDefault("desc");
             }
-            myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Info);
+            if (_hidden)
+            {
+
+            }
+            else
+            {
+                myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Info);
+            }
         }
 
-        public static void say(string _title, string _desc = "")
+        public static void say(string _title, string _desc = "", bool _hidden = false)
         {
             if (_title == null)
             {
@@ -42,10 +49,18 @@ namespace JibresBooster1.lib
             {
                 _desc = getDefault("desc");
             }
-            myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.None);
+            if (_hidden)
+            {
+
+            }
+            else
+            {
+                myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.None);
+            }
+            
         }
 
-        public static void warn(string _title, string _desc)
+        public static void warn(string _title, string _desc, bool _hidden = false)
         {
             if (_title == null)
             {
@@ -55,10 +70,17 @@ namespace JibresBooster1.lib
             {
                 _desc = getDefault("desc");
             }
-            myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Warning);
+            if (_hidden)
+            {
+
+            }
+            else
+            {
+                myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Warning);
+            }
         }
 
-        public static void error(string _title, string _desc)
+        public static void error(string _title, string _desc, bool _hidden = false)
         {
             if (_title == null)
             {
@@ -68,7 +90,14 @@ namespace JibresBooster1.lib
             {
                 _desc = getDefault("desc");
             }
-            myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Error);
+            if (_hidden)
+            {
+
+            }
+            else
+            {
+                myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.Error);
+            }
         }
 
 
