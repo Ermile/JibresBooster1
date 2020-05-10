@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JibresBooster1.Forms.Generator"
         mc:Ignorable="d"
-        Title="تست کارتخوان ایران کیش" Height="300" Width="650" ResizeMode="NoResize" Icon="/JibresBooster1;component/images/favicon.ico" FlowDirection="RightToLeft" Initialized="Window_Initialized" KeyUp="Window_KeyUp" WindowStartupLocation="CenterScreen">
+        Title="تست کارتخوان ایران کیش" Height="300" Width="650" ResizeMode="NoResize" Icon="/JibresBooster1;component/favicon.ico" FlowDirection="RightToLeft" Initialized="Window_Initialized" KeyUp="Window_KeyUp" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="232"/>
