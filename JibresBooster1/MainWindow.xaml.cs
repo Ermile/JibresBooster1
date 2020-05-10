@@ -133,7 +133,7 @@ namespace JibresBooster1
         private void openJibresWebsite(object Sender, EventArgs e)
         {
             Console.Beep();
-            System.Diagnostics.Process.Start("https://jibres.com");
+            System.Diagnostics.Process.Start("https://jibres.ir");
         }
 
         private void openAboutBox(object Sender, EventArgs e)
@@ -186,7 +186,7 @@ namespace JibresBooster1
         private void ImgLogo_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Console.Beep();
-            System.Diagnostics.Process.Start("https://jibres.com");
+            System.Diagnostics.Process.Start("https://jibres.ir");
         }
 
         private void btnAsanPardakht_Click(object sender, RoutedEventArgs e)

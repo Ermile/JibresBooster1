@@ -215,13 +215,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\favicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\ermile.png" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="images\jibres.png" />
+    <Resource Include="images\jibres.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\bg\bg-wood.jpg" />
@@ -230,7 +227,7 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Jibres-Logo-icon-zero-2048.png" />
+    <SplashScreen Include="images\Jibres-Logo-icon-zero-2048.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

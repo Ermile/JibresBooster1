@@ -9,7 +9,7 @@ namespace JibresBooster1.lib
 {
     class save
     {
-        public static readonly string JibresHook = "https://jibres.com/hook/booster1/";
+        public static readonly string JibresHook = "https://jibres.ir/hook/booster1/";
         private static readonly HttpClient client = new HttpClient();
 
         public static async Task<bool> post(Dictionary<string, string> _vals)
