@@ -5,7 +5,7 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("جیبرس بوستر")]
+[assembly: AssemblyTitle("Jibres Booster")]
 [assembly: AssemblyDescription("Boost power of Jibres to break windows!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jibres")]

@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
+using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using JibresBooster1.lib;
 using JibresBooster1.translation;
+using Application = System.Windows.Application;
+using MessageBox = System.Windows.MessageBox;
 
 namespace JibresBooster1
 {
@@ -13,10 +17,16 @@ namespace JibresBooster1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly NotifyIcon myNotifObj;
-        private readonly System.Windows.Forms.ContextMenu myMenu;
+        private NotifyIcon myNotifObj;
+        private ContextMenu myMenu;
+
 
         public MainWindow()
+        {
+            runProgramInstance();
+        }
+
+        private void runProgramInstance()
         {
             try
             {

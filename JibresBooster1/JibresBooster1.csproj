@@ -192,6 +192,7 @@
     <EmbeddedResource Include="translation\fa.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>fa.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
