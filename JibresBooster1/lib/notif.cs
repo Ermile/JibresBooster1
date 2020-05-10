@@ -1,11 +1,6 @@
-﻿using JibresBooster1.translation;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using JibresBooster1.translation;
 
 namespace JibresBooster1.lib
 {
@@ -57,7 +52,7 @@ namespace JibresBooster1.lib
             {
                 myNotif.ShowBalloonTip(1000, _title, _desc, System.Windows.Forms.ToolTipIcon.None);
             }
-            
+
         }
 
         public static void warn(string _title, string _desc, bool _hidden = false)
@@ -106,7 +101,7 @@ namespace JibresBooster1.lib
             string result = "";
             Assembly executingAssembly = Assembly.GetExecutingAssembly();
             var fieVersionInfo = FileVersionInfo.GetVersionInfo(executingAssembly.Location);
-            if(_type == "desc")
+            if (_type == "desc")
             {
                 result = fieVersionInfo.CompanyName;
             }

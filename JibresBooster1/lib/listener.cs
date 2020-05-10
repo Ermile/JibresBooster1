@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Net;
 using System.IO;
-using JibresBooster1.translation;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading;
 
 namespace JibresBooster1.lib
 {
@@ -90,7 +88,7 @@ namespace JibresBooster1.lib
                     log.save(string.Concat(Enumerable.Repeat("-", 50)) + " Get detected");
 
                     var getParams = myRequest.Url.Query.ToString();
-                    if(getParams.Length > 0)
+                    if (getParams.Length > 0)
                     {
                         getParams = getParams.Substring(1);
                     }

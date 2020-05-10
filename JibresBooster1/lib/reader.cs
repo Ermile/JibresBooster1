@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 
 namespace JibresBooster1.lib
@@ -11,7 +7,7 @@ namespace JibresBooster1.lib
     {
         public static Dictionary<string, string> xml(string _str)
         {
-            if(string.IsNullOrEmpty(_str))
+            if (string.IsNullOrEmpty(_str))
             {
                 return null;
             }

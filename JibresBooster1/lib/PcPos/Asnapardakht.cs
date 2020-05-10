@@ -1,9 +1,6 @@
-﻿using PosInterface;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PosInterface;
 
 namespace JibresBooster1.lib.PcPos
 {
@@ -24,9 +21,9 @@ namespace JibresBooster1.lib.PcPos
             fill(_args);
 
 
-            if(initLan(IP))
+            if (initLan(IP))
             {
-                if(myAsanpardakht.saleAsync(AMOUNT, INVOICE))
+                if (myAsanpardakht.saleAsync(AMOUNT, INVOICE))
                 {
 
                 }
@@ -65,7 +62,7 @@ namespace JibresBooster1.lib.PcPos
 
         private static Boolean initLan(string _ip, int _port = 17000)
         {
-            if(string.IsNullOrEmpty(_ip))
+            if (string.IsNullOrEmpty(_ip))
             {
                 return false;
             }

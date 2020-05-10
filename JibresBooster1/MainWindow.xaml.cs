@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 using JibresBooster1.lib;
 using JibresBooster1.translation;
 
