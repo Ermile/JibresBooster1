@@ -61,6 +61,16 @@ namespace JibresBooster1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Jibres_Logo_icon_zero_2048 {
+            get {
+                object obj = ResourceManager.GetObject("Jibres-Logo-icon-zero-2048", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 7.
         /// </summary>
         public static string JibresBooster1 {
