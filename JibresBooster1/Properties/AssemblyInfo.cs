@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("جیبرس بوستر")]
 [assembly: AssemblyDescription("Boost power of Jibres to break windows!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ermile | ارمایل")]
+[assembly: AssemblyCompany("Jibres")]
 [assembly: AssemblyProduct("Jibres Booster")]
-[assembly: AssemblyCopyright("Copyright Ermile©  2018")]
+[assembly: AssemblyCopyright("Copyright Jibres©  2018-2020")]
 [assembly: AssemblyTrademark("Jibres | جیبرس")]
 [assembly: AssemblyCulture("")]
 
