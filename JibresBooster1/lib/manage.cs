@@ -3,11 +3,11 @@ using System.Diagnostics;
 
 namespace JibresBooster1.lib
 {
-    class manage
+    internal class manage
     {
-        static void RestartAsAdmin()
+        private static void RestartAsAdmin()
         {
-            var startInfo = new ProcessStartInfo("JibresBooster1.exe") { Verb = "runas" };
+            ProcessStartInfo startInfo = new ProcessStartInfo("JibresBooster1.exe") { Verb = "runas" };
             Process.Start(startInfo);
             Environment.Exit(0);
         }

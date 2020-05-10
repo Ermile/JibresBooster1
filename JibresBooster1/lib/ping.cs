@@ -2,7 +2,7 @@
 
 namespace JibresBooster1.lib
 {
-    class ping
+    internal class ping
     {
         public static bool test(string nameOrAddress)
         {

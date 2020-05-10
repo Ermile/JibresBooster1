@@ -3,7 +3,7 @@ using System.IO;
 
 namespace JibresBooster1.lib
 {
-    class log
+    internal class log
     {
         public static string logPath;
         public static void info(string _data)
@@ -54,10 +54,10 @@ namespace JibresBooster1.lib
             // try to create log addr
             if (string.IsNullOrEmpty(logPath))
             {
-                var appLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString();
-                var ermileLoc = Path.Combine(appLoc, "Ermile");
-                var jibresLoc = Path.Combine(ermileLoc, "Jibres");
-                var jibresLogLoc = Path.Combine(jibresLoc, "log");
+                string appLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString();
+                string ermileLoc = Path.Combine(appLoc, "Ermile");
+                string jibresLoc = Path.Combine(ermileLoc, "Jibres");
+                string jibresLogLoc = Path.Combine(jibresLoc, "log");
 
                 //try to create folder location
                 try
@@ -84,7 +84,7 @@ namespace JibresBooster1.lib
                     Console.WriteLine(ex.Message);
                 }
 
-                var fileName = "log" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".txt";
+                string fileName = "log" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".txt";
                 logPath = Path.Combine(jibresLogLoc, fileName);
             }
         }

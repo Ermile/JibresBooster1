@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO.Ports;
 using System.Management;
 
 namespace JibresBooster1.lib
 {
-    class port
+    internal class port
     {
         //https://msdn.microsoft.com/en-us/library/aa394413(v=vs.85).aspx
         public static Dictionary<string, string> list()
@@ -75,10 +74,10 @@ namespace JibresBooster1.lib
         }
 
 
-        public static Boolean exist(string _port)
+        public static bool exist(string _port)
         {
             string[] existPorts = SerialPort.GetPortNames();
-            Boolean exist = false;
+            bool exist = false;
             foreach (string myPort in existPorts)
             {
                 if (myPort == _port)

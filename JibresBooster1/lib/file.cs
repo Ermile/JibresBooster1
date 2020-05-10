@@ -3,7 +3,7 @@ using System.IO;
 
 namespace JibresBooster1.lib
 {
-    class file
+    internal class file
     {
         public static void save(string _loc, string _data)
         {

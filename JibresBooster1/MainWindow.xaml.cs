@@ -13,8 +13,8 @@ namespace JibresBooster1
     /// </summary>
     public partial class MainWindow : Window
     {
-        private NotifyIcon myNotifObj;
-        private System.Windows.Forms.ContextMenu myMenu;
+        private readonly NotifyIcon myNotifObj;
+        private readonly System.Windows.Forms.ContextMenu myMenu;
 
         public MainWindow()
         {
@@ -67,10 +67,12 @@ namespace JibresBooster1
 
 
                 // Create the NotifyIcon.
-                myNotifObj = new NotifyIcon();
-                myNotifObj.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
-                myNotifObj.Text = Title;
-                myNotifObj.Visible = true;
+                myNotifObj = new NotifyIcon
+                {
+                    Icon = System.Drawing.Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location),
+                    Text = Title,
+                    Visible = true
+                };
                 // Handle the DoubleClick event to activate the form.
                 myNotifObj.DoubleClick += new EventHandler(openMainWindow);
                 // The ContextMenu property sets the menu that will
@@ -143,7 +145,7 @@ namespace JibresBooster1
                 oldFrm.Close();
             }
 
-            var myAboutBox1 = new Forms.AboutBox1();
+            Forms.AboutBox1 myAboutBox1 = new Forms.AboutBox1();
             if (myAboutBox1.Visible)
             {
                 myAboutBox1.Activate();
@@ -173,7 +175,7 @@ namespace JibresBooster1
             //    oldFrm.Close();
             //}
 
-            var kicccWindow = new Forms.Generator.Kiccc();
+            Forms.Generator.Kiccc kicccWindow = new Forms.Generator.Kiccc();
             kicccWindow.Show();
         }
 

@@ -4,7 +4,7 @@ using JibresBooster1.translation;
 
 namespace JibresBooster1.lib
 {
-    class notif
+    internal class notif
     {
         private static System.Windows.Forms.NotifyIcon myNotif;
 
@@ -100,7 +100,7 @@ namespace JibresBooster1.lib
         {
             string result = "";
             Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            var fieVersionInfo = FileVersionInfo.GetVersionInfo(executingAssembly.Location);
+            FileVersionInfo fieVersionInfo = FileVersionInfo.GetVersionInfo(executingAssembly.Location);
             if (_type == "desc")
             {
                 result = fieVersionInfo.CompanyName;

@@ -4,12 +4,12 @@ using System.Threading;
 
 namespace JibresBooster1.lib
 {
-    class faxModem
+    internal class faxModem
     {
         public static SerialPort port;
-        public static String sReadData = "";
-        public static String sNumberRead = "";
-        public static String sData = "AT#CID=1";
+        public static string sReadData = "";
+        public static string sNumberRead = "";
+        public static string sData = "AT#CID=1";
 
 
         public static void fire()
@@ -28,17 +28,19 @@ namespace JibresBooster1.lib
 
         public static void callTest()
         {
-            var myPort = lib.port.faxModem();
-            SerialPort SP = new SerialPort(myPort);
-            SP.BaudRate = 9600;
-            SP.Parity = Parity.None;
-            SP.DataBits = 8;
-            SP.StopBits = StopBits.One;
-            SP.RtsEnable = true;
-            SP.DtrEnable = true;
-            SP.Encoding = System.Text.Encoding.Unicode;
-            SP.ReceivedBytesThreshold = 1;
-            SP.NewLine = Environment.NewLine;
+            string myPort = lib.port.faxModem();
+            SerialPort SP = new SerialPort(myPort)
+            {
+                BaudRate = 9600,
+                Parity = Parity.None,
+                DataBits = 8,
+                StopBits = StopBits.One,
+                RtsEnable = true,
+                DtrEnable = true,
+                Encoding = System.Text.Encoding.Unicode,
+                ReceivedBytesThreshold = 1,
+                NewLine = Environment.NewLine
+            };
             SP.Open();
 
             string cmd = "AT";
@@ -61,9 +63,11 @@ namespace JibresBooster1.lib
 
         private static void Call()
         {
-            var myPort = lib.port.faxModem();
-            SerialPort celu = new SerialPort();
-            celu.PortName = myPort; // You have check what port your phone is using here, and replace it
+            string myPort = lib.port.faxModem();
+            SerialPort celu = new SerialPort
+            {
+                PortName = myPort // You have check what port your phone is using here, and replace it
+            };
             celu.Open();
             string cmd = "ATD";  // Here you put your AT command
             string phoneNumber = "09357269759"; // Here you put the phone number, for me it worked just with the phone number, not adding any other area code or something like that
@@ -84,7 +88,7 @@ namespace JibresBooster1.lib
 
         public static void SetModem()
         {
-            var myPort = lib.port.faxModem();
+            string myPort = lib.port.faxModem();
             port = new SerialPort(myPort, 115200, Parity.None, 8, StopBits.One);
             port.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
@@ -117,11 +121,11 @@ namespace JibresBooster1.lib
             }
             catch (Exception ex)
             {
-                String errorMessage;
+                string errorMessage;
                 errorMessage = "Error in Reading ";
-                errorMessage = String.Concat(errorMessage, ex.Message);
-                errorMessage = String.Concat(errorMessage, " Line: ");
-                errorMessage = String.Concat(errorMessage, ex.Source);
+                errorMessage = string.Concat(errorMessage, ex.Message);
+                errorMessage = string.Concat(errorMessage, " Line: ");
+                errorMessage = string.Concat(errorMessage, ex.Source);
 
                 log.save(errorMessage + "Error");
                 return "";
@@ -134,10 +138,10 @@ namespace JibresBooster1.lib
             //Close();
         }
 
-        static string dataReceived = string.Empty;
+        private static string dataReceived = string.Empty;
         private delegate void SetTextDeleg(string text);
 
-        static void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
@@ -157,9 +161,7 @@ namespace JibresBooster1.lib
             // Do whatever with the data that is coming in.
         }
 
-
-
-        static void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //For e.g. display your incoming data in RichTextBox
             log.save("Data Received " + port.ReadLine());

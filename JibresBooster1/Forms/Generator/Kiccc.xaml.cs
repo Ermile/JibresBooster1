@@ -20,7 +20,7 @@ namespace JibresBooster1.Forms.Generator
         private void Window_Initialized(object sender, EventArgs e)
         {
             // get active port for kiccc
-            var myPort = lib.port.kiccc();
+            string myPort = lib.port.kiccc();
             if (!string.IsNullOrEmpty(myPort))
             {
                 txtPort.Text = myPort;

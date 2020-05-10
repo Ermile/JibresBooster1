@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace JibresBooster1.lib
 {
-    class save
+    internal class save
     {
         public static readonly string JibresHook = "https://jibres.ir/hook/booster1/";
         private static readonly HttpClient client = new HttpClient();
@@ -13,11 +13,11 @@ namespace JibresBooster1.lib
         {
             try
             {
-                var content = new FormUrlEncodedContent(_vals);
+                FormUrlEncodedContent content = new FormUrlEncodedContent(_vals);
 
-                var response = await client.PostAsync(JibresHook, content);
+                HttpResponseMessage response = await client.PostAsync(JibresHook, content);
 
-                var responseString = await response.Content.ReadAsStringAsync();
+                string responseString = await response.Content.ReadAsStringAsync();
 
                 return true;
             }
@@ -33,7 +33,7 @@ namespace JibresBooster1.lib
         {
             try
             {
-                var responseString = await client.GetStringAsync(JibresHook);
+                string responseString = await client.GetStringAsync(JibresHook);
 
                 return true;
             }

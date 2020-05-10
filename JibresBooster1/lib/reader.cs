@@ -3,7 +3,7 @@ using System.Xml;
 
 namespace JibresBooster1.lib
 {
-    class reader
+    internal class reader
     {
         public static Dictionary<string, string> xml(string _str)
         {
@@ -30,8 +30,8 @@ namespace JibresBooster1.lib
 
         public static string xmlReadable(string _str)
         {
-            var xmlDic = xml(_str);
-            var prettyResult = lib.str.fromDic(xmlDic, "\n\t");
+            Dictionary<string, string> xmlDic = xml(_str);
+            string prettyResult = lib.str.fromDic(xmlDic, "\n\t");
             return prettyResult;
         }
 

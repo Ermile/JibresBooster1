@@ -4,7 +4,7 @@ using System.Resources;
 
 namespace JibresBooster1.translation
 {
-    class T
+    internal class T
     {
         public static string get(string _str)
         {
