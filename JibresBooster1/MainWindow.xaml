@@ -18,6 +18,7 @@
         <Image x:Name="imgLogo" HorizontalAlignment="Left" Height="174" Margin="316,-90,0,0" VerticalAlignment="Top" Width="174" Source="images/Jibres-Logo-icon-zero-2048.png" Cursor="Cross" MouseDown="ImgLogo_MouseDown"/>
         <Button x:Name="btnAsanPardakht" Content="آسان پرداخت" HorizontalAlignment="Left" Margin="645,175,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="btnAsanPardakht_Click"/>
         <Label x:Name="lbl_RunJibresAsAdmin" Content="Please Run Jibres Booster As Administrator!" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="243" Foreground="White" MouseDown="Lbl_RunJibresAsAdmin_MouseDown"/>
+        <CheckBox  x:Name="chk_RunOnStartUp" Content="Run on Startup" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Foreground="White" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
 
     </Grid>
 </Window>

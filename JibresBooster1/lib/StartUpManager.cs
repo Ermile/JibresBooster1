@@ -11,38 +11,61 @@ namespace JibresBooster1.lib
 {
     class StartUpManager
     {
-        private string appName = "Jibres Booster";
-        public static void AddApplicationToCurrentUserStartup(string appName)
+        public static string CurrentUserStartup(string appName, string request)
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.SetValue(appName.ToString(), Application.ExecutablePath.ToString());
+                if (request == "set")
+                {
+                    key.DeleteValue(appName, false);
+                    key.SetValue(appName, Application.ExecutablePath.ToString());
+                }
+                else if (request == "delete")
+                {
+                    key.DeleteValue(appName, false);
+                }
+                else
+                {
+                    var myStatus = key.GetValue(appName);
+                    if (myStatus == null)
+                    {
+                        return "";
+                    }
+                    return myStatus.ToString();
+                }
+
+                return "true";
             }
         }
 
-        public static void AddApplicationToAllUserStartup(string appName)
+
+        public static string AllUserStartup(string appName, string request)
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.SetValue(appName, Application.ExecutablePath.ToString());
+                if (request == "set")
+                {
+                    key.DeleteValue(appName, false);
+                    key.SetValue(appName, Application.ExecutablePath.ToString());
+                }
+                else if (request == "delete")
+                {
+                    key.DeleteValue(appName, false);
+                }
+                else
+                {
+                    var myStatus = key.GetValue(appName);
+                    if(myStatus == null)
+                    {
+                        return "";
+                    }
+                    return myStatus.ToString();
+                }
+
+                return "";
             }
         }
 
-        public static void RemoveApplicationFromCurrentUserStartup(string appName)
-        {
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-            {
-                key.DeleteValue(appName, false);
-            }
-        }
-
-        public static void RemoveApplicationFromAllUserStartup(string appName)
-        {
-            using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-            {
-                key.DeleteValue(appName, false);
-            }
-        }
 
         public static bool IsUserAdministrator()
         {

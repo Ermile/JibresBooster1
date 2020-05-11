@@ -24,8 +24,7 @@ namespace JibresBooster1
 
         public MainWindow()
         {
-            StartUpManager.AddApplicationToAllUserStartup("Jibres Booster");
-            service.start("Jibres Booster v1", 2000);
+            //service.start("Jibres Booster v1", 2000);
             
             runProgramInstance();
         }
@@ -43,6 +42,7 @@ namespace JibresBooster1
                 {
                     lbl_RunJibresAsAdmin.Visibility = Visibility.Hidden;
                 }
+                checkStartUpStatus();
 
 
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
@@ -228,6 +228,29 @@ namespace JibresBooster1
         private void Lbl_RunJibresAsAdmin_MouseDown(object sender, MouseButtonEventArgs e)
         {
             manage.RestartAsAdmin();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            StartUpManager.AllUserStartup("Jibres Booster", "set");
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            StartUpManager.AllUserStartup("Jibres Booster", "delete");
+        }
+
+        private void checkStartUpStatus()
+        {
+            string myStatus = StartUpManager.AllUserStartup("Jibres Booster", "get");
+            if(myStatus.Length > 0 )
+            {
+                chk_RunOnStartUp.IsChecked = true;
+            }
+            else
+            {
+                chk_RunOnStartUp.IsChecked = false;
+            }
         }
     }
 
