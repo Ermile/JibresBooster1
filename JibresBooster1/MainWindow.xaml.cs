@@ -26,10 +26,10 @@ namespace JibresBooster1
         {
             //service.start("Jibres Booster v1", 2000);
             
-            runProgramInstance();
+            RunProgramInstance();
         }
 
-        private void runProgramInstance()
+        private void RunProgramInstance()
         {
             try
             {
@@ -53,7 +53,7 @@ namespace JibresBooster1
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemOpenWindow });
                 itemOpenWindow.Index = 0;
                 itemOpenWindow.Text = T.get("OpenApp");
-                itemOpenWindow.Click += new EventHandler(openMainWindow);
+                itemOpenWindow.Click += new EventHandler(OpenMainWindow);
 
                 // seperator
                 MenuItem seperator = new MenuItem();
@@ -66,14 +66,14 @@ namespace JibresBooster1
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemJibres });
                 itemJibres.Index = 2;
                 itemJibres.Text = T.get("Website");
-                itemJibres.Click += new EventHandler(openJibresWebsite);
+                itemJibres.Click += new EventHandler(OpenJibresWebsite);
 
                 // Initialize itemAbout
                 MenuItem itemAbout = new MenuItem();
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemAbout });
                 itemAbout.Index = 3;
                 itemAbout.Text = T.get("About");
-                itemAbout.Click += new EventHandler(openAboutBox);
+                itemAbout.Click += new EventHandler(OpenAboutBox);
 
                 // seperator
                 MenuItem seperatorExit = new MenuItem();
@@ -86,7 +86,7 @@ namespace JibresBooster1
                 myMenu.MenuItems.AddRange(new MenuItem[] { itemExit });
                 itemExit.Index = 5;
                 itemExit.Text = T.get("ExitApp");
-                itemExit.Click += new EventHandler(myMenuClose);
+                itemExit.Click += new EventHandler(MyMenuClose);
 
 
                 // Create the NotifyIcon.
@@ -97,7 +97,7 @@ namespace JibresBooster1
                     Visible = true
                 };
                 // Handle the DoubleClick event to activate the form.
-                myNotifObj.DoubleClick += new EventHandler(openMainWindow);
+                myNotifObj.DoubleClick += new EventHandler(OpenMainWindow);
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
 
@@ -122,7 +122,7 @@ namespace JibresBooster1
             Hide();
         }
 
-        private void openMainWindow(object Sender, EventArgs _e)
+        private void OpenMainWindow(object Sender, EventArgs _e)
         {
             try
             {
@@ -148,20 +148,20 @@ namespace JibresBooster1
         }
 
 
-        private void myMenuClose(object Sender, EventArgs e)
+        private void MyMenuClose(object Sender, EventArgs e)
         {
             // Close the form, which closes the application.
             forceCloseApp();
             Close();
         }
 
-        private void openJibresWebsite(object Sender, EventArgs e)
+        private void OpenJibresWebsite(object Sender, EventArgs e)
         {
             Console.Beep();
             System.Diagnostics.Process.Start("https://jibres.ir");
         }
 
-        private void openAboutBox(object Sender, EventArgs e)
+        private void OpenAboutBox(object Sender, EventArgs e)
         {
             Form oldFrm = System.Windows.Forms.Application.OpenForms["AboutBox1"];
             if (oldFrm != null)
