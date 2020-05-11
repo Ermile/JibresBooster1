@@ -12,7 +12,7 @@ namespace JibresBooster1.lib
     {
         public static void start(string serviceName, int timeoutMilliseconds)
         {
-            return;
+
             ServiceController service = new ServiceController(serviceName);
             try
             {

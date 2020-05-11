@@ -23,9 +23,7 @@ namespace JibresBooster1
 
 
         public MainWindow()
-        {
-            //service.start("Jibres Booster v1", 2000);
-            
+        {          
             RunProgramInstance();
         }
 
@@ -42,7 +40,7 @@ namespace JibresBooster1
                 {
                     lbl_RunJibresAsAdmin.Visibility = Visibility.Hidden;
                 }
-                checkStartUpStatus();
+                CheckStartUpStatus();
 
 
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
@@ -151,7 +149,7 @@ namespace JibresBooster1
         private void MyMenuClose(object Sender, EventArgs e)
         {
             // Close the form, which closes the application.
-            forceCloseApp();
+            ForceCloseApp();
             Close();
         }
 
@@ -181,7 +179,7 @@ namespace JibresBooster1
         }
 
 
-        private void forceCloseApp()
+        private void ForceCloseApp()
         {
             // hide notif on try icon
             myNotifObj.Visible = false;
@@ -220,7 +218,7 @@ namespace JibresBooster1
             System.Diagnostics.Process.Start("https://jibres.ir");
         }
 
-        private void btnAsanPardakht_Click(object sender, RoutedEventArgs e)
+        private void BtnAsanPardakht_Click(object sender, RoutedEventArgs e)
         {
             //lib.PcPos.Asnapardakht.fire();
         }
@@ -240,7 +238,7 @@ namespace JibresBooster1
             StartUpManager.AllUserStartup("Jibres Booster", "delete");
         }
 
-        private void checkStartUpStatus()
+        private void CheckStartUpStatus()
         {
             string myStatus = StartUpManager.AllUserStartup("Jibres Booster", "get");
             if(myStatus.Length > 0 )
