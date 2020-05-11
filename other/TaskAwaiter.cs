@@ -176,8 +176,8 @@ namespace System.Runtime.CompilerServices
                         oceEdi.Throw();
                         Contract.Assert(false, "Throw() should have thrown");
                     }
-                    //return;
-                    //throw new TaskCanceledException(task);
+                    
+                    throw new TaskCanceledException(task);
 
                 // If the task faulted, throw its first exception,
                 // even if it contained more than one.
