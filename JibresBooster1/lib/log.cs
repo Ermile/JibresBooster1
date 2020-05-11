@@ -55,18 +55,12 @@ namespace JibresBooster1.lib
             if (string.IsNullOrEmpty(logPath))
             {
                 string appLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString();
-                string ermileLoc = Path.Combine(appLoc, "Ermile");
-                string jibresLoc = Path.Combine(ermileLoc, "Jibres");
+                string jibresLoc = Path.Combine(appLoc, "Jibres");
                 string jibresLogLoc = Path.Combine(jibresLoc, "log");
 
                 //try to create folder location
                 try
                 {
-                    // create Ermile folder
-                    if (!Directory.Exists(ermileLoc))
-                    {
-                        Directory.CreateDirectory(ermileLoc);
-                    }
                     // create Jibres folder
                     if (!Directory.Exists(jibresLoc))
                     {
