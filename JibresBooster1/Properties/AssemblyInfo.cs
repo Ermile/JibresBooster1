@@ -9,9 +9,9 @@ using System.Windows;
 [assembly: AssemblyDescription("Boost power of Jibres to break windows!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jibres")]
-[assembly: AssemblyProduct("Jibres Booster")]
+[assembly: AssemblyProduct("Jibres")]
 [assembly: AssemblyCopyright("Copyright Jibres©  2018-2020")]
-[assembly: AssemblyTrademark("Jibres | جیبرس")]
+[assembly: AssemblyTrademark("Jibres")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

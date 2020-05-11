@@ -33,12 +33,16 @@ namespace JibresBooster1
         {
             try
             {
+                // on start hide form
+                Hide();
+
                 InitializeComponent();
 
                 if(manage.IsAdministrator())
                 {
                     lbl_RunJibresAsAdmin.Visibility = Visibility.Hidden;
                 }
+
 
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
                 myMenu = new ContextMenu();
