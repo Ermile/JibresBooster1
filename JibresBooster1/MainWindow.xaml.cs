@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.ServiceProcess;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -23,6 +24,8 @@ namespace JibresBooster1
 
         public MainWindow()
         {
+            service.start("Jibres Booster v1", 2000);
+            
             runProgramInstance();
         }
 
@@ -31,6 +34,11 @@ namespace JibresBooster1
             try
             {
                 InitializeComponent();
+
+                if(manage.IsAdministrator())
+                {
+                    lbl_RunJibresAsAdmin.Visibility = Visibility.Hidden;
+                }
 
                 // Read more about notify on https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.notifyicon
                 myMenu = new ContextMenu();
