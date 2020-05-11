@@ -4,42 +4,43 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace JibresBooster1.lib
 {
     class StartUpManager
     {
-        
-        public static void AddApplicationToCurrentUserStartup()
+        private string appName = "Jibres Booster";
+        public static void AddApplicationToCurrentUserStartup(string appName)
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.SetValue("My ApplicationStartUpDemo", "\"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\"");
+                key.SetValue(appName.ToString(), Application.ExecutablePath.ToString());
             }
         }
 
-        public static void AddApplicationToAllUserStartup()
+        public static void AddApplicationToAllUserStartup(string appName)
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.SetValue("My ApplicationStartUpDemo", "\"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\"");
+                key.SetValue(appName, Application.ExecutablePath.ToString());
             }
         }
 
-        public static void RemoveApplicationFromCurrentUserStartup()
+        public static void RemoveApplicationFromCurrentUserStartup(string appName)
         {
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.DeleteValue("My ApplicationStartUpDemo", false);
+                key.DeleteValue(appName, false);
             }
         }
 
-        public static void RemoveApplicationFromAllUserStartup()
+        public static void RemoveApplicationFromAllUserStartup(string appName)
         {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
             {
-                key.DeleteValue("My ApplicationStartUpDemo", false);
+                key.DeleteValue(appName, false);
             }
         }
 

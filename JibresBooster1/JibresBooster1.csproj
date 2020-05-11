@@ -82,11 +82,13 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>JibresBooster1.App</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
@@ -145,6 +147,7 @@
       <DependentUpon>Kiccc.xaml</DependentUpon>
     </Compile>
     <Compile Include="lib\service.cs" />
+    <Compile Include="lib\StartUpManager.cs" />
     <Compile Include="translation\fa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -24,6 +24,7 @@ namespace JibresBooster1
 
         public MainWindow()
         {
+            StartUpManager.AddApplicationToAllUserStartup("Jibres Booster");
             service.start("Jibres Booster v1", 2000);
             
             runProgramInstance();
