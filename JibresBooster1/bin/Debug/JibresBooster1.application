@@ -7,7 +7,7 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\JibresBooster1_1_0_0_10\JibresBooster1.exe.manifest" size="8597">
+    <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="8597">
       <assemblyIdentity name="JibresBooster1.exe" version="1.0.0.10" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
