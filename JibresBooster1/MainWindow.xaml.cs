@@ -212,6 +212,11 @@ namespace JibresBooster1
         {
             //lib.PcPos.Asnapardakht.fire();
         }
+
+        private void Lbl_RunJibresAsAdmin_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            manage.RestartAsAdmin();
+        }
     }
 
 }

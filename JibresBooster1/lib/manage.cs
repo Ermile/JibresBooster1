@@ -6,7 +6,7 @@ namespace JibresBooster1.lib
 {
     internal class manage
     {
-        private static void RestartAsAdmin()
+        public static void RestartAsAdmin()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo("JibresBooster1.exe") { Verb = "runas" };
             Process.Start(startInfo);
