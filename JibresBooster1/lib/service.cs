@@ -12,11 +12,13 @@ namespace JibresBooster1.lib
     {
         public static void start(string serviceName, int timeoutMilliseconds)
         {
+            return;
             ServiceController service = new ServiceController(serviceName);
             try
             {
                 int millisec1 = 0;
                 TimeSpan timeout;
+                //this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalService;
 
                 // count the rest of the timeout
                 int millisec2 = Environment.TickCount;
@@ -24,6 +26,9 @@ namespace JibresBooster1.lib
                 service.Start();
                 service.WaitForStatus(ServiceControllerStatus.Running, timeout);
 
+                //service.WaitForStatus(ServiceControllerStatus.Running);
+                //service.Stop();
+                //service.WaitForStatus(ServiceControllerStatus.Stopped);
             }
             catch (Exception e)
             {

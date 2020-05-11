@@ -99,6 +99,7 @@ namespace JibresBooster1
                 myNotifObj.DoubleClick += new EventHandler(openMainWindow);
                 // The ContextMenu property sets the menu that will
                 // appear when the systray icon is right clicked.
+
                 myNotifObj.ContextMenu = myMenu;
 
                 notif.init(myNotifObj);
@@ -181,6 +182,12 @@ namespace JibresBooster1
 
         private void forceCloseApp()
         {
+            // hide notif on try icon
+            //myNotifObj.Icon = null;
+            myNotifObj.Icon.Dispose();
+            myNotifObj.Dispose();
+
+
             notif.appExit();
             // Shutdown the application.
             System.Windows.Application.Current.Shutdown();
