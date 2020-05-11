@@ -183,7 +183,7 @@ namespace JibresBooster1
         private void forceCloseApp()
         {
             // hide notif on try icon
-            //myNotifObj.Icon = null;
+            myNotifObj.Visible = false;
             myNotifObj.Icon.Dispose();
             myNotifObj.Dispose();
 
