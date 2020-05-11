@@ -251,6 +251,15 @@ namespace JibresBooster1
             {
                 chk_RunOnStartUp.IsChecked = false;
             }
+
+            if(manage.IsAdministrator())
+            {
+                // on admin allow to change startup settings
+            }
+            else
+            {
+                chk_RunOnStartUp.IsEnabled = false;
+            }
         }
     }
 
