@@ -4,17 +4,17 @@
   <description asmv2:publisher="Jibres" co.v1:suiteName="JIbres" asmv2:product="JibresBooster" asmv2:supportUrl="https://jibres.com/support/" co.v1:errorReportUrl="https://jibres.com/support/" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="8665">
+    <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="9063">
       <assemblyIdentity name="JibresBooster1.exe" version="1.0.0.16" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vaem9ZiHPCm1Yvyk8K1bf/GBlSMwoLrJLX2ZSPnY1ak=</dsig:DigestValue>
+        <dsig:DigestValue>1I6vgHowNW9B1dwz8uixqfaQhcPAqGmkTkeoLb0oUEU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
