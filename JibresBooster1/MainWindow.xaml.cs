@@ -24,7 +24,14 @@ namespace JibresBooster1
 
         public MainWindow()
         {          
-            RunProgramInstance();
+            if(manage.IsAdministrator())
+            {
+                RunProgramInstance();
+            }
+            else
+            {
+                manage.RestartAsAdmin();
+            }
         }
 
         private void RunProgramInstance()
