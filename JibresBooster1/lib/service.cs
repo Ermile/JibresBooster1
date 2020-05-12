@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JibresBooster1.lib
 {
-    class service
+    internal class service
     {
         public static void start(string serviceName, int timeoutMilliseconds)
         {

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace JibresBooster1.lib
 {
-    class StartUpManager
+    internal class StartUpManager
     {
         public static string CurrentUserStartup(string appName, string request)
         {
@@ -26,7 +22,7 @@ namespace JibresBooster1.lib
                 }
                 else
                 {
-                    var myStatus = key.GetValue(appName);
+                    object myStatus = key.GetValue(appName);
                     if (myStatus == null)
                     {
                         return "";
@@ -54,8 +50,8 @@ namespace JibresBooster1.lib
                 }
                 else
                 {
-                    var myStatus = key.GetValue(appName);
-                    if(myStatus == null)
+                    object myStatus = key.GetValue(appName);
+                    if (myStatus == null)
                     {
                         return "";
                     }

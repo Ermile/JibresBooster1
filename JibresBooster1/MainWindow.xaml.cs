@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reflection;
-using System.ServiceProcess;
-using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using JibresBooster1.lib;
 using JibresBooster1.translation;
-using Application = System.Windows.Application;
-using MessageBox = System.Windows.MessageBox;
 
 namespace JibresBooster1
 {
@@ -23,8 +18,8 @@ namespace JibresBooster1
 
 
         public MainWindow()
-        {          
-            if(manage.IsAdministrator())
+        {
+            if (manage.IsAdministrator())
             {
                 RunProgramInstance();
             }
@@ -43,7 +38,7 @@ namespace JibresBooster1
 
                 InitializeComponent();
 
-                if(manage.IsAdministrator())
+                if (manage.IsAdministrator())
                 {
                     lbl_RunJibresAsAdmin.Visibility = Visibility.Hidden;
                 }
@@ -248,7 +243,7 @@ namespace JibresBooster1
         private void CheckStartUpStatus()
         {
             string myStatus = StartUpManager.AllUserStartup("Jibres Booster", "get");
-            if(myStatus.Length > 0 )
+            if (myStatus.Length > 0)
             {
                 chk_RunOnStartUp.IsChecked = true;
             }
@@ -257,7 +252,7 @@ namespace JibresBooster1
                 chk_RunOnStartUp.IsChecked = false;
             }
 
-            if(manage.IsAdministrator())
+            if (manage.IsAdministrator())
             {
                 // on admin allow to change startup settings
             }
