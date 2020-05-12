@@ -8,7 +8,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Jibres Booster")]
 [assembly: AssemblyDescription("Boost power of Jibres to break windows!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jibres")]
+[assembly: AssemblyCompany("Jibres LLC")]
 [assembly: AssemblyProduct("Jibres")]
 [assembly: AssemblyCopyright("Copyright Jibres©  2018-2020")]
 [assembly: AssemblyTrademark("Jibres")]

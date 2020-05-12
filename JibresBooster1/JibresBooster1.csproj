@@ -30,10 +30,10 @@
     <SupportUrl>https://Jibres.com/support/</SupportUrl>
     <ErrorReportUrl>https://Jibres.com/support/</ErrorReportUrl>
     <ProductName>JibresBooster</ProductName>
-    <PublisherName>Jibres</PublisherName>
+    <PublisherName>Jibres LLC</PublisherName>
     <SuiteName>JIbres</SuiteName>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>20</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
