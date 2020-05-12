@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="8647">
+    <dependentAssembly dependencyType="install" codebase="JibresBooster1.exe.manifest" size="8665">
       <assemblyIdentity name="JibresBooster1.exe" version="1.0.0.16" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/oBwHf6kPlkVv1LBYs6zelAT/cFS/Z+wer0o+8uX7Hc=</dsig:DigestValue>
+        <dsig:DigestValue>vaem9ZiHPCm1Yvyk8K1bf/GBlSMwoLrJLX2ZSPnY1ak=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
